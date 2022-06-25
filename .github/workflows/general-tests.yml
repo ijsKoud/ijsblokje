@@ -40,8 +40,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Generate Prisma Types
-        run: yarn prisma:generate
-
       - name: TypeScript Compiler
         run: yarn build
