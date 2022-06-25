@@ -1,11 +1,11 @@
 <div align="center">
-    <img src="public/assets/images/paperplane.png" width="100px" />
-    <h1>PaperPlane</h1>
+    <img src="https://avatars.githubusercontent.com/in/214508" width="100px" />
+    <h1>ijsblokje</h1>
   
-  <p>A fast file/shorturl upload server packed with lots of cool features!</p>
+  <p>A personal GitHub bot which syncs data and runs automated systems</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-3.0.0-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg" />
     <a href="/LICENSE" target="_blank">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
@@ -20,25 +20,15 @@
 
 ## Information
 
-PaperPlane is a file/shorturl upload server that is created for ShareX users. It comes with a lot of cool features such as a clean dashboard, file renaming, frontend file/url uploading and a lot more.
-
-**This version is indev and very unstable. Using this may end up deleting your files, use it at your own risk. For the v2 stable version please refer to [this branch](https://github.com/ijsKoud/PaperPlane/tree/legacy-v2)**
-
-## Features
-
--   Fast rendering thanks to Next.js
--   Quick database using prisma and sqlite
--   Discord embed settings included
--   Customisable uploader (block file extensions, max upload size, etc)
--   Easy to use dashboard (Closable sections)
--   File renaming (using the dashboard!)
--   Shorturls
--   Frontend uploading page
--   Custom themes
+soon:tm:
 
 ## Install
 
-A Detailed installation guide can be found here: https://paperplane.ijskoud.dev
+soon:tm:
+
+## Credits
+
+- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik - www.freepik.com</a>
 
 ## Author
 
