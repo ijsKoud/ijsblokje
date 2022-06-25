@@ -12,7 +12,6 @@ WORKDIR /ijsblokje
 
 # Register Environment Variables
 ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
 
 # Copy Existing Files
 COPY package.json yarn.lock .yarnrc.yml tsconfig.json ./
