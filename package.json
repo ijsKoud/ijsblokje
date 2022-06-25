@@ -1,10 +1,9 @@
 {
   "name": "ijsblokje",
   "version": "1.0.0",
-  "private": true,
   "description": "A personal GitHub bot which syncs data and runs automated systems",
   "author": "ijsKoud <github@ijskoud.dev>",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/ijsKoud/ijsblokje",
   "keywords": [
     "probot",
