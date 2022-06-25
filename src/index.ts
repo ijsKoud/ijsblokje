@@ -56,7 +56,7 @@ const run = (app: Probot) => {
 		await ctx.octokit.issues.addLabels({
 			owner: USERNAME,
 			repo: ctx.payload.repository.name,
-			issue_number: ctx.payload.pull_request.id,
+			issue_number: ctx.payload.number,
 			labels: [DEPENDENCIES_LABEL_NAME]
 		});
 	});
