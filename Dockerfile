@@ -21,6 +21,10 @@ COPY src ./src
 # Install dependencies
 RUN yarn install --immutable
 
+# Build app
+run yarn build
+COPY dist ./dist
+
 # Change User
 USER ijsblokje
 
