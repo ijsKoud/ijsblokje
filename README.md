@@ -20,15 +20,48 @@
 
 ## Information
 
-soon:tm:
+This is a personal GitHub bot designed to do some tasks for me. It currently does the following:
+
+-   Label Syncer
+-   Labeling certain PRs (renovate PRs)
 
 ## Install
 
-soon:tm:
+You can self-host this bot, though I do wonder why cuz this is a personalised bot. If you however have the same setup (using Renovate as Dependency bumper) feel free to continue. To host this either glone the repo (git clone ...) or use Docker (recommended & fastest)
+
+#### Configuring the `.env` file:
+
+First make sure you followed this guide before continuing: [ProBot configuration](https://probot.github.io/docs/development/#manually-configuring-a-github-app)
+After that, change the following variables:
+
+```env
+LABEL_DEPENDENCIES="Dependencies" # The name of the label you want to give every dependency bump from Renovate
+REPO_NAME="ijsKoud/ijsKoud" # The repository where the labels.json file is located
+USERNAME="ijsKoud" # Your own GitHub username
+```
+
+#### Setup with Docker:
+
+```bash
+$ docker pull ghcr.io/ijskoud/ijsblokje:v1
+$ docker run --name=ijsblokje -d --env-file .env -p 3010:3010 ijsblokje:v1
+```
+
+#### Setup without Docker
+
+Make sure to add the `.env` file to the folder before running the bot!
+
+```bash
+$ git clone https://github.com/ijsKoud/ijsblokje
+$ cd ijsblokje
+$ yarn install
+$ yarn build
+$ yarn start
+```
 
 ## Credits
 
-- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik - www.freepik.com</a>
+-   Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
 
 ## Author
 
