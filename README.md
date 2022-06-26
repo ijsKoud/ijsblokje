@@ -42,9 +42,11 @@ USERNAME="ijsKoud" # Your own GitHub username
 
 #### Setup with Docker:
 
+Note: the `3000:3000` are for binding the ports, make sure to update them accordingly when changing the `.env` file PORT variable!
+
 ```bash
 $ docker pull ghcr.io/ijskoud/ijsblokje:v1
-$ docker run --name=ijsblokje -d --env-file .env -p 3010:3010 ijsblokje:v1
+$ docker run --name=ijsblokje -d --env-file .env -p 3000:3000 ijsblokje:v1
 ```
 
 #### Setup without Docker
