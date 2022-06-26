@@ -390,7 +390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^17.0.2":
+"@commitlint/cli@npm:^17.0.3":
   version: 17.0.3
   resolution: "@commitlint/cli@npm:17.0.3"
   dependencies:
@@ -417,7 +417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-angular@npm:^17.0.0":
+"@commitlint/config-angular@npm:^17.0.3":
   version: 17.0.3
   resolution: "@commitlint/config-angular@npm:17.0.3"
   dependencies:
@@ -1587,7 +1587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^26.0.19":
+"@types/jest@npm:^26.0.24":
   version: 26.0.24
   resolution: "@types/jest@npm:26.0.24"
   dependencies:
@@ -1791,7 +1791,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.28.0":
+"@typescript-eslint/eslint-plugin@npm:^5.28.0, @typescript-eslint/eslint-plugin@npm:^5.29.0":
   version: 5.29.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.29.0"
   dependencies:
@@ -1814,7 +1814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.28.0":
+"@typescript-eslint/parser@npm:^5.28.0, @typescript-eslint/parser@npm:^5.29.0":
   version: 5.29.0
   resolution: "@typescript-eslint/parser@npm:5.29.0"
   dependencies:
@@ -4817,15 +4817,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ijsblokje@workspace:."
   dependencies:
-    "@commitlint/cli": ^17.0.2
-    "@commitlint/config-angular": ^17.0.0
+    "@commitlint/cli": ^17.0.3
+    "@commitlint/config-angular": ^17.0.3
     "@sapphire/eslint-config": ^4.3.7
     "@sapphire/prettier-config": ^1.4.3
     "@sapphire/ts-config": ^3.3.4
-    "@types/jest": ^26.0.19
+    "@types/jest": ^26.0.24
     "@types/node": ^16.11.41
-    "@typescript-eslint/eslint-plugin": ^5.28.0
-    "@typescript-eslint/parser": ^5.28.0
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
     axios: ^0.27.2
     dotenv: ^16.0.1
     eslint: ^8.18.0
@@ -4834,12 +4834,12 @@ __metadata:
     husky: ^8.0.1
     is-ci: ^3.0.1
     jest: ^26.6.3
-    lint-staged: ^13.0.2
-    nock: ^13.0.5
+    lint-staged: ^13.0.3
+    nock: ^13.2.7
     prettier: ^2.7.1
     probot: ^12.2.4
     smee-client: ^1.2.3
-    ts-jest: ^26.4.4
+    ts-jest: ^26.5.6
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
@@ -6133,7 +6133,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^13.0.2":
+"lint-staged@npm:^13.0.3":
   version: 13.0.3
   resolution: "lint-staged@npm:13.0.3"
   dependencies:
@@ -6790,7 +6790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nock@npm:^13.0.5":
+"nock@npm:^13.2.7":
   version: 13.2.7
   resolution: "nock@npm:13.2.7"
   dependencies:
@@ -8894,7 +8894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^26.4.4":
+"ts-jest@npm:^26.5.6":
   version: 26.5.6
   resolution: "ts-jest@npm:26.5.6"
   dependencies:
