@@ -12,14 +12,15 @@
 	],
 	"scripts": {
 		"build": "tsc --build",
-		"dev": "NODE_ENV=development nodemon -w src --ext ts,json --exec 'yarn build && yarn start'",
-		"start": "NODE_ENV=production probot run ./dist",
+		"dev": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
+		"start": "NODE_ENV=production node ./dist",
 		"lint": "eslint src",
 		"postinstall": "is-ci || husky install",
 		"test": "jest"
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
+		"dotenv": "^16.0.1",
 		"probot": "^11.0.1"
 	},
 	"devDependencies": {
