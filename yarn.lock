@@ -1199,14 +1199,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/webhooks@npm:7.21.0":
-  version: 7.21.0
-  resolution: "@octokit/webhooks@npm:7.21.0"
+"@octokit/webhooks-methods@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@octokit/webhooks-methods@npm:2.0.0"
+  checksum: 42f87ccb93d05b314a12e99c717523cef290c896719e95cdb9349aee4be453d42c3a4286ee9de67f88946d048b29ae31c2f98875df0c6d5da662e94554acab56
+  languageName: node
+  linkType: hard
+
+"@octokit/webhooks-types@npm:5.8.0":
+  version: 5.8.0
+  resolution: "@octokit/webhooks-types@npm:5.8.0"
+  checksum: a5103ef5224e0fab201845fa23333f21415aebae7650f1b6ffe64c11377847139411a1a37fff5931aead13658b94b79ab0abbad24b9c30bfc4d2c9528ceb72d1
+  languageName: node
+  linkType: hard
+
+"@octokit/webhooks@npm:^9.8.4":
+  version: 9.26.0
+  resolution: "@octokit/webhooks@npm:9.26.0"
   dependencies:
     "@octokit/request-error": ^2.0.2
+    "@octokit/webhooks-methods": ^2.0.0
+    "@octokit/webhooks-types": 5.8.0
     aggregate-error: ^3.1.0
-    debug: ^4.0.0
-  checksum: ccb6574fc4ffa9f18d732170b9246e6a54b2164f1d434f25aaf6cd047323e13fb17d6cadbfcfafb4f3eba39dc65c66397283acd9fcf6ce482540069b8529319c
+  checksum: 97da13d2464095d68068ff2fd7d2aa42d1c88e6271eb929ae50890396d16862debfa2078e650823bacf42c4a1c606137d3715a5f970bfcbc2bbdf66bca38760e
   languageName: node
   linkType: hard
 
@@ -1531,7 +1546,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ioredis@npm:^4.17.8":
+"@types/ioredis@npm:^4.27.1":
   version: 4.28.10
   resolution: "@types/ioredis@npm:4.28.10"
   dependencies:
@@ -3204,7 +3219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -3792,10 +3807,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventsource@npm:^1.0.7, eventsource@npm:^1.1.0":
+"eventsource@npm:^1.1.0":
   version: 1.1.2
   resolution: "eventsource@npm:1.1.2"
   checksum: fe8f2ac3c70b1b63ee3cef5c0a28680cb00b5747bfda1d9835695fab3ed602be41c5c799b1fc997b34b02633573fead25b12b036bdf5212f23a6aa9f59212e9b
+  languageName: node
+  linkType: hard
+
+"eventsource@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "eventsource@npm:2.0.2"
+  checksum: c0072d972753e10c705d9b2285b559184bf29d011bc208973dde9c8b6b8b7b6fdad4ef0846cecb249f7b1585e860fdf324cbd2ac854a76bc53649e797496e99a
   languageName: node
   linkType: hard
 
@@ -3905,6 +3927,17 @@ __metadata:
     jest-message-util: ^26.6.2
     jest-regex-util: ^26.0.0
   checksum: 79a9b888c5c6d37d11f2cb76def6cf1dc8ff098d38662ee20c9f2ee0da67e9a93435f2327854b2e7554732153870621843e7f83e8cefb1250447ee2bc39883a4
+  languageName: node
+  linkType: hard
+
+"express-handlebars@npm:^6.0.3":
+  version: 6.0.6
+  resolution: "express-handlebars@npm:6.0.6"
+  dependencies:
+    glob: ^8.0.2
+    graceful-fs: ^4.2.10
+    handlebars: ^4.7.7
+  checksum: b34253f9f783cdfd94e83aebde66712b45a8a90dd140e5da42335ee715dec39acf334465a290a3f7bd51ee23467c907ed059c7cae24cc9129bca16cc969d60f7
   languageName: node
   linkType: hard
 
@@ -4179,13 +4212,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foreachasync@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "foreachasync@npm:3.0.0"
-  checksum: 4791f64b539b06c751b14adb2881173c780d41ce37d881715a5e5787fa4a08961f2c6a6cf3bccdfa48e56fb91d8676d867fdc63c008cdb576bd33261716e8381
-  languageName: node
-  linkType: hard
-
 "form-data@npm:^3.0.0":
   version: 3.0.1
   resolution: "form-data@npm:3.0.1"
@@ -4430,7 +4456,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^8.0.1":
+"glob@npm:^8.0.1, glob@npm:^8.0.2":
   version: 8.0.3
   resolution: "glob@npm:8.0.3"
   dependencies:
@@ -4510,7 +4536,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.10, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
   version: 4.2.10
   resolution: "graceful-fs@npm:4.2.10"
   checksum: 3f109d70ae123951905d85032ebeae3c2a5a7a997430df00ea30df0e3a6c60cf6689b109654d6fdacd28810a053348c4d14642da1d075049e6be1ba5216218da
@@ -4524,7 +4550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"handlebars@npm:4.7.7":
+"handlebars@npm:^4.7.7":
   version: 4.7.7
   resolution: "handlebars@npm:4.7.7"
   dependencies:
@@ -4629,16 +4655,6 @@ __metadata:
   dependencies:
     function-bind: ^1.1.1
   checksum: b9ad53d53be4af90ce5d1c38331e712522417d017d5ef1ebd0507e07c2fbad8686fffb8e12ddecd4c39ca9b9b47431afbb975b8abf7f3c3b82c98e9aad052792
-  languageName: node
-  linkType: hard
-
-"hbs@npm:^4.1.1":
-  version: 4.2.0
-  resolution: "hbs@npm:4.2.0"
-  dependencies:
-    handlebars: 4.7.7
-    walk: 2.3.15
-  checksum: 811259d1bc6ecf94fca824df438167306a5f7e122b82aca59a3c593067c50175ce81c3de4d258b9cb19ae9ef5b91e8486282b5791191940bb5d8a298304965b5
   languageName: node
   linkType: hard
 
@@ -4821,7 +4837,7 @@ __metadata:
     lint-staged: ^13.0.2
     nock: ^13.0.5
     prettier: ^2.7.1
-    probot: ^11.0.1
+    probot: ^12.2.4
     smee-client: ^1.2.3
     ts-jest: ^26.4.4
     typescript: ^4.7.4
@@ -4909,7 +4925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ioredis@npm:^4.19.2":
+"ioredis@npm:^4.27.8":
   version: 4.28.5
   resolution: "ioredis@npm:4.28.5"
   dependencies:
@@ -7476,9 +7492,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"probot@npm:^11.0.1":
-  version: 11.4.1
-  resolution: "probot@npm:11.4.1"
+"probot@npm:^12.2.4":
+  version: 12.2.4
+  resolution: "probot@npm:12.2.4"
   dependencies:
     "@octokit/core": ^3.2.4
     "@octokit/plugin-enterprise-compatibility": ^1.2.8
@@ -7487,12 +7503,12 @@ __metadata:
     "@octokit/plugin-retry": ^3.0.6
     "@octokit/plugin-throttling": ^3.3.4
     "@octokit/types": ^6.1.1
-    "@octokit/webhooks": 7.21.0
+    "@octokit/webhooks": ^9.8.4
     "@probot/get-private-key": ^1.1.0
     "@probot/octokit-plugin-config": ^1.0.0
     "@probot/pino": ^2.2.0
     "@types/express": ^4.17.9
-    "@types/ioredis": ^4.17.8
+    "@types/ioredis": ^4.27.1
     "@types/pino": ^6.3.4
     "@types/pino-http": ^5.0.6
     "@types/update-notifier": ^5.0.0
@@ -7500,10 +7516,10 @@ __metadata:
     deepmerge: ^4.2.2
     deprecation: ^2.3.1
     dotenv: ^8.2.0
-    eventsource: ^1.0.7
+    eventsource: ^2.0.2
     express: ^4.17.1
-    hbs: ^4.1.1
-    ioredis: ^4.19.2
+    express-handlebars: ^6.0.3
+    ioredis: ^4.27.8
     js-yaml: ^3.14.1
     lru-cache: ^6.0.0
     octokit-auth-probot: ^1.2.2
@@ -7517,7 +7533,7 @@ __metadata:
     uuid: ^8.3.2
   bin:
     probot: bin/probot.js
-  checksum: cdc3af2026c682c45d24e8444d0915460e3927f74c57d630854fbed04784f21845639aa5868d2a805deec1bf330f998a27c054cfb061207522c577c89f2e39ed
+  checksum: 519547be92a4ecf33f878bcb93c93e1da1efcefed1d09697cf559da7438d5387665baa395b3793fe53c31529bf390b7b732f26fec43b4e5bed217135c15eacd0
   languageName: node
   linkType: hard
 
@@ -9330,15 +9346,6 @@ __metadata:
   dependencies:
     xml-name-validator: ^3.0.0
   checksum: ae25c51cf71f1fb2516df1ab33a481f83461a117565b95e3d0927432522323f93b1b2846cbb60196d337970c421adb604fc2d0d180c6a47a839da01db5b9973b
-  languageName: node
-  linkType: hard
-
-"walk@npm:2.3.15":
-  version: 2.3.15
-  resolution: "walk@npm:2.3.15"
-  dependencies:
-    foreachasync: ^3.0.0
-  checksum: d494df1924656cc4881ff8f70474f80be10d07d0c899620e02ff8627e4f339f37e74d1b30b70e7a714d0b873b0dc8b20129a619c4b407b39949c756637ebe3a6
   languageName: node
   linkType: hard
 
