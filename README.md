@@ -46,7 +46,7 @@ Note: the `3000:3000` are for binding the ports, make sure to update them accord
 
 ```bash
 $ docker pull ghcr.io/ijskoud/ijsblokje:v1
-$ docker run --name=ijsblokje -d --env-file .env -p 3000:3000 ghcr.io/ijskoud/ijsblokje:v1
+$ docker run --name=ijsblokje --restart always -d --env-file .env -p 3000:3000 ghcr.io/ijskoud/ijsblokje:v1
 ```
 
 #### Setup without Docker
