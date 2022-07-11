@@ -2,7 +2,7 @@ import { config } from "dotenv";
 config();
 
 import { Probot, Server } from "probot";
-import { LabelSync } from "./handlers";
+import { LabelSync, Webhook } from "./handlers";
 import { cleanEnv } from "./utils";
 
 const getPort = () => {
@@ -25,5 +25,6 @@ const server = new Server({
 
 void (async () => {
 	await server.load(LabelSync);
+	await server.load(Webhook);
 	await server.start();
 })();
