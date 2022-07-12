@@ -19,7 +19,7 @@ export class Ijsblokje {
 	}
 
 	public async start() {
-		await LoadAll(this.probot.probotApp);
+		LoadAll(this);
 		await this.probot.start();
 	}
 }

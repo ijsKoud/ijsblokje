@@ -1,7 +1,9 @@
-import type { Probot } from "probot";
 import { WEBHOOK_EVENTS, WEBHOOK_URL } from "../../lib/constants";
+import type { Ijsblokje } from "../ijsblokje";
 
-export const Webhook = (app: Probot) => {
+export const Webhook = (bot: Ijsblokje) => {
+	const app = bot.probot.probotApp;
+
 	app.on("repository.created", async (ctx) => {
 		const repo = ctx.repo();
 		await ctx.octokit.repos.createWebhook({

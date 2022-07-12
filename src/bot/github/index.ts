@@ -1,8 +1,8 @@
-import type { Probot } from "probot";
+import type { Ijsblokje } from "../ijsblokje";
 import { Webhook } from "./Webhook";
 
-const LoadAll = async (app: Probot) => {
-	await app.load(Webhook);
+const LoadAll = (bot: Ijsblokje) => {
+	Webhook(bot);
 };
 
 export default LoadAll;
