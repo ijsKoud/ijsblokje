@@ -20,6 +20,7 @@
 	"dependencies": {
 		"axios": "^0.27.2",
 		"dotenv": "^16.0.1",
+		"parse-link-header": "^2.0.0",
 		"probot": "^12.2.5"
 	},
 	"devDependencies": {
@@ -29,6 +30,7 @@
 		"@sapphire/prettier-config": "^1.4.3",
 		"@sapphire/ts-config": "^3.3.4",
 		"@types/node": "^16.11.43",
+		"@types/parse-link-header": "^2.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.30.5",
 		"@typescript-eslint/parser": "^5.30.5",
 		"eslint": "^8.19.0",

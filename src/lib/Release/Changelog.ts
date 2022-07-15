@@ -1,3 +1,4 @@
+import parseLinkHeader from "parse-link-header";
 import { ProbotOctokit } from "probot";
 import type { Ijsblokje } from "../../bot/ijsblokje";
 
@@ -13,9 +14,9 @@ export class Changelog {
 		const app = this.bot.probot.probotApp;
 		const octokit = new ProbotOctokit({ log: app.log });
 
-		const latestRelease = await octokit.repos.getLatestRelease({ repo, owner });
+		const latestRelease = await octokit.repos.getLatestRelease({ repo, owner }).catch(() => null);
 		let parsedCommits: CommitData[];
-		if (latestRelease.data) {
+		if (latestRelease?.data) {
 			const baseRef = latestRelease.data.tag_name;
 			const commits = await octokit.repos.compareCommits({
 				base: baseRef,
@@ -28,9 +29,22 @@ export class Changelog {
 				this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
 			);
 		} else {
-			// const commitsList = await octokit.repos.listCommits({ repo, owner });
-			// const firstCommit = await octokit.repos.listCommits({ owner, repo, page: commitsList.headers.link.last });
-			parsedCommits = [];
+			const commitsList = await octokit.repos.listCommits({ repo, owner });
+			const parsedHeader = parseLinkHeader(commitsList.headers.link);
+
+			const firstCommits = await octokit.repos.listCommits({ owner, repo, page: (parsedHeader?.last.page as number | undefined) ?? 1 });
+			const firstCommit = firstCommits.data[firstCommits.data.length - 1];
+			const baseRef = firstCommit.sha;
+			const commits = await octokit.repos.compareCommits({
+				base: baseRef,
+				head: headRef,
+				owner,
+				repo
+			});
+
+			parsedCommits = commits.data.commits.map((commit) =>
+				this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
+			);
 		}
 
 		const changelog = this.getMarkdown(parsedCommits);
