@@ -8,7 +8,7 @@ export const Release = (bot: Ijsblokje) => {
 	app.on("push", async (ctx) => {
 		if (ctx.payload.repository.private || !ctx.payload.ref.includes("main")) return;
 
-		const commit = ctx.payload.commits.find((commit) => commit.message.includes("chore(Release): v"));
+		const commit = ctx.payload.commits.find((commit) => commit.message.includes("chore(Release): v") && commit.modified.includes("package.json"));
 		if (!commit) return;
 
 		const version = changelogGenerator.getVersion(commit.message);
