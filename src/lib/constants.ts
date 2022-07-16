@@ -1,8 +1,8 @@
 import { cleanEnv } from "./utils";
 
 // GitHub: General
-export const USERNAME = "ijsKoud";
-export const DEPENDENCIES_LABEL_NAME = "Dependencies";
+export const USERNAME = cleanEnv("USERNAME") || "ijsKoud";
+export const DEPENDENCIES_LABEL_NAME = cleanEnv("LABEL_DEPENDENCIES") || "Dependencies";
 
 // Discord: Webhook
 export const WEBHOOK_URL = cleanEnv("WEBHOOK_URL") || "http://localhost:3000/";
