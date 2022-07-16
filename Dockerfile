@@ -22,7 +22,7 @@ COPY src ./src
 RUN yarn install --immutable
 
 # Build app
-run yarn build
+RUN yarn build
 
 # Change User
 USER ijsblokje
