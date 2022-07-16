@@ -51,6 +51,16 @@ export class Changelog {
 		return changelog;
 	}
 
+	public getVersion(message: string): string | null {
+		if (!message.startsWith("chore(Release): v")) return null;
+
+		message = message.replace("chore(Release): v", "");
+		const version = message.slice(0, 5);
+		if (version.split(".").length !== 3) return null;
+
+		return version;
+	}
+
 	private getMarkdown(commits: CommitData[]): string {
 		const categories: Record<string, string[]> = {};
 
@@ -65,7 +75,8 @@ export class Changelog {
 					key = "bug_fixes";
 					break;
 				case "chore":
-					key = "general";
+					if (commit.message.includes("**Release**: v")) key = "";
+					else key = "general";
 					break;
 				case "docs":
 					key = "documentation";
@@ -143,7 +154,7 @@ export class Changelog {
 
 		if (component.length) {
 			component = component.charAt(0).toUpperCase() + component.slice(1);
-			details = `**${component}**: ${details}`;
+			details = `**${component}**: ${details.trim()}`;
 		}
 
 		return { type, details: details.trim() };
