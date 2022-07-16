@@ -8,11 +8,11 @@ export const Webhook = (bot: Ijsblokje) => {
 		const repo = ctx.repo();
 		await ctx.octokit.repos.createWebhook({
 			...repo,
-			active: ctx.payload.repository.public ?? true,
+			active: !ctx.payload.repository.private,
 			events: WEBHOOK_EVENTS,
 			config: {
 				url: WEBHOOK_URL,
-				content_type: "application/json"
+				content_type: "json"
 			}
 		});
 	});
