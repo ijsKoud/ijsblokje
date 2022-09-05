@@ -18,9 +18,10 @@ export class Changelog {
 		let parsedCommits: CommitData[];
 		if (latestRelease?.data) {
 			const baseRef = latestRelease.data.tag_name;
-			const commits = await octokit.repos.compareCommits({
+			let commits = await octokit.repos.compareCommits({
 				base: baseRef,
 				head: headRef,
+				per_page: 100,
 				owner,
 				repo
 			});
@@ -28,6 +29,28 @@ export class Changelog {
 			parsedCommits = commits.data.commits.map((commit) =>
 				this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
 			);
+
+			let page = 1;
+			while (commits.data.commits.length >= 100) {
+				try {
+					commits = await octokit.repos.compareCommits({
+						base: baseRef,
+						head: headRef,
+						per_page: 100,
+						owner,
+						repo,
+						page
+					});
+
+					parsedCommits = commits.data.commits.map((commit) =>
+						this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
+					);
+
+					page++;
+				} catch (err) {
+					commits.data.commits.length = 0;
+				}
+			}
 		} else {
 			const commitsList = await octokit.repos.listCommits({ repo, owner });
 			const parsedHeader = parseLinkHeader(commitsList.headers.link);
@@ -35,9 +58,11 @@ export class Changelog {
 			const firstCommits = await octokit.repos.listCommits({ owner, repo, page: (parsedHeader?.last.page as number | undefined) ?? 1 });
 			const firstCommit = firstCommits.data[firstCommits.data.length - 1];
 			const baseRef = firstCommit.sha;
-			const commits = await octokit.repos.compareCommits({
+
+			let commits = await octokit.repos.compareCommits({
 				base: baseRef,
 				head: headRef,
+				per_page: 100,
 				owner,
 				repo
 			});
@@ -45,6 +70,28 @@ export class Changelog {
 			parsedCommits = commits.data.commits.map((commit) =>
 				this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
 			);
+
+			let page = 1;
+			while (commits.data.commits.length >= 100) {
+				try {
+					commits = await octokit.repos.compareCommits({
+						base: baseRef,
+						head: headRef,
+						per_page: 100,
+						owner,
+						repo,
+						page
+					});
+
+					parsedCommits = commits.data.commits.map((commit) =>
+						this.getCommitData(commit.commit.message, commit.sha, `https://github.com/${owner}/${repo}/commit/${commit.sha}`)
+					);
+
+					page++;
+				} catch (err) {
+					commits.data.commits.length = 0;
+				}
+			}
 		}
 
 		const changelog = this.getMarkdown(parsedCommits);
