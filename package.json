@@ -18,7 +18,7 @@
 		"postinstall": "is-ci || husky install"
 	},
 	"dependencies": {
-		"axios": "^0.27.2",
+		"axios": "^1.1.2",
 		"dotenv": "^16.0.3",
 		"parse-link-header": "^2.0.0",
 		"probot": "^12.2.8"
