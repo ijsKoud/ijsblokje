@@ -3,7 +3,9 @@ import type { EventPayloadMap } from "@octokit/webhooks-types";
 import type { Awaitable } from "../types.js";
 
 export class Action {
-	public constructor(public bot: ijsblokje, public options: Action.Options) {}
+	public constructor(public bot: ijsblokje, public options: Action.Options) {
+		if (!options?.event) throw new Error("Action without a valid event type");
+	}
 
 	public run<K extends keyof EventPayloadMap>(payload: EventPayloadMap[K]): Awaitable<any> {
 		// placeholder

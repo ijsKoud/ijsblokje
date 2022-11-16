@@ -38,16 +38,6 @@ export default class ijsblokje {
 		await this.ActionHandler.load();
 		await this.probot.start();
 
-		console.log(
-			"actions",
-			this.ActionHandler.actions,
-			"gAccActions",
-			this.ActionHandler.globalAccActions,
-			"gRepoActions",
-			this.ActionHandler.globalRepoActions,
-			"gActions",
-			this.ActionHandler.globalActions
-		);
 		this.probot.probotApp.onError((err) => this.logger.error(`[PROBOT]: WebhookHandler error ->`, err));
 	}
 }
