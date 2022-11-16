@@ -71,34 +71,13 @@ export default class ReadmeSync extends Action {
 				const commitHistory = await ctx.octokit.repos.listCommits({ owner, repo: repository.name, path: "README.md", per_page: 1 });
 				const sha = commitHistory.data[0]?.sha || undefined;
 
-				const history = await ctx.octokit.repos.listCommits({ owner, repo: repository.name, per_page: 1 });
-				const latestSha = history.data[0].sha;
-
-				await ctx.octokit.git
-					.createRef({
-						owner,
-						repo: repository.name,
-						ref: "refs/heads/docs/readme-design",
-						sha: latestSha
-					})
-					.catch(() => void 0);
-
 				await ctx.octokit.repos.getContent({
 					owner,
 					repo: repository.name,
 					path: "README.md",
 					message: "docs(Readme): update readme design",
 					content: Buffer.from(updatedReadme).toString("base64"),
-					sha,
-					branch: "docs/readme-design"
-				});
-
-				await ctx.octokit.pulls.create({
-					base: "main",
-					head: "refs/heads/docs/readme-design",
-					owner,
-					repo: repository.name,
-					title: "docs(Readme): update readme design"
+					sha
 				});
 			} catch (err) {
 				this.bot.logger.fatal(err);
