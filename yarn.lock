@@ -239,6 +239,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/collection@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@discordjs/collection@npm:1.2.0"
+  checksum: 76eae566834d78437363a3437d10c74b485b0a8b0dd350745e7bbb45d0bdc834b8ce6c1008c41728f7cbdf9be80a3147e8006610ed8d34bec8b31b7c521d40c2
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^1.3.0":
   version: 1.3.0
   resolution: "@eslint/eslintrc@npm:1.3.0"
@@ -632,6 +639,13 @@ __metadata:
   version: 5.8.0
   resolution: "@octokit/webhooks-types@npm:5.8.0"
   checksum: a5103ef5224e0fab201845fa23333f21415aebae7650f1b6ffe64c11377847139411a1a37fff5931aead13658b94b79ab0abbad24b9c30bfc4d2c9528ceb72d1
+  languageName: node
+  linkType: hard
+
+"@octokit/webhooks-types@npm:^6.7.0":
+  version: 6.7.0
+  resolution: "@octokit/webhooks-types@npm:6.7.0"
+  checksum: 407a362f88c2f46261e973ba8e2a624a971134cb3e30a3cddcb08c192f1af4f02d49f6a624819b6ee72e6abe5a214923ffb2b80ed40b0c1717f71fb91783e3d3
   languageName: node
   linkType: hard
 
@@ -3085,6 +3099,8 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^17.2.0
     "@commitlint/config-angular": ^17.2.0
+    "@discordjs/collection": ^1.2.0
+    "@octokit/webhooks-types": ^6.7.0
     "@sapphire/eslint-config": ^4.3.8
     "@sapphire/prettier-config": ^1.4.4
     "@sapphire/timestamp": ^1.0.0
