@@ -5,6 +5,8 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import type ijsblokje from "../ijsBlokje.js";
 import { Action } from "../Structures/Action.js";
+import { Context } from "probot";
+import type { EmitterWebhookEvent as WebhookEvent } from "@octokit/webhooks";
 
 export default class ActionHandler {
 	public globalAccActions = new Collection<string, Action[]>(); // specific repo, any account
@@ -43,6 +45,18 @@ export default class ActionHandler {
 				else this.actionsSet(repo, constructed);
 			}
 		}
+	}
+
+	public onPayloadReceived(payload: WebhookEvent) {
+		const ctx = new Context(payload, this.bot.octokit, this.bot.probot.log);
+		const details = ctx.repo();
+
+		const globalRepoActions = this.globalRepoActions.get(details.owner) ?? [];
+		const globalAccActions = this.globalAccActions.get(details.repo) ?? [];
+		const actions = this.actions.get(`${details.owner}/${details.repo}`) ?? [];
+		const all = [...globalRepoActions, ...globalAccActions, ...actions, ...this.globalActions].filter((act) => act.options.event === ctx.name);
+
+		all.forEach((act) => void act.run(ctx));
 	}
 
 	private actionsSet(key: string, value: Action) {

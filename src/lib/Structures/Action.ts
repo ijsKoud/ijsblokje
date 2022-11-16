@@ -1,21 +1,23 @@
 import type ijsblokje from "../ijsBlokje.js";
-import type { EventPayloadMap } from "@octokit/webhooks-types";
+import type { EmitterWebhookEventName as WebhookEvents } from "@octokit/webhooks";
 import type { Awaitable } from "../types.js";
+import type { Context as ProbotContext } from "probot";
 
 export class Action {
 	public constructor(public bot: ijsblokje, public options: Action.Options) {
 		if (!options?.event) throw new Error("Action without a valid event type");
 	}
 
-	public run<K extends keyof EventPayloadMap>(payload: EventPayloadMap[K]): Awaitable<any> {
+	public run(ctx: any): Awaitable<any> {
 		// placeholder
 	}
 }
 
 export interface ActionOptions {
-	event: keyof EventPayloadMap;
+	event: WebhookEvents;
 }
 
 export namespace Action {
 	export type Options = ActionOptions;
+	export type Context<K extends WebhookEvents = WebhookEvents> = ProbotContext<K>;
 }
