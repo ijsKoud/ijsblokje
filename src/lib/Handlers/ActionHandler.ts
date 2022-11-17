@@ -47,8 +47,40 @@ export default class ActionHandler {
 		}
 	}
 
-	public onPayloadReceived(payload: WebhookEvent) {
-		const ctx = new Context(payload, this.bot.octokit, this.bot.probot.log);
+	public async onPayloadReceived(payload: WebhookEvent) {
+		// @ts-ignore yes it does exist
+		const installationId = payload.payload.installation.id;
+		const octokit = await this.bot.octokit.auth({
+			type: "installation",
+			installationId,
+			factory: ({ octokit, octokitOptions, ...otherOptions }: any) => {
+				const pinoLog = this.bot.probot.log.child({ name: "github" });
+				const options = {
+					...octokitOptions,
+					log: {
+						fatal: pinoLog.fatal.bind(pinoLog),
+						error: pinoLog.error.bind(pinoLog),
+						warn: pinoLog.warn.bind(pinoLog),
+						info: pinoLog.info.bind(pinoLog),
+						debug: pinoLog.debug.bind(pinoLog),
+						trace: pinoLog.trace.bind(pinoLog)
+					},
+					throttle: {
+						...octokitOptions.throttle,
+						id: installationId
+					},
+					auth: {
+						...octokitOptions.auth,
+						otherOptions,
+						installationId
+					}
+				};
+				const Octokit = octokit.constructor;
+				return new Octokit(options);
+			}
+		});
+
+		const ctx = new Context(payload, octokit as any, this.bot.probot.log);
 		const details = ctx.repo();
 
 		const globalRepoActions = this.globalRepoActions.get(details.owner) ?? [];

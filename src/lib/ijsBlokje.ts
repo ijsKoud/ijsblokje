@@ -20,6 +20,7 @@ export default class ijsblokje {
 			max: 15e3,
 			maxAge: 1e3 * 60 * 59
 		});
+
 		const OctoKit = getProbotOctokitWithDefaults({
 			cache,
 			log: this.probot.log,
