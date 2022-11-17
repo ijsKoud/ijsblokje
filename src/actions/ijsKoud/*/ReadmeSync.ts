@@ -13,7 +13,8 @@ export default class ReadmeSync extends Action {
 			return;
 		}
 
-		if (!ctx.payload.commits.some((cm) => cm.modified.includes(".github/.readmeconfig.json"))) return;
+		if (!ctx.payload.commits.some((cm) => cm.modified.includes(".github/.readmeconfig.json") || cm.added.includes(".github/.readmeconfig.json")))
+			return;
 		await this.configUpdate(ctx);
 	}
 
