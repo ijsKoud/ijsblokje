@@ -42,46 +42,7 @@ export default class ReadmeSync extends Action {
 				.replaceAll("{repo.description}", ctx.payload.repository.description ?? "")
 				.replaceAll("{repo.license}", ctx.payload.repository.license?.spdx_id ?? "None");
 
-			const ref = await ctx.octokit.git.getRef({ ...repo, ref: "heads/main" });
-			const currentSha = ref.data.object.sha;
-
-			const latestCommitData = await ctx.octokit.rest.git.getCommit({
-				...repo,
-				commit_sha: currentSha
-			});
-			const treeSha = latestCommitData.data.tree.sha;
-
-			const blob = await ctx.octokit.git.createBlob({
-				...repo,
-				content: readme,
-				encoding: "utf-8"
-			});
-
-			const tree = await ctx.octokit.git.createTree({
-				...repo,
-				base_tree: treeSha,
-				tree: [
-					{
-						mode: "100644",
-						path: "README.md",
-						sha: blob.data.sha,
-						type: "blob"
-					}
-				]
-			});
-
-			const commit = await ctx.octokit.git.createCommit({
-				message: "docs(Readme): update readme design",
-				tree: tree.data.sha,
-				parents: [currentSha],
-				...repo
-			});
-
-			await ctx.octokit.git.updateRef({
-				...repo,
-				ref: "heads/main",
-				sha: commit.data.sha
-			});
+			await this.createCommit(ctx, readme, repo);
 		} catch (err) {
 			this.bot.logger.fatal(err);
 		}
@@ -138,20 +99,56 @@ export default class ReadmeSync extends Action {
 					.replaceAll("{repo.description}", repository.description ?? "")
 					.replaceAll("{repo.license}", repository.license?.spdx_id ?? "None");
 
-				const commitHistory = await ctx.octokit.repos.listCommits({ owner, repo: repository.name, path: "README.md", per_page: 1 });
-				const sha = commitHistory.data[0]?.sha || undefined;
-
-				await ctx.octokit.repos.createOrUpdateFileContents({
-					owner,
-					repo: repository.name,
-					path: "README.md",
-					message: "docs(Readme): update readme design",
-					content: Buffer.from(updatedReadme).toString("base64"),
-					sha
-				});
+				await this.createCommit(ctx, updatedReadme, { owner, repo: repository.name });
 			} catch (err) {
 				this.bot.logger.fatal(err);
 			}
+		});
+	}
+
+	private async createCommit(ctx: Action.Context<"push">, content: string, repo: { owner: string; repo: string }) {
+		const branchRef = `heads/${ctx.payload.repository.master_branch ?? "main"}`;
+		const { git } = ctx.octokit;
+
+		const ref = await git.getRef({ ...repo, ref: branchRef });
+		const currentSha = ref.data.object.sha;
+
+		const latestCommitData = await git.getCommit({
+			...repo,
+			commit_sha: currentSha
+		});
+		const treeSha = latestCommitData.data.tree.sha;
+
+		const blob = await git.createBlob({
+			...repo,
+			content,
+			encoding: "utf-8"
+		});
+
+		const tree = await git.createTree({
+			...repo,
+			base_tree: treeSha,
+			tree: [
+				{
+					mode: "100644",
+					path: "README.md",
+					sha: blob.data.sha,
+					type: "blob"
+				}
+			]
+		});
+
+		const commit = await git.createCommit({
+			message: "docs(Readme): update readme design",
+			tree: tree.data.sha,
+			parents: [currentSha],
+			...repo
+		});
+
+		await git.updateRef({
+			...repo,
+			ref: branchRef,
+			sha: commit.data.sha
 		});
 	}
 }
