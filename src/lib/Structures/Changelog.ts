@@ -1,4 +1,3 @@
-import { createRegExp, digit, oneOrMore } from "magic-regexp";
 import parseLinkHeader from "parse-link-header";
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "./Action.js";
@@ -9,15 +8,9 @@ interface CommitData {
 }
 
 export class Changelog {
+	public semverRegex = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/g;
+
 	public constructor(public bot: ijsblokje) {}
-
-	private get semverRegex() {
-		const major = oneOrMore(digit).groupedAs("major").and(".");
-		const minor = oneOrMore(digit).groupedAs("minor").and(".");
-		const patch = oneOrMore(digit).groupedAs("patch");
-
-		return createRegExp(major.and(minor).and(patch));
-	}
 
 	public async run(ctx: Action.Context<"commit_comment.created">): Promise<string> {
 		const headRef = ctx.payload.comment.commit_id;
