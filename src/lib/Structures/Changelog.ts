@@ -9,10 +9,12 @@ interface CommitData {
 
 export class Changelog {
 	public semverRegex = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/g;
+	public pkgVersionRegex = /"version": "(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)"/g;
+	public readmeVersionRegex = /"project\.version": "(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)"/g;
 
 	public constructor(public bot: ijsblokje) {}
 
-	public async run(ctx: Action.Context<"commit_comment.created">): Promise<string> {
+	public async run(ctx: Action.Context<"commit_comment">): Promise<string> {
 		const headRef = ctx.payload.comment.commit_id;
 		const { repo, owner } = ctx.repo();
 		const { octokit } = ctx;
@@ -101,9 +103,9 @@ export class Changelog {
 		return changelog;
 	}
 
-	public getVersion(ctx: Action.Context<"commit_comment.created">): string | null {
+	public getVersion(ctx: Action.Context<"commit_comment">): string | null {
 		const message = ctx.payload.comment.body;
-		const res = this.semverRegex.exec(message);
+		const res = message.match(this.semverRegex);
 
 		return res?.[0] ?? null;
 	}
