@@ -923,6 +923,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.189":
+  version: 4.14.189
+  resolution: "@types/lodash@npm:4.14.189"
+  checksum: 096d1e0954794fb76bd6a0ea443067f02004b53e3c59ac6e3fed88817a1468fc2e6614abdf44341f5e0fdff5f9a3c94a934cc9ff7126e07efbcd94355a21fe45
+  languageName: node
+  linkType: hard
+
 "@types/lru-cache@npm:^5.1.0":
   version: 5.1.1
   resolution: "@types/lru-cache@npm:5.1.1"
@@ -3105,6 +3112,7 @@ __metadata:
     "@sapphire/prettier-config": ^1.4.4
     "@sapphire/timestamp": ^1.0.0
     "@sapphire/ts-config": ^3.3.4
+    "@types/lodash": ^4.14.189
     "@types/node": ^16.18.3
     "@types/parse-link-header": ^2.0.0
     "@typescript-eslint/eslint-plugin": ^5.42.1
@@ -3118,6 +3126,7 @@ __metadata:
     husky: ^8.0.2
     is-ci: ^3.0.1
     lint-staged: ^13.0.3
+    lodash: ^4.17.21
     parse-link-header: ^2.0.0
     prettier: ^2.7.1
     probot: ^12.2.8
@@ -3677,7 +3686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15, lodash@npm:^4.17.19":
+"lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7

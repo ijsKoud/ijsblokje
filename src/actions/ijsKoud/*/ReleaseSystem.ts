@@ -8,7 +8,7 @@ interface Repo {
 }
 
 @ApplyActionOptions({
-	event: "commit_comment"
+	events: ["commit_comment"]
 })
 export default class ReadmeSync extends Action {
 	public changelog = new Changelog(this.bot);

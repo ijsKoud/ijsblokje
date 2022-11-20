@@ -5,7 +5,7 @@ import type { Context as ProbotContext } from "probot";
 
 export class Action {
 	public constructor(public bot: ijsblokje, public options: Action.Options) {
-		if (!options?.event) throw new Error("Action without a valid event type");
+		if (!options?.events) throw new Error("Action without a valid event type");
 	}
 
 	public run(ctx: any): Awaitable<any> {
@@ -14,7 +14,7 @@ export class Action {
 }
 
 export interface ActionOptions {
-	event: WebhookEvents;
+	events: WebhookEvents[];
 }
 
 export namespace Action {

@@ -1,9 +1,8 @@
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
-import type { Endpoints } from "@octokit/types";
 
 @ApplyActionOptions({
-	event: "push"
+	events: ["push"]
 })
 export default class ReadmeSync extends Action {
 	public async run(ctx: Action.Context<"push">) {
@@ -56,33 +55,14 @@ export default class ReadmeSync extends Action {
 		if (!("content" in readmeData.data)) return;
 
 		const readme = Buffer.from(readmeData.data.content, "base64").toString();
-		const list: Endpoints["GET /users/{username}/repos"]["response"]["data"] = [];
-
-		let repos = await ctx.octokit.repos.listForUser({
-			username: repo.owner,
-			type: "owner",
-			per_page: 100
-		});
-
-		list.push(...repos.data.filter((r) => !r.archived));
-
-		while (repos.data.length === 100) {
-			repos = await ctx.octokit.repos.listForUser({
-				username: repo.owner,
-				type: "owner",
-				per_page: 100
-			});
-
-			list.push(...repos.data.filter((r) => !r.archived));
-		}
+		const list = this.bot.DataHandler.repos.filter((rep) => repo.owner === "ijsKoud");
 
 		list.forEach(async (repository) => {
-			const [owner] = repository.full_name.split("/");
 			try {
 				const readmeConfig = await ctx.octokit.repos
 					.getContent({
-						owner,
-						repo: repository.name,
+						owner: repository.owner,
+						repo: repository.repo,
 						path: ".github/.readmeconfig.json"
 					})
 					.catch(() => null);
@@ -96,11 +76,11 @@ export default class ReadmeSync extends Action {
 
 				keys.forEach((key) => (updatedReadme = updatedReadme.replaceAll(`{${key}}`, jsonContent[key])));
 				updatedReadme = updatedReadme
-					.replaceAll("{repo.name}", repository.name)
-					.replaceAll("{repo.description}", repository.description ?? "")
-					.replaceAll("{repo.license}", repository.license?.spdx_id ?? "None");
+					.replaceAll("{repo.name}", repository.repo)
+					.replaceAll("{repo.description}", repository.description)
+					.replaceAll("{repo.license}", repository.license || "None");
 
-				await this.createCommit(ctx, updatedReadme, { owner, repo: repository.name });
+				await this.createCommit(ctx, updatedReadme, { owner: repository.owner, repo: repository.repo });
 			} catch (err) {
 				this.bot.logger.fatal(err);
 			}
