@@ -79,6 +79,29 @@ export default class ReadmeSync extends Action {
 	}
 
 	private async repoEvent(ctx: Action.Context<"repository.created">) {
-		// todo: code
+		const labelsCollection = this.bot.DataHandler.labels;
+		const globalLabels = labelsCollection.get("global") ?? [];
+		const labels = [...globalLabels, ...(labelsCollection.get(ctx.payload.repository.full_name) ?? [])];
+		const existing = await ctx.octokit.issues.listLabelsForRepo(ctx.repo());
+
+		await Promise.allSettled(
+			existing.data.map((label) =>
+				ctx.octokit.issues.deleteLabel({
+					...label,
+					color: label.color.replace("#", ""),
+					...ctx.repo()
+				})
+			)
+		);
+
+		await Promise.allSettled(
+			labels.map((label) =>
+				ctx.octokit.issues.createLabel({
+					...label,
+					color: label.color.replace("#", ""),
+					...ctx.repo()
+				})
+			)
+		);
 	}
 }
