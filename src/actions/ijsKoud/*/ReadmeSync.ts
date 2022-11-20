@@ -37,7 +37,7 @@ export default class ReadmeSync extends Action {
 			const jsonContent = JSON.parse(content);
 			const keys = Object.keys(jsonContent);
 
-			keys.forEach((key) => (readme = readme.replaceAll(`{${key}}`, jsonContent[key])));
+			keys.forEach((key) => (readme = readme.replaceAll(`{${key}}`, this.cleanKey(jsonContent[key]))));
 			readme = readme
 				.replaceAll("{repo.name}", ctx.payload.repository.name)
 				.replaceAll("{repo.description}", ctx.payload.repository.description ?? "")
@@ -151,5 +151,12 @@ export default class ReadmeSync extends Action {
 			ref: branchRef,
 			sha: commit.data.sha
 		});
+	}
+
+	private cleanKey(data: any): string {
+		if (Array.isArray(data)) return data.join("\n");
+		if (["undefined", "object", "function", "symbol"].includes(typeof data)) return "";
+
+		return data;
 	}
 }
