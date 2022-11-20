@@ -48,8 +48,13 @@ export default class DataHandler {
 	private async repoUpdate(ctx: Action.Context<"repository">) {
 		const { repository } = ctx.payload;
 		const repoDetails = ctx.repo();
-
 		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
+
+		if (["deleted", "transferred"].includes(ctx.payload.action)) {
+			this.repos = this.repos.filter((rep) => isEqual(rep));
+			return;
+		}
+
 		const repo: Repository = {
 			...repoDetails,
 			archived: repository.archived,
