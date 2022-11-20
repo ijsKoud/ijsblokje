@@ -39,7 +39,7 @@ export default class ijsblokje {
 	}
 
 	private get loggerLevel() {
-		return process.env.NODE_ENV === "production" ? LogLevel.Debug : LogLevel.Info;
+		return process.env.NODE_ENV === "production" ? LogLevel.Info : LogLevel.Debug;
 	}
 
 	public constructor() {

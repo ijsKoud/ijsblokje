@@ -11,3 +11,16 @@ export interface Repository {
 		config: boolean;
 	};
 }
+
+export interface Labels {
+	labels: Label[];
+	repository: {
+		[key: string]: Label[];
+	};
+}
+
+export interface Label {
+	name: string;
+	description: string;
+	color: string;
+}
