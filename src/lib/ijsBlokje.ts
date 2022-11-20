@@ -6,6 +6,7 @@ import { Logger } from "./Logger/Logger.js";
 import { LogLevel } from "./Logger/LoggerTypes.js";
 import { join } from "node:path";
 import lruCache from "lru-cache";
+import DataHandler from "./Handlers/DataHandler.js";
 
 const basePath = join(fileURLToPath(import.meta.url), "../../");
 
@@ -14,6 +15,7 @@ export default class ijsblokje {
 	public logger = new Logger({ level: this.loggerLevel });
 
 	public ActionHandler = new ActionHandler(this, join(basePath, "actions"));
+	public DataHandler = new DataHandler(this);
 
 	public get octokit() {
 		const cache = new lruCache<number, string>({
@@ -56,6 +58,8 @@ export default class ijsblokje {
 	public async start() {
 		await this.ActionHandler.load();
 		await this.probot.start();
+
+		await this.DataHandler.start();
 
 		this.probot.probotApp.onAny((ev) => this.ActionHandler.onPayloadReceived(ev));
 		this.probot.probotApp.onError((err) => this.logger.error(`[PROBOT]: WebhookHandler error ->`, err));
