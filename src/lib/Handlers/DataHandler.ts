@@ -22,7 +22,14 @@ export default class DataHandler {
 		const repoDetails = ctx.repo();
 
 		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
-		const repo = { ...repoDetails, archived: repository.archived, private: repository.private, readmeSync: { config: false } };
+		const repo: Repository = {
+			...repoDetails,
+			archived: repository.archived,
+			private: repository.private,
+			description: repository.description ?? "",
+			license: repository.license?.spdx_id ?? "",
+			readmeSync: { config: false }
+		};
 
 		const configRes = await ctx.octokit.repos.getContent({ ...repoDetails, path: ".github/.readmeconfig.json" }).catch(() => null);
 		const config = configRes ? "content" in configRes.data : false;
@@ -59,6 +66,8 @@ export default class DataHandler {
 				reposListRes.data.repositories.map(async (repo) => ({
 					owner: repo.owner.login,
 					repo: repo.name,
+					description: repo.description ?? "",
+					license: repo.license?.spdx_id ?? "",
 					archived: repo.archived,
 					private: repo.private,
 					readmeSync: { config: await hasReadMeConfig(repo.owner.login, repo.name, token.data.token) }
