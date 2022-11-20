@@ -55,7 +55,7 @@ export default class ReadmeSync extends Action {
 		if (!("content" in readmeData.data)) return;
 
 		const readme = Buffer.from(readmeData.data.content, "base64").toString();
-		const list = this.bot.DataHandler.repos;
+		const list = this.bot.DataHandler.repos.filter((rep) => repo.owner === "ijsKoud");
 
 		list.forEach(async (repository) => {
 			try {
