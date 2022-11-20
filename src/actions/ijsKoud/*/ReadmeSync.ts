@@ -3,7 +3,7 @@ import { Action } from "../../../lib/Structures/Action.js";
 import type { Endpoints } from "@octokit/types";
 
 @ApplyActionOptions({
-	event: "push"
+	events: ["push"]
 })
 export default class ReadmeSync extends Action {
 	public async run(ctx: Action.Context<"push">) {

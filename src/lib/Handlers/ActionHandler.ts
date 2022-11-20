@@ -87,8 +87,8 @@ export default class ActionHandler {
 			const globalRepoActions = this.globalRepoActions.get(details.owner) ?? [];
 			const globalAccActions = this.globalAccActions.get(details.repo) ?? [];
 			const actions = this.actions.get(`${details.owner}/${details.repo}`) ?? [];
-			const all = [...globalRepoActions, ...globalAccActions, ...actions, ...this.globalActions].filter(
-				(act) => act.options.event === ctx.name
+			const all = [...globalRepoActions, ...globalAccActions, ...actions, ...this.globalActions].filter((act) =>
+				act.options.events.includes(ctx.name)
 			);
 
 			all.forEach((act) => void act.run(ctx));
