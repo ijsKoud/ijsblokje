@@ -29,6 +29,7 @@ export default class LabelIssues extends Action {
 		COMMIT_REGEX.lastIndex = 0;
 
 		const type = conventionalCommitRes?.groups!.type ?? "";
+		if (!COMMIT_TYPES.some((l) => title.startsWith(l))) return;
 
 		const gLabels = this.bot.DataHandler.labels.get("global")!;
 		const label = gLabels.find((l) => l.name.toLowerCase().includes(type));
