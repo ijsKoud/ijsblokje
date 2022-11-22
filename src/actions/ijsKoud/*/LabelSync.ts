@@ -8,7 +8,7 @@ import { LABELS_CONFIG } from "../../../lib/constants.js";
 @ApplyActionOptions({
 	events: ["push", "repository"]
 })
-export default class ReadmeSync extends Action {
+export default class LabelSync extends Action {
 	public async run(ctx: Action.Context<"push" | "repository">) {
 		if (ctx.name === "push") await this.pushEvent(ctx as any);
 		else if ((ctx as any as Action.Context<"repository">).payload.action === "created") await this.repoEvent(ctx as any);
