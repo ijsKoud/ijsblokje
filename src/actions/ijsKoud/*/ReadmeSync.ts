@@ -1,3 +1,4 @@
+import { BASE_README, GH_OWNER, README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 
@@ -7,13 +8,12 @@ import { Action } from "../../../lib/Structures/Action.js";
 export default class ReadmeSync extends Action {
 	public async run(ctx: Action.Context<"push">) {
 		const repo = ctx.repo();
-		if (repo.repo === repo.owner && ctx.payload.commits.some((cm) => cm.modified.includes("config/readme_ijskoud.md"))) {
+		if (repo.repo === repo.owner && ctx.payload.commits.some((cm) => cm.modified.includes(BASE_README))) {
 			await this.templateUpdate(ctx);
 			return;
 		}
 
-		if (!ctx.payload.commits.some((cm) => cm.modified.includes(".github/.readmeconfig.json") || cm.added.includes(".github/.readmeconfig.json")))
-			return;
+		if (!ctx.payload.commits.some((cm) => cm.modified.includes(README_CONFIG_LOCATION) || cm.added.includes(README_CONFIG_LOCATION))) return;
 		await this.configUpdate(ctx);
 	}
 
@@ -23,12 +23,12 @@ export default class ReadmeSync extends Action {
 			const readmeConfig = await ctx.octokit.repos
 				.getContent({
 					...repo,
-					path: ".github/.readmeconfig.json"
+					path: README_CONFIG_LOCATION
 				})
 				.catch(() => null);
 			if (!readmeConfig || !("content" in readmeConfig.data)) return;
 
-			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: repo.owner, path: "config/readme_ijskoud.md" });
+			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: repo.owner, path: BASE_README });
 			if (!("content" in readmeData.data)) return;
 
 			let readme = Buffer.from(readmeData.data.content, "base64").toString();
@@ -51,11 +51,11 @@ export default class ReadmeSync extends Action {
 	private async templateUpdate(ctx: Action.Context<"push">) {
 		const repo = ctx.repo();
 
-		const readmeData = await ctx.octokit.repos.getContent({ ...repo, path: "config/readme_ijskoud.md" });
+		const readmeData = await ctx.octokit.repos.getContent({ ...repo, path: BASE_README });
 		if (!("content" in readmeData.data)) return;
 
 		const readme = Buffer.from(readmeData.data.content, "base64").toString();
-		const list = this.bot.DataHandler.repos.filter((rep) => repo.owner === "ijsKoud");
+		const list = this.bot.DataHandler.repos.filter((rep) => rep.owner === GH_OWNER);
 
 		list.forEach(async (repository) => {
 			try {
@@ -63,7 +63,7 @@ export default class ReadmeSync extends Action {
 					.getContent({
 						owner: repository.owner,
 						repo: repository.repo,
-						path: ".github/.readmeconfig.json"
+						path: README_CONFIG_LOCATION
 					})
 					.catch(() => null);
 				if (!readmeConfig || !("content" in readmeConfig.data)) return;

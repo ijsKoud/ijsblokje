@@ -2,6 +2,7 @@ import { Collection } from "@discordjs/collection";
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "../Structures/Action.js";
 import type { Label, Labels, Repository } from "../types.js";
+import { LABELS_CONFIG, README_CONFIG_LOCATION, REPO_UPDATE_EVENTS } from "../constants.js";
 import { request } from "@octokit/request";
 
 export default class DataHandler {
@@ -31,7 +32,7 @@ export default class DataHandler {
 				const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
 					repo: owner,
-					path: "config/labels.json",
+					path: LABELS_CONFIG,
 					headers: { authorization: `Bearer ${token.data.token}` }
 				});
 				if (!("content" in labelsRes.data)) return;
@@ -48,9 +49,10 @@ export default class DataHandler {
 	private async repoUpdate(ctx: Action.Context<"repository">) {
 		const { repository } = ctx.payload;
 		const repoDetails = ctx.repo();
+
 		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
 
-		if (["deleted", "transferred"].includes(ctx.payload.action)) {
+		if (REPO_UPDATE_EVENTS.includes(ctx.payload.action)) {
 			this.repos = this.repos.filter((rep) => isEqual(rep));
 			return;
 		}
@@ -64,7 +66,7 @@ export default class DataHandler {
 			readmeSync: { config: false }
 		};
 
-		const configRes = await ctx.octokit.repos.getContent({ ...repoDetails, path: ".github/.readmeconfig.json" }).catch(() => null);
+		const configRes = await ctx.octokit.repos.getContent({ ...repoDetails, path: README_CONFIG_LOCATION }).catch(() => null);
 		const config = configRes ? "content" in configRes.data : false;
 
 		repo.readmeSync.config = config;
@@ -79,7 +81,7 @@ export default class DataHandler {
 				const configRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
 					repo,
-					path: ".github/.readmeconfig.json",
+					path: README_CONFIG_LOCATION,
 					headers: { authorization: `Bearer ${token}` }
 				}).catch(() => null);
 
@@ -98,13 +100,15 @@ export default class DataHandler {
 
 				const repos: Repository[] = await Promise.all(
 					reposListRes.data.repositories.map(async (repo) => ({
-						owner: repo.owner.login,
+						owner: repo.organization ? repo.organization.login : repo.owner.login,
 						repo: repo.name,
 						description: repo.description ?? "",
 						license: repo.license?.spdx_id ?? "",
 						archived: repo.archived,
 						private: repo.private,
-						readmeSync: { config: await hasReadMeConfig(repo.owner.login, repo.name, token.data.token) }
+						readmeSync: {
+							config: await hasReadMeConfig(repo.organization ? repo.organization.login : repo.owner.login, repo.name, token.data.token)
+						}
 					}))
 				);
 

@@ -1,3 +1,4 @@
+import { GH_OWNER, README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 import { Changelog } from "../../../lib/Structures/Changelog.js";
@@ -15,7 +16,7 @@ export default class ReadmeSync extends Action {
 
 	public async run(ctx: Action.Context<"commit_comment">) {
 		const repo = ctx.repo();
-		if (ctx.payload.sender.login !== "ijsKoud" || ctx.payload.action !== "created") return;
+		if (ctx.payload.sender.login !== GH_OWNER || ctx.payload.action !== "created") return;
 		if (ctx.payload.comment.body.startsWith(`@${process.env.BOT_NAME} release v`)) {
 			const version = this.changelog.getVersion(ctx);
 
@@ -92,7 +93,7 @@ export default class ReadmeSync extends Action {
 	}
 
 	private async createConfigCommit(ctx: Action.Context<"commit_comment">, version: string, repo: Repo) {
-		const readmeConfig = await ctx.octokit.repos.getContent({ ...repo, path: ".github/.readmeconfig.json" }).catch(() => null);
+		const readmeConfig = await ctx.octokit.repos.getContent({ ...repo, path: README_CONFIG_LOCATION }).catch(() => null);
 		if (!readmeConfig || !("content" in readmeConfig.data)) return {};
 
 		const readmeConfigContent = Buffer.from(readmeConfig.data.content, "base64").toString();
@@ -107,7 +108,7 @@ export default class ReadmeSync extends Action {
 
 		return {
 			blob,
-			path: ".github/.readmeconfig.json"
+			path: README_CONFIG_LOCATION
 		};
 	}
 }

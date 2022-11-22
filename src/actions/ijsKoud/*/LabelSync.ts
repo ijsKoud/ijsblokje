@@ -3,6 +3,7 @@ import { Action } from "../../../lib/Structures/Action.js";
 import type { Label } from "../../../lib/types.js";
 import _ from "lodash";
 import { bold } from "colorette";
+import { LABELS_CONFIG } from "../../../lib/constants.js";
 
 @ApplyActionOptions({
 	events: ["push", "repository"]
@@ -15,7 +16,7 @@ export default class ReadmeSync extends Action {
 
 	private async pushEvent(ctx: Action.Context<"push">) {
 		const repo = ctx.repo();
-		if (repo.owner !== repo.repo || !ctx.payload.commits.some((commit) => commit.modified.includes("config/labels.json"))) return;
+		if (repo.owner !== repo.repo || !ctx.payload.commits.some((commit) => commit.modified.includes(LABELS_CONFIG))) return;
 
 		await this.bot.DataHandler.updateLabelsList();
 
