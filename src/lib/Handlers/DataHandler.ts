@@ -2,6 +2,7 @@ import { Collection } from "@discordjs/collection";
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "../Structures/Action.js";
 import type { Label, Labels, Repository } from "../types.js";
+import { ORGANIZATION_README_REPO, REPO_UPDATE_EVENTS } from "../constants.js";
 import { request } from "@octokit/request";
 
 export default class DataHandler {
@@ -22,7 +23,9 @@ export default class DataHandler {
 		try {
 			const installations = await this.bot.octokit.apps.listInstallations();
 			for (const installation of installations.data) {
-				const owner = installation.account?.login ?? "";
+				const owner = installation.account?.login ?? installation.account?.name ?? "";
+				const repo = installation.account?.organizations_url ? ORGANIZATION_README_REPO : owner;
+
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
 					permissions: { contents: "read" }
@@ -30,7 +33,7 @@ export default class DataHandler {
 
 				const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
-					repo: owner,
+					repo,
 					path: "config/labels.json",
 					headers: { authorization: `Bearer ${token.data.token}` }
 				});
@@ -48,9 +51,13 @@ export default class DataHandler {
 	private async repoUpdate(ctx: Action.Context<"repository">) {
 		const { repository } = ctx.payload;
 		const repoDetails = ctx.repo();
-		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
 
-		if (["deleted", "transferred"].includes(ctx.payload.action)) {
+		const isEqual = (rep: Repository) => {
+			if (repository.organization) return repo.owner === repoDetails.owner && repo.repo === ORGANIZATION_README_REPO;
+			return rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
+		};
+
+		if (REPO_UPDATE_EVENTS.includes(ctx.payload.action)) {
 			this.repos = this.repos.filter((rep) => isEqual(rep));
 			return;
 		}
@@ -98,13 +105,15 @@ export default class DataHandler {
 
 				const repos: Repository[] = await Promise.all(
 					reposListRes.data.repositories.map(async (repo) => ({
-						owner: repo.owner.login,
+						owner: repo.organization ? repo.organization.login : repo.owner.login,
 						repo: repo.name,
 						description: repo.description ?? "",
 						license: repo.license?.spdx_id ?? "",
 						archived: repo.archived,
 						private: repo.private,
-						readmeSync: { config: await hasReadMeConfig(repo.owner.login, repo.name, token.data.token) }
+						readmeSync: {
+							config: await hasReadMeConfig(repo.organization ? repo.organization.login : repo.owner.login, repo.name, token.data.token)
+						}
 					}))
 				);
 
