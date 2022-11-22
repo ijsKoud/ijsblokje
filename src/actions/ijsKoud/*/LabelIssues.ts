@@ -12,7 +12,7 @@ export default class LabelIssues extends Action {
 		if (!LABEL_ISSUES_EVENTS.includes(ctx.payload.action)) return;
 		if (ctx.payload.action === "opened" && ctx.name === "pull_request" && ctx.payload.sender.login === "renovate[bot]") {
 			const gLabels = this.bot.DataHandler.labels.get("global")!;
-			const label = gLabels.find((l) => l.name.toLowerCase().includes("Dependencies"));
+			const label = gLabels.find((l) => l.name.toLowerCase().includes("dependencies"));
 			if (label)
 				await ctx.octokit.issues.addLabels({
 					...repo,
