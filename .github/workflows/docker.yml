@@ -32,4 +32,6 @@ jobs:
         uses: docker/build-push-action@c56af957549030174b10d6867f20e78cfd7debc5 # tag=v3
         with:
           push: true
-          tags: ghcr.io/ijskoud/ijsblokje:v1
+          tags: |
+            ghcr.io/ijskoud/ijsblokje:latest
+            ghcr.io/ijskoud/ijsblokje:v2
