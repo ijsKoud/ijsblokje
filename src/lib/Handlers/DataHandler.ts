@@ -2,7 +2,7 @@ import { Collection } from "@discordjs/collection";
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "../Structures/Action.js";
 import type { Label, Labels, Repository } from "../types.js";
-import { README_CONFIG_LOCATION, REPO_UPDATE_EVENTS } from "../constants.js";
+import { LABELS_CONFIG, README_CONFIG_LOCATION, REPO_UPDATE_EVENTS } from "../constants.js";
 import { request } from "@octokit/request";
 
 export default class DataHandler {
@@ -32,7 +32,7 @@ export default class DataHandler {
 				const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
 					repo: owner,
-					path: "config/labels.json",
+					path: LABELS_CONFIG,
 					headers: { authorization: `Bearer ${token.data.token}` }
 				});
 				if (!("content" in labelsRes.data)) return;

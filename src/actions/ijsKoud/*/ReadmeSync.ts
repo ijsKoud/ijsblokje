@@ -1,4 +1,4 @@
-import { BASE_README, README_CONFIG_LOCATION } from "../../../lib/constants.js";
+import { BASE_README, GH_OWNER, README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 
@@ -55,7 +55,7 @@ export default class ReadmeSync extends Action {
 		if (!("content" in readmeData.data)) return;
 
 		const readme = Buffer.from(readmeData.data.content, "base64").toString();
-		const list = this.bot.DataHandler.repos.filter((rep) => repo.owner === "ijsKoud");
+		const list = this.bot.DataHandler.repos.filter((rep) => rep.owner === GH_OWNER);
 
 		list.forEach(async (repository) => {
 			try {

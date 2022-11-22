@@ -1,4 +1,4 @@
-import { README_CONFIG_LOCATION } from "../../../lib/constants.js";
+import { GH_OWNER, README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 import { Changelog } from "../../../lib/Structures/Changelog.js";
@@ -16,7 +16,7 @@ export default class ReadmeSync extends Action {
 
 	public async run(ctx: Action.Context<"commit_comment">) {
 		const repo = ctx.repo();
-		if (ctx.payload.sender.login !== "ijsKoud" || ctx.payload.action !== "created") return;
+		if (ctx.payload.sender.login !== GH_OWNER || ctx.payload.action !== "created") return;
 		if (ctx.payload.comment.body.startsWith(`@${process.env.BOT_NAME} release v`)) {
 			const version = this.changelog.getVersion(ctx);
 
