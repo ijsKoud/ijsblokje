@@ -28,17 +28,16 @@ export default class ReadmeSync extends Action {
 		const conventionalCommitRes = COMMIT_REGEX.exec(title);
 		COMMIT_REGEX.lastIndex = 0;
 
-		const existingCommitLabels = labels.filter((label) => COMMIT_TYPES.some((t) => label.name.toLowerCase().includes(t)));
-		if (labels.length)
-			await Promise.all(
-				existingCommitLabels.map((label) => ctx.octokit.issues.removeLabel({ issue_number: issue, name: label.name, ...repo }))
-			);
-
-		const type = conventionalCommitRes?.groups!.type;
-		if (!type) return;
+		const type = conventionalCommitRes?.groups!.type ?? "";
 
 		const gLabels = this.bot.DataHandler.labels.get("global")!;
 		const label = gLabels.find((l) => l.name.toLowerCase().includes(type));
-		if (label) await ctx.octokit.issues.addLabels({ ...repo, issue_number: issue, labels: [label.name] });
+
+		const existingCommitLabels = labels.filter((label) => COMMIT_TYPES.some((t) => label.name.toLowerCase().includes(t)));
+		const filteredLabels = existingCommitLabels.filter((l) => l.name !== label?.name);
+		if (label && !existingCommitLabels.some((l) => l.name !== label?.name))
+			await ctx.octokit.issues.addLabels({ ...repo, issue_number: issue, labels: [label.name] });
+		if (filteredLabels.length)
+			await Promise.all(filteredLabels.map((label) => ctx.octokit.issues.removeLabel({ issue_number: issue, name: label.name, ...repo })));
 	}
 }
