@@ -15,7 +15,7 @@
 		"build": "tsc --build",
 		"dev:watch": "tsc --watch",
 		"dev:start": "nodemon ./dist",
-		"start": "NODE_ENV=production node ./dist",
+		"start": "node ./dist",
 		"lint": "eslint src",
 		"postinstall": "is-ci || husky install"
 	},

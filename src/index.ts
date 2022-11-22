@@ -1,5 +1,6 @@
 import { config } from "dotenv";
-config();
+import { join } from "node:path";
+config({ path: join(process.cwd(), "data", ".env") });
 
 import ijsblokje from "./lib/ijsBlokje.js";
 const bot = new ijsblokje();
