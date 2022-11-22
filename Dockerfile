@@ -1,31 +1,33 @@
-FROM node:19-alpine
-
-# Create user ijsblockje
-RUN addgroup --system --gid 1639 ijsblokje
-RUN adduser --system --uid 1639 ijsblokje
-
-# Create Directories with correct permissions
-RUN mkdir -p /ijsblokje/node_modules && chown -R ijsblokje:ijsblokje /ijsblokje/
-
-# Move to correct dir
+# Builder Steps
+FROM node:19-alpine as base
 WORKDIR /ijsblokje
 
-# Register Environment Variables
-ENV NODE_ENV production
+COPY --chown=node:node yarn.lock .
+COPY --chown=node:node package.json .
+COPY --chown=node:node .yarnrc.yml .
+COPY --chown=node:node .yarn/ .yarn/
 
-# Copy Existing Files
-COPY package.json yarn.lock .yarnrc.yml tsconfig.json ./
-COPY .yarn ./.yarn
-COPY src ./src
+RUN mkdir /ijsblokje/data
 
-# Install dependencies
+# Builder Steps
+FROM base as builder
+
+COPY --chown=node:node tsconfig.json tsconfig.json
+COPY --chown=node:node src/ src/
+
 RUN yarn install --immutable
-
-# Build app
 RUN yarn build
 
-# Change User
-USER ijsblokje
+# Runner Steps
+FROM base as runner
 
-# Start Application
-CMD ["yarn", "start"]
+ENV NODE_ENV="production"
+COPY --chown=node:node --from=builder /ijsblokje/dist dist
+COPY --chown=node:node --from=builder /ijsblokje/node_modules node_modules
+
+RUN chown node:node /ijsblokje
+RUN chown node:node /ijsblokje/data
+
+USER node
+
+CMD [ "yarn", "run", "start" ]

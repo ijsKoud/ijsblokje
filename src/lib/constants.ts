@@ -1,11 +1,31 @@
-import { cleanEnv } from "./utils";
+export const REPO_UPDATE_EVENTS = ["deleted", "transferred"];
+export const LABEL_ISSUES_EVENTS = ["edited", "opened"];
 
-// GitHub: General
-export const USERNAME = cleanEnv("USERNAME") || "ijsKoud";
-export const DEPENDENCIES_LABEL_NAME = cleanEnv("LABEL_DEPENDENCIES") || "Dependencies";
+export const README_CONFIG_LOCATION = ".github/.readmeconfig.json";
+export const BASE_README = "config/readme_ijskoud.md";
+export const LABELS_CONFIG = "config/labels.json";
 
-// Discord: Webhook
-export const WEBHOOK_URL = cleanEnv("WEBHOOK_URL") || "http://localhost:3000/";
+export const GH_OWNER = "ijsKoud";
+
+export const COMMIT_TYPES = [
+	"chore",
+	"build",
+	"ci",
+	"docs",
+	"feat",
+	"fix",
+	"perf",
+	"refactor",
+	"revert",
+	"style",
+	"test",
+	"types",
+	"workflow",
+	"wip"
+];
+export const COMMIT_REGEX =
+	/^(?<type>build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|¯\\_\(ツ\)_\/¯)(?<scope>\(\w+\)?((?=:\s)|(?=!:\s)))?(?<breaking>!)?(?<subject>:\s.*)?|^(?<merge>Merge \w+)/gm;
+
 export const WEBHOOK_EVENTS = [
 	"branch_protection_rule",
 	"code_scanning_alert",

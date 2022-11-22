@@ -4,8 +4,9 @@
 		"outDir": "./dist",
 		"noUnusedParameters": false,
 		"useUnknownInCatchVariables": false,
-		"skipLibCheck": true
+		"module": "ESNext",
+		"moduleResolution": "NodeNext"
 	},
 	"exclude": ["node_modules"],
-	"include": ["src"]
+	"include": ["./src/**/*"]
 }

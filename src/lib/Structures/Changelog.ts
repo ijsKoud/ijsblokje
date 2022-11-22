@@ -1,6 +1,6 @@
 import parseLinkHeader from "parse-link-header";
-import { ProbotOctokit } from "probot";
-import type { Ijsblokje } from "../../bot/ijsblokje";
+import type ijsblokje from "../ijsBlokje.js";
+import type { Action } from "./Action.js";
 
 interface CommitData {
 	type: string;
@@ -8,11 +8,16 @@ interface CommitData {
 }
 
 export class Changelog {
-	public constructor(public bot: Ijsblokje) {}
+	public semverRegex = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)/g;
+	public pkgVersionRegex = /"version": "(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)"/g;
+	public readmeVersionRegex = /"project\.version": "(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)"/g;
 
-	public async run(owner: string, repo: string, headRef: string): Promise<string> {
-		const app = this.bot.probot.probotApp;
-		const octokit = new ProbotOctokit({ log: app.log });
+	public constructor(public bot: ijsblokje) {}
+
+	public async run(ctx: Action.Context<"commit_comment">): Promise<string> {
+		const headRef = ctx.payload.comment.commit_id;
+		const { repo, owner } = ctx.repo();
+		const { octokit } = ctx;
 
 		const latestRelease = await octokit.repos.getLatestRelease({ repo, owner }).catch(() => null);
 		let parsedCommits: CommitData[];
@@ -98,14 +103,11 @@ export class Changelog {
 		return changelog;
 	}
 
-	public getVersion(message: string): string | null {
-		if (!message.startsWith("chore(Release): v")) return null;
+	public getVersion(ctx: Action.Context<"commit_comment">): string | null {
+		const message = ctx.payload.comment.body;
+		const res = message.match(this.semverRegex);
 
-		message = message.replace("chore(Release): v", "");
-		const version = message.slice(0, 5);
-		if (version.split(".").length !== 3) return null;
-
-		return version;
+		return res?.[0] ?? null;
 	}
 
 	private getMarkdown(commits: CommitData[]): string {
