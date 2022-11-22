@@ -1,3 +1,4 @@
+import { README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 
@@ -12,8 +13,7 @@ export default class ReadmeSync extends Action {
 			return;
 		}
 
-		if (!ctx.payload.commits.some((cm) => cm.modified.includes(".github/.readmeconfig.json") || cm.added.includes(".github/.readmeconfig.json")))
-			return;
+		if (!ctx.payload.commits.some((cm) => cm.modified.includes(README_CONFIG_LOCATION) || cm.added.includes(README_CONFIG_LOCATION))) return;
 		await this.configUpdate(ctx);
 	}
 
@@ -23,7 +23,7 @@ export default class ReadmeSync extends Action {
 			const readmeConfig = await ctx.octokit.repos
 				.getContent({
 					...repo,
-					path: ".github/.readmeconfig.json"
+					path: README_CONFIG_LOCATION
 				})
 				.catch(() => null);
 			if (!readmeConfig || !("content" in readmeConfig.data)) return;
@@ -63,7 +63,7 @@ export default class ReadmeSync extends Action {
 					.getContent({
 						owner: repository.owner,
 						repo: repository.repo,
-						path: ".github/.readmeconfig.json"
+						path: README_CONFIG_LOCATION
 					})
 					.catch(() => null);
 				if (!readmeConfig || !("content" in readmeConfig.data)) return;

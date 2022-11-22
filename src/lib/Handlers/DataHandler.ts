@@ -2,7 +2,7 @@ import { Collection } from "@discordjs/collection";
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "../Structures/Action.js";
 import type { Label, Labels, Repository } from "../types.js";
-import { ORGANIZATION_README_REPO, REPO_UPDATE_EVENTS } from "../constants.js";
+import { README_CONFIG_LOCATION, REPO_UPDATE_EVENTS } from "../constants.js";
 import { request } from "@octokit/request";
 
 export default class DataHandler {
@@ -23,9 +23,7 @@ export default class DataHandler {
 		try {
 			const installations = await this.bot.octokit.apps.listInstallations();
 			for (const installation of installations.data) {
-				const owner = installation.account?.login ?? installation.account?.name ?? "";
-				const repo = installation.account?.organizations_url ? ORGANIZATION_README_REPO : owner;
-
+				const owner = installation.account?.login ?? "";
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
 					permissions: { contents: "read" }
@@ -33,7 +31,7 @@ export default class DataHandler {
 
 				const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
-					repo,
+					repo: owner,
 					path: "config/labels.json",
 					headers: { authorization: `Bearer ${token.data.token}` }
 				});
@@ -52,10 +50,7 @@ export default class DataHandler {
 		const { repository } = ctx.payload;
 		const repoDetails = ctx.repo();
 
-		const isEqual = (rep: Repository) => {
-			if (repository.organization) return repo.owner === repoDetails.owner && repo.repo === ORGANIZATION_README_REPO;
-			return rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
-		};
+		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
 
 		if (REPO_UPDATE_EVENTS.includes(ctx.payload.action)) {
 			this.repos = this.repos.filter((rep) => isEqual(rep));
@@ -71,7 +66,7 @@ export default class DataHandler {
 			readmeSync: { config: false }
 		};
 
-		const configRes = await ctx.octokit.repos.getContent({ ...repoDetails, path: ".github/.readmeconfig.json" }).catch(() => null);
+		const configRes = await ctx.octokit.repos.getContent({ ...repoDetails, path: README_CONFIG_LOCATION }).catch(() => null);
 		const config = configRes ? "content" in configRes.data : false;
 
 		repo.readmeSync.config = config;
@@ -86,7 +81,7 @@ export default class DataHandler {
 				const configRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
 					repo,
-					path: ".github/.readmeconfig.json",
+					path: README_CONFIG_LOCATION,
 					headers: { authorization: `Bearer ${token}` }
 				}).catch(() => null);
 

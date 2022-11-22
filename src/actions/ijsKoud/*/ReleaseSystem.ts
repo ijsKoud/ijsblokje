@@ -1,3 +1,4 @@
+import { README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 import { Changelog } from "../../../lib/Structures/Changelog.js";
@@ -92,7 +93,7 @@ export default class ReadmeSync extends Action {
 	}
 
 	private async createConfigCommit(ctx: Action.Context<"commit_comment">, version: string, repo: Repo) {
-		const readmeConfig = await ctx.octokit.repos.getContent({ ...repo, path: ".github/.readmeconfig.json" }).catch(() => null);
+		const readmeConfig = await ctx.octokit.repos.getContent({ ...repo, path: README_CONFIG_LOCATION }).catch(() => null);
 		if (!readmeConfig || !("content" in readmeConfig.data)) return {};
 
 		const readmeConfigContent = Buffer.from(readmeConfig.data.content, "base64").toString();
@@ -107,7 +108,7 @@ export default class ReadmeSync extends Action {
 
 		return {
 			blob,
-			path: ".github/.readmeconfig.json"
+			path: README_CONFIG_LOCATION
 		};
 	}
 }
