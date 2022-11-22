@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://avatars.githubusercontent.com/in/214508" width="100px" />
+    <img src="https://cdn.ijskoud.dev/files/TG6YB5SXj8.gif" width="100px" />
     <h1>ijsblokje</h1>
   
   <p>A personal GitHub bot which syncs data and runs automated systems</p>
@@ -20,65 +20,37 @@
 
 ## Information
 
-This is a personal GitHub bot designed to do some tasks for me. It currently does the following:
+IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for example:
 
--   Label Syncer
--   Labeling certain PRs (renovate PRs)
+- Label PRs automatically according to the conventional commit types
+- Sync labels across mutliple repositories and allows for specific repo labels too
+- Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state
+- Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud)
+- Releases a new version with automatic changelog generation everytime a command is ran by the owner (@ijsblokjeee release vx.y.z
 
 ## Install
 
-You can self-host this bot, though I do wonder why cuz this is a personalised bot. If you however have the same setup (using Renovate as Dependency bumper) feel free to continue. To host this either glone the repo (git clone ...) or use Docker (recommended & fastest)
-
-#### Configuring the `.env` file:
-
-First make sure you followed this guide before continuing: [ProBot configuration](https://probot.github.io/docs/development/#manually-configuring-a-github-app)
-After that, change the following variables:
-
-```env
-LABEL_DEPENDENCIES="Dependencies" # The name of the label you want to give every dependency bump from Renovate
-REPO_NAME="ijsKoud/ijsKoud" # The repository where the labels.json file is located
-USERNAME="ijsKoud" # Your own GitHub username
-```
-
-#### Setup with Docker:
-
-Note: the `3000:3000` are for binding the ports, make sure to update them accordingly when changing the `.env` file PORT variable!
-
-```bash
-$ docker pull ghcr.io/ijskoud/ijsblokje:v1
-$ docker run --name=ijsblokje --restart always -d --env-file .env -p 3000:3000 ghcr.io/ijskoud/ijsblokje:v1
-```
-
-#### Setup without Docker
-
-Make sure to add the `.env` file to the folder before running the bot!
-
-```bash
-$ git clone https://github.com/ijsKoud/ijsblokje
-$ cd ijsblokje
-$ yarn install
-$ yarn build
-$ yarn start
-```
+Although you cannot self-host this with docker due to the personal preferences and names you can edit the code to your likings and run it from there.
+To do this, simply clone the repository (`git clone <url>`) and edit the code from there (Only edit the src/lib/constants.ts if you aren't looking to change the code). After that Rename the directory `ijsKoud` to your own GitHub username.
+Once finished, build the app (`yarn run build`) and start it by running: `yarn run start`. Do NOT forget to edit the `.env` variables first and move them to the `/data` folder (create one if it is not there yet)!
 
 ## Credits
-
--   Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
+- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
 
 ## Author
 
-👤 **DaanGamesDG**
+👤 **ijsKoud**
 
 -   Website: https://ijskoud.dev/
--   Email: <github@ijskoud.dev>
--   Twitter: [@ijsKoud](https://twitter.com/ijs_Koud)
+-   Email: <hi@ijskoud.dev>
+-   Twitter: [@ijsKoud](https://ijskoud.dev/twitter)
 -   Github: [@ijsKoud](https://github.com/ijsKoud)
 
 ## Donate
 
-This will always be open source project, even if I don't receive donations. But there are still people out there that want to donate, so if you do here is the link [PayPal](https://paypal.me/daangamesdg) or to [Ko-Fi](https://ijskoud.dev/kofi). Thanks in advance! I really appriciate it <3
+This will always be open source project, even if I don't receive donations. But there are still people out there that want to donate, so if you do here is the link [PayPal](https://ijskoud.dev/paypal) or to [Ko-Fi](https://ijskoud.dev/kofi). Thanks in advance! I really appriciate it <3
 
-## Lisence
+## License
 
 Project is licensed under the © [**MIT License**](/LICENSE)
 
