@@ -26,7 +26,7 @@ IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for 
 - 🔃 Sync labels across mutliple repositories and allows for specific repo labels too
 - 🔔 Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state
 - 🗞️ Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud)
-- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner (@ijsblokjeee release vx.y.z
+- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner [@ijsblokjeee[bot]](https://github.com/apps/ijsblokjeee) release v**x.y.z**
 
 ## Install
 
