@@ -5,7 +5,7 @@ import { COMMIT_REGEX, COMMIT_TYPES, LABEL_ISSUES_EVENTS } from "../../../lib/co
 @ApplyActionOptions({
 	events: ["issues", "pull_request"]
 })
-export default class ReadmeSync extends Action {
+export default class LabelIssues extends Action {
 	public async run(ctx: Action.Context<"issues" | "pull_request">) {
 		const repo = ctx.repo();
 
