@@ -26,7 +26,7 @@ export default class DataHandler {
 
 			for (const installation of filtered) {
 				const owner = installation.account?.login ?? "";
-				const isOrg = Boolean(installation.account?.organizations_url);
+				const isOrg = installation.account?.type === "Organization";
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
 					permissions: { contents: "read" }
