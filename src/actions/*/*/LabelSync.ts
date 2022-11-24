@@ -9,6 +9,11 @@ import { LABELS_CONFIG } from "../../../lib/constants.js";
 	events: ["push", "repository"]
 })
 export default class LabelSync extends Action {
+	public getRepoName(ctx: Action.Context<"push" | "repository">): string {
+		const isOrg = Boolean(ctx.payload.organization);
+		return isOrg ? ".github" : ctx.repo().owner;
+	}
+
 	public async run(ctx: Action.Context<"push" | "repository">) {
 		if (ctx.name === "push") await this.pushEvent(ctx as any);
 		else if ((ctx as any as Action.Context<"repository">).payload.action === "created") await this.repoEvent(ctx as any);
@@ -16,7 +21,7 @@ export default class LabelSync extends Action {
 
 	private async pushEvent(ctx: Action.Context<"push">) {
 		const repo = ctx.repo();
-		if (repo.owner !== repo.repo || !ctx.payload.commits.some((commit) => commit.modified.includes(LABELS_CONFIG))) return;
+		if (repo.repo !== this.getRepoName(ctx as any) || !ctx.payload.commits.some((commit) => commit.modified.includes(LABELS_CONFIG))) return;
 
 		await this.bot.DataHandler.updateLabelsList();
 
