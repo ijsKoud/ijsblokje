@@ -1,4 +1,4 @@
-import { BASE_README, GH_OWNER, README_CONFIG_LOCATION } from "../../../lib/constants.js";
+import { BASE_README, README_CONFIG_LOCATION } from "../../../lib/constants.js";
 import { ApplyActionOptions } from "../../../lib/Decorators/ActionDecorators.js";
 import { Action } from "../../../lib/Structures/Action.js";
 
@@ -6,6 +6,11 @@ import { Action } from "../../../lib/Structures/Action.js";
 	events: ["push", "repository"]
 })
 export default class ReadmeSync extends Action {
+	public getRepoName(ctx: Action.Context<"push" | "repository">): string {
+		const isOrg = Boolean(ctx.payload.organization);
+		return isOrg ? ".github" : ctx.repo().owner;
+	}
+
 	public async run(_ctx: Action.Context<"push" | "repository.edited" | "repository.renamed">) {
 		const repo = _ctx.repo();
 		if (_ctx.name === "repository") {
@@ -16,7 +21,7 @@ export default class ReadmeSync extends Action {
 
 		const ctx = _ctx as any as Action.Context<"push">;
 		const isLicenseUpdate = ctx.payload.commits.some((c) => [...c.added, ...c.modified, ...c.removed].includes("LICENSE"));
-		if (repo.repo === repo.owner && ctx.payload.commits.some((cm) => cm.modified.includes(BASE_README))) {
+		if (repo.repo === this.getRepoName(ctx as any) && ctx.payload.commits.some((cm) => cm.modified.includes(BASE_README))) {
 			await this.templateUpdate(ctx);
 			return;
 		}
@@ -42,7 +47,7 @@ export default class ReadmeSync extends Action {
 				.catch(() => null);
 			if (!readmeConfig || !("content" in readmeConfig.data)) return;
 
-			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: repo.owner, path: BASE_README });
+			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: this.getRepoName(ctx as any), path: BASE_README });
 			if (!("content" in readmeData.data)) return;
 
 			let readme = Buffer.from(readmeData.data.content, "base64").toString();
@@ -73,7 +78,7 @@ export default class ReadmeSync extends Action {
 				.catch(() => null);
 			if (!readmeConfig || !("content" in readmeConfig.data)) return;
 
-			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: repo.owner, path: BASE_README });
+			const readmeData = await ctx.octokit.repos.getContent({ owner: repo.owner, repo: this.getRepoName(ctx as any), path: BASE_README });
 			if (!("content" in readmeData.data)) return;
 
 			let readme = Buffer.from(readmeData.data.content, "base64").toString();
@@ -112,7 +117,7 @@ export default class ReadmeSync extends Action {
 		if (!("content" in readmeData.data)) return;
 
 		const readme = Buffer.from(readmeData.data.content, "base64").toString();
-		const list = this.bot.DataHandler.repos.filter((rep) => rep.owner === GH_OWNER);
+		const list = this.bot.DataHandler.repos.filter((rep) => rep.owner === repo.owner);
 
 		list.forEach(async (repository) => {
 			try {
@@ -130,6 +135,23 @@ export default class ReadmeSync extends Action {
 
 				const keys = Object.keys(jsonContent);
 				let updatedReadme = readme;
+
+				const extraInfo = jsonContent["project.extra_info"];
+				if (
+					extraInfo &&
+					typeof extraInfo === "string" &&
+					(extraInfo as string).startsWith(".github/") &&
+					(extraInfo as string).endsWith(".md")
+				) {
+					const extraInfoData = await ctx.octokit.repos
+						.getContent({
+							...repo,
+							path: extraInfo
+						})
+						.catch(() => null);
+					if (extraInfoData && "content" in extraInfoData.data)
+						jsonContent["project.extra_info"] = Buffer.from(extraInfoData.data.content, "base64").toString();
+				}
 
 				keys.forEach((key) => (updatedReadme = updatedReadme.replaceAll(`{${key}}`, jsonContent[key])));
 				updatedReadme = updatedReadme

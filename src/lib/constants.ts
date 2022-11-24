@@ -2,7 +2,7 @@ export const REPO_UPDATE_EVENTS = ["deleted", "transferred"];
 export const LABEL_ISSUES_EVENTS = ["edited", "opened"];
 
 export const README_CONFIG_LOCATION = ".github/.readmeconfig.json";
-export const BASE_README = "config/readme_ijskoud.md";
+export const BASE_README = "config/readme.md";
 export const LABELS_CONFIG = "config/labels.json";
 
 export const GH_OWNER = "ijsKoud";

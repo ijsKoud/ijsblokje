@@ -83,6 +83,7 @@ export default class ActionHandler {
 
 			const ctx = new Context(payload, octokit as any, this.bot.probot.log);
 			const details = ctx.repo();
+			if (!this.bot.allowedInstallations.includes(details.owner)) return;
 
 			const globalRepoActions = this.globalRepoActions.get(details.owner) ?? [];
 			const globalAccActions = this.globalAccActions.get(details.repo) ?? [];

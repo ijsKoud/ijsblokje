@@ -17,6 +17,8 @@ export default class ijsblokje {
 	public ActionHandler = new ActionHandler(this, join(basePath, "actions"));
 	public DataHandler = new DataHandler(this);
 
+	public allowedInstallations: string[] = [];
+
 	public get octokit() {
 		const cache = new lruCache<number, string>({
 			max: 15e3,
@@ -53,6 +55,8 @@ export default class ijsblokje {
 			port: this.port,
 			webhookProxy: process.env.WEBHOOK_PROXY_URL
 		});
+
+		this.allowedInstallations = (process.env.ALLOWED_INSTALLATIONS ?? "").split(",");
 	}
 
 	public async start() {

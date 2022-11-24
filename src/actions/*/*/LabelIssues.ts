@@ -11,7 +11,7 @@ export default class LabelIssues extends Action {
 
 		if (!LABEL_ISSUES_EVENTS.includes(ctx.payload.action)) return;
 		if (ctx.payload.action === "opened" && ctx.name === "pull_request" && ctx.payload.sender.login === "renovate[bot]") {
-			const gLabels = this.bot.DataHandler.labels.get("global")!;
+			const gLabels = this.bot.DataHandler.labels.get(`${repo.owner}-global`)!;
 			const label = gLabels.find((l) => l.name.toLowerCase().includes("dependencies"));
 			if (label)
 				await ctx.octokit.issues.addLabels({
@@ -31,7 +31,7 @@ export default class LabelIssues extends Action {
 		const type = conventionalCommitRes?.groups!.type ?? "";
 		if (!COMMIT_TYPES.some((l) => title.startsWith(l))) return;
 
-		const gLabels = this.bot.DataHandler.labels.get("global")!;
+		const gLabels = this.bot.DataHandler.labels.get(`${repo.owner}-global`)!;
 		const label = gLabels.find((l) => l.name.toLowerCase().includes(type));
 
 		const existingCommitLabels = labels.filter((label) => COMMIT_TYPES.some((t) => label.name.toLowerCase().includes(t)));
