@@ -38,7 +38,7 @@ export default class DataHandler {
 				if (!("content" in labelsRes.data)) return;
 
 				const labels: Labels = JSON.parse(Buffer.from(labelsRes.data.content, "base64").toString());
-				this.labels.set("global", labels.labels);
+				this.labels.set(`${owner}-global`, labels.labels);
 				Object.keys(labels.repository).forEach((key) => this.labels.set(key, labels.repository[key]));
 			}
 		} catch (error) {

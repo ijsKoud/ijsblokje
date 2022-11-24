@@ -21,7 +21,7 @@ export default class LabelSync extends Action {
 		await this.bot.DataHandler.updateLabelsList();
 
 		const labelsCollection = this.bot.DataHandler.labels;
-		const globalLabels = labelsCollection.get("global") ?? [];
+		const globalLabels = labelsCollection.get(`${repo.owner}-global`) ?? [];
 		const repos = this.bot.DataHandler.repos.filter((repo) => !repo.archived);
 		for (const repository of repos) {
 			const labels = [...globalLabels, ...(labelsCollection.get(`${repository.owner}/${repository.repo}`) ?? [])];
@@ -80,8 +80,9 @@ export default class LabelSync extends Action {
 	}
 
 	private async repoEvent(ctx: Action.Context<"repository.created">) {
+		const repo = ctx.repo();
 		const labelsCollection = this.bot.DataHandler.labels;
-		const globalLabels = labelsCollection.get("global") ?? [];
+		const globalLabels = labelsCollection.get(`${repo.owner}-global`) ?? [];
 		const labels = [...globalLabels, ...(labelsCollection.get(ctx.payload.repository.full_name) ?? [])];
 		const existing = await ctx.octokit.issues.listLabelsForRepo(ctx.repo());
 
@@ -100,7 +101,7 @@ export default class LabelSync extends Action {
 				ctx.octokit.issues.createLabel({
 					...label,
 					color: label.color.replace("#", ""),
-					...ctx.repo()
+					...repo
 				})
 			)
 		);
