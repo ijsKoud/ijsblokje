@@ -131,6 +131,23 @@ export default class ReadmeSync extends Action {
 				const keys = Object.keys(jsonContent);
 				let updatedReadme = readme;
 
+				const extraInfo = jsonContent["project.extra_info"];
+				if (
+					extraInfo &&
+					typeof extraInfo === "string" &&
+					(extraInfo as string).startsWith(".github/") &&
+					(extraInfo as string).endsWith(".md")
+				) {
+					const extraInfoData = await ctx.octokit.repos
+						.getContent({
+							...repo,
+							path: extraInfo
+						})
+						.catch(() => null);
+					if (extraInfoData && "content" in extraInfoData.data)
+						jsonContent["project.extra_info"] = Buffer.from(extraInfoData.data.content, "base64").toString();
+				}
+
 				keys.forEach((key) => (updatedReadme = updatedReadme.replaceAll(`{${key}}`, jsonContent[key])));
 				updatedReadme = updatedReadme
 					.replaceAll("{repo.name}", repository.repo)
