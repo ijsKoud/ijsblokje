@@ -13,7 +13,7 @@ export default class DataHandler {
 
 	public async start() {
 		this.bot.probot.probotApp.on("repository", this.repoUpdate.bind(this));
-		this.bot.probot.probotApp.on("installation_repositories", this.updateReposList.bind(this));
+		this.bot.probot.probotApp.on("installation_repositories", this.installationRepoUpdate.bind(this));
 
 		await this.updateReposList();
 		await this.updateLabelsList();
@@ -117,6 +117,49 @@ export default class DataHandler {
 			}
 		} catch (error) {
 			this.bot.logger.fatal(`[DataHandler]: Unable to load repositories list =>`, error);
+		}
+	}
+
+	private async installationRepoUpdate(ctx: Action.Context<"installation_repositories">) {
+		try {
+			const hasReadMeConfig = async (owner: string, repo: string, token: string) => {
+				const configRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
+					owner,
+					repo,
+					path: README_CONFIG_LOCATION,
+					headers: { authorization: `Bearer ${token}` }
+				}).catch(() => null);
+
+				return configRes ? "content" in configRes.data : false;
+			};
+
+			const token = await this.bot.octokit.apps.createInstallationAccessToken({
+				installation_id: ctx.payload.installation.id,
+				permissions: { contents: "read" }
+			});
+			const reposListRes = await request("GET /installation/repositories", {
+				headers: { authorization: `Bearer ${token.data.token}` },
+				per_page: 100
+			});
+
+			const repos: Repository[] = await Promise.all(
+				reposListRes.data.repositories.map(async (repo) => ({
+					owner: repo.organization ? repo.organization.login : repo.owner.login,
+					repo: repo.name,
+					description: repo.description ?? "",
+					license: repo.license?.spdx_id ?? "",
+					archived: repo.archived,
+					private: repo.private,
+					readmeSync: {
+						config: await hasReadMeConfig(repo.organization ? repo.organization.login : repo.owner.login, repo.name, token.data.token)
+					}
+				}))
+			);
+
+			await request("DELETE /installation/token", { headers: { authorization: `Bearer ${token.data.token}` } });
+			this.repos.push(...repos);
+		} catch (error) {
+			this.bot.logger.fatal(`[DataHandler]: Unable to load new Installation repositories list =>`, error);
 		}
 	}
 }
