@@ -26,6 +26,7 @@ export default class DataHandler {
 
 			for (const installation of filtered) {
 				const owner = installation.account?.login ?? "";
+				const isOrg = Boolean(installation.account?.organizations_url);
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
 					permissions: { contents: "read" }
@@ -33,7 +34,7 @@ export default class DataHandler {
 
 				const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 					owner,
-					repo: owner,
+					repo: isOrg ? ".github" : owner,
 					path: LABELS_CONFIG,
 					headers: { authorization: `Bearer ${token.data.token}` }
 				});
