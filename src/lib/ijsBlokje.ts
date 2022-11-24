@@ -7,6 +7,8 @@ import { LogLevel } from "./Logger/LoggerTypes.js";
 import { join } from "node:path";
 import lruCache from "lru-cache";
 import DataHandler from "./Handlers/DataHandler.js";
+import { watchFile } from "node:fs";
+import { config } from "dotenv";
 
 const basePath = join(fileURLToPath(import.meta.url), "../../");
 
@@ -16,6 +18,8 @@ export default class ijsblokje {
 
 	public ActionHandler = new ActionHandler(this, join(basePath, "actions"));
 	public DataHandler = new DataHandler(this);
+
+	public allowedInstallations: string[] = [];
 
 	public get octokit() {
 		const cache = new lruCache<number, string>({
@@ -52,6 +56,14 @@ export default class ijsblokje {
 			}),
 			port: this.port,
 			webhookProxy: process.env.WEBHOOK_PROXY_URL
+		});
+
+		this.allowedInstallations = (process.env.ALLOWED_INSTALLATIONS ?? "").split(",");
+		const envFilePath = join(process.cwd(), "data", ".env");
+
+		watchFile(envFilePath, () => {
+			config({ path: envFilePath });
+			this.allowedInstallations = (process.env.ALLOWED_INSTALLATIONS ?? "").split(",");
 		});
 	}
 
