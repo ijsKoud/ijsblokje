@@ -22,7 +22,9 @@ export default class DataHandler {
 	public async updateLabelsList() {
 		try {
 			const installations = await this.bot.octokit.apps.listInstallations();
-			for (const installation of installations.data) {
+			const filtered = installations.data.filter((installation) => this.bot.allowedInstallations.includes(installation.account?.login ?? ""));
+
+			for (const installation of filtered) {
 				const owner = installation.account?.login ?? "";
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
@@ -50,6 +52,7 @@ export default class DataHandler {
 		const { repository } = ctx.payload;
 		const repoDetails = ctx.repo();
 
+		if (!this.bot.allowedInstallations.includes(repoDetails.owner)) return;
 		const isEqual = (rep: Repository) => rep.owner === repoDetails.owner && rep.repo === repoDetails.repo;
 
 		if (REPO_UPDATE_EVENTS.includes(ctx.payload.action)) {
@@ -76,6 +79,7 @@ export default class DataHandler {
 	private async updateReposList() {
 		try {
 			const installations = await this.bot.octokit.apps.listInstallations();
+			const filtered = installations.data.filter((installation) => this.bot.allowedInstallations.includes(installation.account?.login ?? ""));
 
 			const hasReadMeConfig = async (owner: string, repo: string, token: string) => {
 				const configRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
@@ -88,7 +92,7 @@ export default class DataHandler {
 				return configRes ? "content" in configRes.data : false;
 			};
 
-			for (const installation of installations.data) {
+			for (const installation of filtered) {
 				const token = await this.bot.octokit.apps.createInstallationAccessToken({
 					installation_id: installation.id,
 					permissions: { contents: "read" }
@@ -121,6 +125,8 @@ export default class DataHandler {
 	}
 
 	private async installationRepoUpdate(ctx: Action.Context<"installation_repositories">) {
+		if (!this.bot.allowedInstallations.includes(ctx.payload.installation.account.login)) return;
+
 		try {
 			const hasReadMeConfig = async (owner: string, repo: string, token: string) => {
 				const configRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
