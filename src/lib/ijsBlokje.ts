@@ -7,8 +7,6 @@ import { LogLevel } from "./Logger/LoggerTypes.js";
 import { join } from "node:path";
 import lruCache from "lru-cache";
 import DataHandler from "./Handlers/DataHandler.js";
-import { watchFile } from "node:fs";
-import { config } from "dotenv";
 
 const basePath = join(fileURLToPath(import.meta.url), "../../");
 
@@ -59,12 +57,6 @@ export default class ijsblokje {
 		});
 
 		this.allowedInstallations = (process.env.ALLOWED_INSTALLATIONS ?? "").split(",");
-		const envFilePath = join(process.cwd(), "data", ".env");
-
-		watchFile(envFilePath, () => {
-			config({ path: envFilePath });
-			this.allowedInstallations = (process.env.ALLOWED_INSTALLATIONS ?? "").split(",");
-		});
 	}
 
 	public async start() {
