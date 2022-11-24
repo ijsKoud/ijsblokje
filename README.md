@@ -5,7 +5,7 @@
   <p>A personal GitHub bot which syncs data and runs automated systems</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-2.0.0-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-2.1.1-blue.svg" />
     <a href="/LICENSE" target="_blank">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
