@@ -16,9 +16,7 @@ export default class NpmForPRs extends Action {
 	}
 
 	private async pullRequest(ctx: Action.Context<"issue_comment">) {
-		if (ctx.payload.action !== "created") return;
-		console.log(ctx.payload.issue.draft);
-
+		if (ctx.payload.action !== "created" && !Boolean(ctx.payload.issue.draft)) return;
 		await ctx;
 	}
 }
