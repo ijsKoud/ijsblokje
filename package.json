@@ -53,5 +53,6 @@
 	},
 	"engines": {
 		"node": ">= v18.12.1"
-	}
+	},
+	"packageManager": "yarn@3.2.1"
 }
