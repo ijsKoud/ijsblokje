@@ -67,5 +67,6 @@ export default class ijsblokje {
 
 		this.probot.probotApp.onAny((ev) => this.ActionHandler.onPayloadReceived(ev));
 		this.probot.probotApp.onError((err) => this.logger.error(`[PROBOT]: WebhookHandler error ->`, err));
+		process.on("unhandledRejection", (err) => this.logger.fatal(`[Unhandled Rejection]: error processing a promise`, err));
 	}
 }
