@@ -14,6 +14,7 @@ export default class DataHandler {
 	public async start() {
 		this.bot.probot.probotApp.on("repository", this.repoUpdate.bind(this));
 		this.bot.probot.probotApp.on("installation_repositories", this.installationRepoUpdate.bind(this));
+		this.bot.probot.probotApp.on("installation", this.installation.bind(this));
 
 		await this.updateReposList();
 		await this.updateLabelsList();
@@ -122,6 +123,36 @@ export default class DataHandler {
 			}
 		} catch (error) {
 			this.bot.logger.fatal(`[DataHandler]: Unable to load repositories list =>`, error);
+		}
+	}
+
+	private async installation(ctx: Action.Context<"installation">) {
+		if (ctx.payload.action === "created") {
+			const owner = ctx.payload.installation.account?.login ?? "";
+			const isOrg = ctx.payload.installation.account?.type === "Organization";
+			const token = await this.bot.octokit.apps.createInstallationAccessToken({
+				installation_id: ctx.payload.installation.id,
+				permissions: { contents: "read" }
+			});
+
+			const labelsRes = await request("GET /repos/{owner}/{repo}/contents/{path}", {
+				owner,
+				repo: isOrg ? ".github" : owner,
+				path: LABELS_CONFIG,
+				headers: { authorization: `Bearer ${token.data.token}` }
+			});
+			if (!("content" in labelsRes.data)) return;
+
+			const labels: Labels = JSON.parse(Buffer.from(labelsRes.data.content, "base64").toString());
+			this.labels.set(`${owner}-global`, labels.labels);
+			Object.keys(labels.repository).forEach((key) => this.labels.set(key, labels.repository[key]));
+		} else if (ctx.payload.action === "deleted") {
+			const owner = ctx.payload.installation.account.login ?? "";
+			const keys = [...this.labels.keys()];
+			const related = keys.filter((key) => key.startsWith(`${owner}/`));
+
+			this.labels.delete(`${owner}-global`);
+			related.forEach((key) => this.labels.delete(key));
 		}
 	}
 
