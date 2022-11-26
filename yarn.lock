@@ -813,6 +813,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@snowcrystals/icicle@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@snowcrystals/icicle@npm:1.0.0"
+  dependencies:
+    "@sapphire/timestamp": ^1.0.0
+    colorette: ^2.0.19
+  checksum: f3e50fa4de1c587f344e14f44621052ac2c29ad3befa40b57ba9e7c6248d03979a57c8cdf618ba5c9bcfc2f5730549d3467df62a8a34a5521308c511c065f79f
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.9
   resolution: "@tsconfig/node10@npm:1.0.9"
@@ -3118,6 +3128,7 @@ __metadata:
     "@sapphire/prettier-config": ^1.4.4
     "@sapphire/timestamp": ^1.0.0
     "@sapphire/ts-config": ^3.3.4
+    "@snowcrystals/icicle": 1.0.0
     "@types/lodash": ^4.14.189
     "@types/node": ^18.11.9
     "@types/parse-link-header": ^2.0.0
