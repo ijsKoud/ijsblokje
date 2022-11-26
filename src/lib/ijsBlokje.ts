@@ -2,11 +2,10 @@ import { Probot, ProbotOctokit, Server } from "probot";
 import { getProbotOctokitWithDefaults } from "probot/lib/octokit/get-probot-octokit-with-defaults.js";
 import { fileURLToPath } from "node:url";
 import ActionHandler from "./Handlers/ActionHandler.js";
-import { Logger } from "./Logger/Logger.js";
-import { LogLevel } from "./Logger/LoggerTypes.js";
 import { join } from "node:path";
 import lruCache from "lru-cache";
 import DataHandler from "./Handlers/DataHandler.js";
+import { Logger, LogLevel } from "@snowcrystals/icicle";
 
 const basePath = join(fileURLToPath(import.meta.url), "../../");
 
