@@ -203,7 +203,7 @@ export default class ReadmeSync extends Action {
 		});
 
 		const commit = await git.createCommit({
-			message: "docs(Readme): update readme content",
+			message: "docs(Readme): update readme content [skip ci]",
 			tree: tree.data.sha,
 			parents: [currentSha],
 			...repo
