@@ -23,7 +23,9 @@ export default class DataHandler {
 	public async updateLabelsList() {
 		try {
 			const installations = await this.bot.octokit.apps.listInstallations();
-			const filtered = installations.data.filter((installation) => this.bot.allowedInstallations.includes(installation.account?.login ?? ""));
+			const filtered = installations.data.filter(
+				(installation) => installation.account?.login && this.bot.allowedInstallations.includes(installation.account.login)
+			);
 
 			for (const installation of filtered) {
 				const owner = installation.account?.login ?? "";

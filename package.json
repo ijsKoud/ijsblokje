@@ -14,7 +14,7 @@
 	"scripts": {
 		"build": "tsc --build",
 		"dev:watch": "tsc --watch",
-		"dev:start": "nodemon ./dist",
+		"start:dev": "nodemon ./dist",
 		"start": "node ./dist",
 		"lint": "eslint src",
 		"postinstall": "is-ci || husky install"

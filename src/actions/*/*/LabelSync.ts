@@ -15,8 +15,12 @@ export default class LabelSync extends Action {
 	}
 
 	public async run(ctx: Action.Context<"push" | "repository">) {
-		if (ctx.name === "push") await this.pushEvent(ctx as any);
-		else if ((ctx as any as Action.Context<"repository">).payload.action === "created") await this.repoEvent(ctx as any);
+		try {
+			if (ctx.name === "push") await this.pushEvent(ctx as any);
+			else if ((ctx as any as Action.Context<"repository">).payload.action === "created") await this.repoEvent(ctx as any);
+		} catch (err) {
+			this.bot.logger.fatal(`[LabelSync]: issue updating the labels `, err);
+		}
 	}
 
 	private async pushEvent(ctx: Action.Context<"push">) {
