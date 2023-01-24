@@ -1,5 +1,5 @@
 {
-	"project.version": "2.2.4",
+	"project.version": "2.2.5",
 	"project.information": [
 		"IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for example:\n",
 		"- 🏷️ Label PRs automatically according to the conventional commit types",
