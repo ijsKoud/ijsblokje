@@ -39,6 +39,10 @@ export default class LabelIssues extends Action {
 		if (label && !existingCommitLabels.some((l) => l.name !== label?.name))
 			await ctx.octokit.issues.addLabels({ ...repo, issue_number: issue, labels: [label.name] });
 		if (filteredLabels.length)
-			await Promise.all(filteredLabels.map((label) => ctx.octokit.issues.removeLabel({ issue_number: issue, name: label.name, ...repo })));
+			await Promise.all(
+				filteredLabels
+					.filter((lb) => !lb.name.toLowerCase().includes("dependencies"))
+					.map((label) => ctx.octokit.issues.removeLabel({ issue_number: issue, name: label.name, ...repo }))
+			);
 	}
 }
