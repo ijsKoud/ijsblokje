@@ -60,7 +60,7 @@ export class Changelog {
 			const commitsList = await octokit.repos.listCommits({ repo, owner });
 			const parsedHeader = parseLinkHeader(commitsList.headers.link);
 
-			const firstCommits = await octokit.repos.listCommits({ owner, repo, page: (parsedHeader?.last.page as number | undefined) ?? 1 });
+			const firstCommits = await octokit.repos.listCommits({ owner, repo, page: (parsedHeader?.last?.page as number | undefined) ?? 1 });
 			const firstCommit = firstCommits.data[firstCommits.data.length - 1];
 			const baseRef = firstCommit.sha;
 
