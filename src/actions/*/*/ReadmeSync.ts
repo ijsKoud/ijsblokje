@@ -84,6 +84,8 @@ export default class ReadmeSync extends Action {
 			let readme = Buffer.from(readmeData.data.content, "base64").toString();
 			const content = Buffer.from(readmeConfig.data.content, "base64").toString();
 			const jsonContent = JSON.parse(content);
+			jsonContent["project.icon_width"] ??= "100px";
+
 			const keys = Object.keys(jsonContent);
 
 			const extraInfo = jsonContent["project.extra_info"];
@@ -132,6 +134,7 @@ export default class ReadmeSync extends Action {
 
 				const content = Buffer.from(readmeConfig.data.content, "base64").toString();
 				const jsonContent = JSON.parse(content);
+				jsonContent["project.icon_width"] ??= "100px";
 
 				const keys = Object.keys(jsonContent);
 				let updatedReadme = readme;
