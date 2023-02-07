@@ -100,9 +100,12 @@ export default class ReadmeSync extends Action {
 					jsonContent["project.extra_info"] = Buffer.from(extraInfoData.data.content, "base64").toString();
 			}
 
+			const _nameBool = jsonContent["project.name"];
+			const nameBool = typeof _nameBool === "boolean" ? _nameBool : true;
+
 			keys.forEach((key) => (readme = readme.replaceAll(`{${key}}`, this.cleanKey(jsonContent[key]))));
 			readme = readme
-				.replaceAll("{repo.name}", ctx.payload.repository.name)
+				.replaceAll("{repo.name}", nameBool ? ctx.payload.repository.name : "")
 				.replaceAll("{repo.description}", ctx.payload.repository.description ?? "")
 				.replaceAll("{repo.license}", ctx.payload.repository.license?.spdx_id ?? "None");
 
@@ -156,9 +159,12 @@ export default class ReadmeSync extends Action {
 						jsonContent["project.extra_info"] = Buffer.from(extraInfoData.data.content, "base64").toString();
 				}
 
+				const _nameBool = jsonContent["project.name"];
+				const nameBool = typeof _nameBool === "boolean" ? _nameBool : true;
+
 				keys.forEach((key) => (updatedReadme = updatedReadme.replaceAll(`{${key}}`, jsonContent[key])));
 				updatedReadme = updatedReadme
-					.replaceAll("{repo.name}", repository.repo)
+					.replaceAll("{repo.name}", nameBool ? repository.repo : "")
 					.replaceAll("{repo.description}", repository.description)
 					.replaceAll("{repo.license}", repository.license || "None");
 
