@@ -5,7 +5,7 @@
   <p>A personal GitHub bot which syncs data and runs automated systems</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-2.3.0-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-2.3.1-blue.svg" />
     <a href="/LICENSE" target="_blank">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
@@ -21,16 +21,24 @@
 ## Information
 
 IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for example:
-,- 🏷️ Label PRs automatically according to the conventional commit types,- 🔃 Sync labels across mutliple repositories and allows for specific repo labels too,- 🔔 Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state,- 🗞️ Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud),- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner: [@ijsblokjeee[bot]](https://github.com/apps/ijsblokjeee) release v**x.y.z**
+
+- 🏷️ Label PRs automatically according to the conventional commit types
+- 🔃 Sync labels across mutliple repositories and allows for specific repo labels too
+- 🔔 Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state
+- 🗞️ Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud)
+- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner: [@ijsblokjeee[bot]](https://github.com/apps/ijsblokjeee) release v**x.y.z**
 
 ## Install
 
 Although you cannot self-host this with docker due to the personal preferences and names you can edit the code to your likings and run it from there.
-,To do this, simply clone the repository (`git clone <url>`) and edit the code from there (Only edit the src/lib/constants.ts if you aren't looking to change the code). After that Rename the directory `ijsKoud` to your own GitHub username.
-,Once finished, build the app (`yarn run build`) and start it by running: `yarn run start`. Do NOT forget to edit the `.env` variables first and move them to the `/data` folder (create one if it is not there yet)!
+
+To do this, simply clone the repository (`git clone <url>`) and edit the code from there (Only edit the src/lib/constants.ts if you aren't looking to change the code). After that Rename the directory `ijsKoud` to your own GitHub username.
+
+Once finished, build the app (`yarn run build`) and start it by running: `yarn run start`. Do NOT forget to edit the `.env` variables first and move them to the `/data` folder (create one if it is not there yet)!
 
 
-## Credits,- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
+## Credits
+- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
 
 ## Author
 
