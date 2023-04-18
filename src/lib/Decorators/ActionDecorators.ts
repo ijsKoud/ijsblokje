@@ -1,6 +1,6 @@
 import type ijsblokje from "../ijsBlokje.js";
 import type { Action } from "../Structures/Action.js";
-import { ApplyOptionsParam, createClassDecorator, createProxy, ConstructorType } from "./utils.js";
+import { type ApplyOptionsParam, createClassDecorator, createProxy, type ConstructorType } from "./utils.js";
 
 /**
  * Applies the ConstructorOptions to an Action extended class
