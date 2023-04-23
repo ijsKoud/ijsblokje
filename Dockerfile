@@ -1,5 +1,5 @@
 # Builder Steps
-FROM node:19-alpine as base
+FROM node:20-alpine as base
 WORKDIR /ijsblokje
 
 COPY --chown=node:node yarn.lock .
