@@ -10,13 +10,14 @@ export default class WebhookSync extends Action {
 		const repo = ctx.repo();
 
 		const webhook = process.env[`${repo.owner.toUpperCase()}_WEBHOOK_URL`];
+		const secret = process.env[`${repo.owner.toUpperCase()}_WEBHOOK_SECRET`];
 		if (!webhook) return;
 
 		if (ctx.payload.action === "created") {
 			const active = !ctx.payload.repository.private;
 			await ctx.octokit.repos.createWebhook({
 				...repo,
-				config: { url: webhook, content_type: "json" },
+				config: { url: webhook, secret, content_type: "json" },
 				events: WEBHOOK_EVENTS,
 				active
 			});
