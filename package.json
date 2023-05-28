@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.6.3",
 		"@commitlint/config-angular": "^17.6.3",
-		"@octokit/webhooks-types": "^6.11.0",
+		"@octokit/webhooks-types": "^7.0.2",
 		"@sapphire/eslint-config": "^4.4.2",
 		"@sapphire/prettier-config": "^1.4.5",
 		"@sapphire/ts-config": "^4.0.0",
