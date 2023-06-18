@@ -13,9 +13,9 @@
 	"scripts": {
 		"build": "turbo build",
 		"build:watch": "turbo build:watch",
+		"lint": "turbo lint",
 		"start:dev": "nodemon ./dist",
 		"start": "node ./dist",
-		"lint": "eslint src",
 		"postinstall": "is-ci || husky install"
 	},
 	"devDependencies": {
