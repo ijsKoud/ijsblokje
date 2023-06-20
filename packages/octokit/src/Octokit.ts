@@ -4,9 +4,7 @@ import { throttling } from "@octokit/plugin-throttling";
 import Bottleneck from "bottleneck";
 import type { createClient } from "redis";
 
-const ExtendableOctokit = CoreOctokit.plugin(throttling);
-
-export class Octokit extends ExtendableOctokit {
+export class Octokit extends CoreOctokit.plugin(throttling) {
 	/** The id of the GitHub application */
 	public readonly appId: number;
 
