@@ -4,19 +4,24 @@ import type { Awaitable } from "./types.js";
  * Handle the pagination of an Octokit request
  * @param request The function to call everytime we need to fetch more data
  * @param check The function to check if we reached the desired amount or not
+ * @param initialPage The initial page (defaults to 1)
  * @returns
  */
-async function requestWithPagination<R>(request: RequestWithPaginationRequest<R>, check: RequestWithPaginationCheck<R>): Promise<R[]> {
+async function requestWithPagination<R>(
+	request: RequestWithPaginationRequest<R>,
+	check: RequestWithPaginationCheck<R>,
+	initialPage?: number
+): Promise<R[]> {
 	const data: R[] = [];
-	let page = 1;
+	let page = initialPage ?? 1;
 
 	let response = await request(page);
 	data.push(response);
 
 	while (check(response)) {
+		page++;
 		response = await request(page);
 		data.push(response);
-		page++;
 	}
 
 	return data;

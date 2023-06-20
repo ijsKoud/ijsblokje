@@ -12,7 +12,8 @@
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
-		"lint": "TIMING=1 eslint"
+		"lint": "TIMING=1 eslint",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"lru-cache": "^10.0.0",
@@ -22,7 +23,8 @@
 		"@types/node": "^18.16.18",
 		"eslint": "^8.43.0",
 		"prettier": "^2.8.8",
-		"typescript": "5.1.3"
+		"typescript": "5.1.3",
+		"vitest": "^0.32.2"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
