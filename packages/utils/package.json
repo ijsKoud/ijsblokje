@@ -5,9 +5,9 @@
 	"license": "MIT",
 	"type": "module",
 	"exports": {
-		"./types.js": "./dist/types.js",
-		"./constants.js": "./dist/constants.js",
-		"./RequestWithPagination.js": "./dist/RequestWithPagination.js"
+		"./types.js": "./dist/src/types.js",
+		"./constants.js": "./dist/src/constants.js",
+		"./RequestWithPagination.js": "./dist/src/RequestWithPagination.js"
 	},
 	"scripts": {
 		"build": "tsc --build",
