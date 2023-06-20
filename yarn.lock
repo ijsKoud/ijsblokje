@@ -515,24 +515,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ijsblokje/octokit@*, @ijsblokje/octokit@workspace:packages/octokit":
+"@ijsblokje/octocat@*, @ijsblokje/octocat@workspace:packages/octocat":
   version: 0.0.0-use.local
-  resolution: "@ijsblokje/octokit@workspace:packages/octokit"
-  dependencies:
-    "@octokit/auth-app": 5.0.5
-    "@octokit/core": 4.2.4
-    "@octokit/plugin-throttling": ^6.1.0
-    "@types/node": ^18.16.18
-    eslint: ^8.43.0
-    prettier: ^2.8.8
-    redis: ^4.6.7
-    typescript: 5.1.3
-  languageName: unknown
-  linkType: soft
-
-"@ijsblokje/probot@*, @ijsblokje/probot@workspace:packages/probot":
-  version: 0.0.0-use.local
-  resolution: "@ijsblokje/probot@workspace:packages/probot"
+  resolution: "@ijsblokje/octocat@workspace:packages/octocat"
   dependencies:
     "@discordjs/collection": ^1.5.1
     "@ijsblokje/octokit": "*"
@@ -547,6 +532,21 @@ __metadata:
     smee-client: ^1.2.3
     typescript: 5.1.3
     zod: ^3.21.4
+  languageName: unknown
+  linkType: soft
+
+"@ijsblokje/octokit@*, @ijsblokje/octokit@workspace:packages/octokit":
+  version: 0.0.0-use.local
+  resolution: "@ijsblokje/octokit@workspace:packages/octokit"
+  dependencies:
+    "@octokit/auth-app": 5.0.5
+    "@octokit/core": 4.2.4
+    "@octokit/plugin-throttling": ^6.1.0
+    "@types/node": ^18.16.18
+    eslint: ^8.43.0
+    prettier: ^2.8.8
+    redis: ^4.6.7
+    typescript: 5.1.3
   languageName: unknown
   linkType: soft
 
@@ -3813,11 +3813,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"github-bot@workspace:apps/bot":
+"github-bot@workspace:apps/github-bot":
   version: 0.0.0-use.local
-  resolution: "github-bot@workspace:apps/bot"
+  resolution: "github-bot@workspace:apps/github-bot"
   dependencies:
-    "@ijsblokje/probot": "*"
+    "@ijsblokje/octocat": "*"
     "@types/node": ^18.16.18
     dotenv: 16.3.1
     eslint: ^8.43.0
