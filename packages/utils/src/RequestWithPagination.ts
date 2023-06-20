@@ -1,3 +1,5 @@
+import type { Awaitable } from "./types.js";
+
 /**
  * Handle the pagination of an Octokit request
  * @param request The function to call everytime we need to fetch more data
@@ -20,7 +22,7 @@ async function requestWithPagination<R>(request: RequestWithPaginationRequest<R>
 	return data;
 }
 
-export type RequestWithPaginationRequest<R> = (page: number) => Promise<R>;
+export type RequestWithPaginationRequest<R> = (page: number) => Awaitable<R>;
 export type RequestWithPaginationCheck<R> = (response: R) => boolean;
 
 export default requestWithPagination;

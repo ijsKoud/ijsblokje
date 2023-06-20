@@ -17,19 +17,4 @@ export interface Label {
 	color: string;
 }
 
-export interface OctokitAuthOptions {
-	/** The id of the GitHub application */
-	appId: number;
-
-	/** The GitHub private key for signing data */
-	privateKey: string;
-
-	/** The GitHub client id */
-	clientId: string;
-
-	/** The GitHub client secret */
-	clientSecret: string;
-
-	/** The installation id */
-	installationId?: number;
-}
+export type Awaitable<R> = R | Promise<R>;
