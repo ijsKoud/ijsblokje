@@ -5,6 +5,8 @@
 	"license": "MIT",
 	"type": "module",
 	"exports": {
+		"./regex.js": "./dist/src/regex.js",
+		"./env.js": "./dist/src/env.js",
 		"./types.js": "./dist/src/types.js",
 		"./constants.js": "./dist/src/constants.js",
 		"./RequestWithPagination.js": "./dist/src/RequestWithPagination.js"
@@ -16,8 +18,7 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"lru-cache": "^10.0.0",
-		"probot": "12.3.1"
+		"@snowcrystals/icicle": "^2.0.4"
 	},
 	"devDependencies": {
 		"@types/node": "^18.16.18",
