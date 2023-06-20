@@ -8,7 +8,7 @@
 	"types": "./dist/index.d.ts",
 	"scripts": {
 		"build": "tsc --build",
-		"build:watch": "tsc --watch > /dev/null",
+		"build-watch": "tsc --watch > /dev/null",
 		"lint": "TIMING=1 eslint"
 	},
 	"dependencies": {

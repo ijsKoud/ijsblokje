@@ -1,7 +1,6 @@
 import { createAppAuth } from "@octokit/auth-app";
 import { Octokit as CoreOctokit } from "@octokit/core";
 import { throttling } from "@octokit/plugin-throttling";
-import Bottleneck from "bottleneck";
 import type { createClient } from "redis";
 
 const ExtendableOctokit = CoreOctokit.plugin(throttling) as typeof CoreOctokit;
@@ -40,7 +39,6 @@ export class Octokit extends ExtendableOctokit {
 
 	public constructor(options: OctokitOptions) {
 		const userAgent = "@ijsblokje/octokit (https://github.com/ijsKoud/ijsblokje)";
-		const bottleneck = new Bottleneck.RedisConnection({ client: options.redis });
 
 		super({
 			userAgent,
@@ -50,7 +48,6 @@ export class Octokit extends ExtendableOctokit {
 				enabled: true,
 				onRateLimit: Octokit.onRateLimit.bind(Octokit),
 				onSecondaryRateLimit: Octokit.onSecondaryRateLimit.bind(Octokit),
-				connection: bottleneck,
 				id: options.appId.toString()
 			}
 		});
