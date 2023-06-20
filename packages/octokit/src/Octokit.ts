@@ -1,7 +1,6 @@
 import { createAppAuth } from "@octokit/auth-app";
 import { Octokit as CoreOctokit } from "@octokit/core";
 import { throttling } from "@octokit/plugin-throttling";
-import type { createClient } from "redis";
 
 const ExtendableOctokit = CoreOctokit.plugin(throttling) as typeof CoreOctokit;
 
@@ -24,16 +23,13 @@ export class Octokit extends ExtendableOctokit {
 	/** The request user-agent */
 	public readonly userAgent: string;
 
-	private readonly redis: OctokitOptions["redis"];
-
 	public get options() {
 		return {
 			appId: this.appId,
 			privateKey: this.privateKey,
 			clientId: this.clientId,
 			clientSecret: this.clientSecret,
-			installationId: this.installationId,
-			redis: this.redis
+			installationId: this.installationId
 		};
 	}
 
@@ -58,7 +54,6 @@ export class Octokit extends ExtendableOctokit {
 		this.clientId = options.clientId;
 		this.clientSecret = options.clientSecret;
 		this.installationId = options.installationId;
-		this.redis = options.redis;
 	}
 
 	/**
@@ -117,6 +112,4 @@ export interface OctokitOptions {
 
 	/** The installation id */
 	installationId?: number;
-
-	redis: ReturnType<typeof createClient>;
 }
