@@ -5,13 +5,19 @@
 			"dependsOn": ["^build"],
 			"outputs": ["dist/**"]
 		},
+
 		"build:watch": {
 			"dependsOn": ["^build"],
 			"outputs": ["dist/**"],
-			"persistent": true
+
+			"persistent": true,
+			"cache": false
 		},
+
 		"lint": {
 			"outputs": []
-		}
+		},
+
+		"start": { "dependsOn": ["build"], "outputs": [], "persistent": true, "cache": false }
 	}
 }

@@ -15,7 +15,7 @@
 		"build:watch": "turbo build:watch",
 		"lint": "turbo lint",
 		"start:dev": "nodemon ./dist",
-		"start": "node ./dist",
+		"start": "turbo start",
 		"postinstall": "is-ci || husky install"
 	},
 	"devDependencies": {
