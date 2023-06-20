@@ -1,5 +1,10 @@
 import { createAppAuth } from "@octokit/auth-app";
-import { Octokit as ExtendableOctokit } from "@octokit/core";
+import { Octokit as CoreOctokit } from "@octokit/core";
+import { throttling } from "@octokit/plugin-throttling";
+import Bottleneck from "bottleneck";
+import type { createClient } from "redis";
+
+const ExtendableOctokit = CoreOctokit.plugin(throttling);
 
 export class Octokit extends ExtendableOctokit {
 	/** The id of the GitHub application */
@@ -20,19 +25,35 @@ export class Octokit extends ExtendableOctokit {
 	/** The request user-agent */
 	public readonly userAgent: string;
 
+	private readonly redis: OctokitOptions["redis"];
+
 	public get options() {
 		return {
 			appId: this.appId,
 			privateKey: this.privateKey,
 			clientId: this.clientId,
 			clientSecret: this.clientSecret,
-			installationId: this.installationId
+			installationId: this.installationId,
+			redis: this.redis
 		};
 	}
 
 	public constructor(options: OctokitOptions) {
 		const userAgent = "@ijsblokje/octokit (https://github.com/ijsKoud/ijsblokje)";
-		super({ userAgent, auth: options, authStrategy: createAppAuth });
+		const bottleneck = new Bottleneck.RedisConnection({ client: options.redis });
+
+		super({
+			userAgent,
+			auth: options,
+			authStrategy: createAppAuth,
+			throttle: {
+				enabled: true,
+				onRateLimit: Octokit.onRateLimit.bind(Octokit),
+				onSecondaryRateLimit: Octokit.onSecondaryRateLimit.bind(Octokit),
+				connection: bottleneck,
+				id: options.appId.toString()
+			}
+		});
 
 		this.userAgent = userAgent;
 		this.appId = options.appId;
@@ -40,6 +61,7 @@ export class Octokit extends ExtendableOctokit {
 		this.clientId = options.clientId;
 		this.clientSecret = options.clientSecret;
 		this.installationId = options.installationId;
+		this.redis = options.redis;
 	}
 
 	/**
@@ -50,6 +72,36 @@ export class Octokit extends ExtendableOctokit {
 	public new(options?: Partial<OctokitOptions>) {
 		const constructorOptions = options ? Object.assign({}, this.options, options) : this.options;
 		return new Octokit(constructorOptions);
+	}
+
+	/**
+	 * First ratelimit event handler
+	 * @param retryAfter The amount of seconds Octokit has to wait
+	 * @param options The request options
+	 * @param octokit The CoreOctokit instance
+	 * @param retryCount The amount of retries
+	 * @returns
+	 */
+	public static onRateLimit(retryAfter: number, options: Record<string, any>, octokit: CoreOctokit, retryCount: number) {
+		octokit.log.warn(`Request quota exhausted for request ${options.method} ${options.url}`);
+
+		if (retryCount < 1) {
+			// only retries once
+			octokit.log.info(`Retrying after ${retryAfter} seconds!`);
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * The secondary ratelimit handler
+	 * @param retryAfter The amount of seconds Octokit has to wait
+	 * @param options The request options
+	 * @param octokit The Coreoctokit instance
+	 */
+	public static onSecondaryRateLimit(retryAfter: number, options: Record<string, any>, octokit: CoreOctokit) {
+		octokit.log.warn(`SecondaryRateLimit detected for request ${options.method} ${options.url}`);
 	}
 }
 
@@ -68,4 +120,6 @@ export interface OctokitOptions {
 
 	/** The installation id */
 	installationId?: number;
+
+	redis: ReturnType<typeof createClient>;
 }
