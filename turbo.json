@@ -7,7 +7,7 @@
 		},
 
 		"build:watch": {
-			"dependsOn": ["^build"],
+			"dependsOn": [],
 			"outputs": ["dist/**"],
 
 			"persistent": true,
