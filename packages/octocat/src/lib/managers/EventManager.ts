@@ -16,7 +16,7 @@ export class EventManager {
 	public readonly octokit: Octokit;
 
 	/** A collection of all the loaded events */
-	public events = new Collection<string, GitHubEvent<any>>();
+	public events = new Collection<string, GitHubEvent>();
 
 	/** The base directory where all event handlers are located */
 	private readonly directory: string;
@@ -57,7 +57,7 @@ export class EventManager {
 		}
 	}
 
-	private handleEvent(event: any, handler: GitHubEvent<any>) {
+	private handleEvent(event: any, handler: GitHubEvent) {
 		const installationId = event.payload.installation.id;
 		const installation = this.octocat.installations.cache.get(installationId);
 		if (!installation) return;

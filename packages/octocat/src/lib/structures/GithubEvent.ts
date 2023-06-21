@@ -3,14 +3,14 @@ import type { Awaitable } from "@ijsblokje/utils/types.js";
 import type { Octocat } from "../Octocat.js";
 import type { GitHubInstallation } from "./GitHubInstallation.js";
 
-export abstract class GitHubEvent<Event extends EmitterWebhookEventName> {
+export abstract class GitHubEvent {
 	/** The octocat instance */
 	public octocat!: Octocat;
 
 	/** The event name that this instance is handling */
 	public readonly event: EmitterWebhookEventName;
 
-	public constructor(options: GitHubEventOptions<Event>) {
+	public constructor(options: GitHubEventOptions) {
 		this.event = options.event;
 	}
 
@@ -19,7 +19,7 @@ export abstract class GitHubEvent<Event extends EmitterWebhookEventName> {
 	 * @param event The event data
 	 * @param installation The installation that triggered this event
 	 */
-	public run(event: EmitterWebhookEvent<Event>, installation: GitHubInstallation): Awaitable<void> {
+	public run(event: EmitterWebhookEvent, installation: GitHubInstallation): Awaitable<void> {
 		console.error(`GitHubEvent#run() is not overwritten!\nInstallation: ${installation.name}\nEvent: ${this.event}`);
 	}
 
@@ -36,6 +36,6 @@ export abstract class GitHubEvent<Event extends EmitterWebhookEventName> {
 	}
 }
 
-interface GitHubEventOptions<Event extends EmitterWebhookEventName> {
-	event: Event;
+export interface GitHubEventOptions {
+	event: EmitterWebhookEventName;
 }
