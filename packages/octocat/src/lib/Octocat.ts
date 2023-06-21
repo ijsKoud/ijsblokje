@@ -2,15 +2,20 @@ import { Octokit } from "@ijsblokje/octokit";
 import { InstallationManager } from "./managers/InstallationManager.js";
 import { createClient } from "redis";
 import { Server } from "@ijsblokje/server";
+import { EventManager } from "./managers/EventManager.js";
 
 export class Octocat {
 	public readonly installations: InstallationManager;
+	public readonly events: EventManager;
 
 	/** The octokit instance that handles all GitHub requests */
 	public readonly octokit: Octokit;
 
 	/** The redis instance */
 	public readonly redis: ReturnType<typeof createClient>;
+
+	/** The server handling the incoming GitHub event data */
+	public server!: Server;
 
 	public constructor(options: OctocatOptions) {
 		this.redis = createClient({ url: options.redisUrl });
@@ -22,6 +27,7 @@ export class Octocat {
 		});
 
 		this.installations = new InstallationManager(this, options.allowedInstallations);
+		this.events = new EventManager(this, options.eventsDirectory);
 	}
 
 	/**
@@ -31,9 +37,11 @@ export class Octocat {
 	 * @param secret The webhook secret
 	 */
 	public async start(urlOrPort: string | number, secret: string): Promise<void> {
-		await this.installations.loadAll();
 		const server = new Server({ secret, urlOrPort });
-		server;
+		this.server = server;
+
+		await this.installations.loadAll();
+		await this.events.loadAll();
 	}
 }
 
@@ -52,6 +60,9 @@ export interface OctocatOptions {
 
 	/** The Redis database url */
 	redisUrl: string;
+
+	/** The base directory where all the event handlers are located */
+	eventsDirectory: string;
 
 	/** A list of account names which are allowed to be loaded */
 	allowedInstallations?: string[];
