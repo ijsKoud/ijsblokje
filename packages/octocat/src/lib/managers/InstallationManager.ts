@@ -7,21 +7,43 @@ import { LABEL_CONFIG_LOCATION, README_TEMPLATE_LOCATION } from "@ijsblokje/util
 import type { Endpoints } from "@octokit/types";
 import type { Octokit } from "@ijsblokje/octokit";
 import { request } from "@octokit/request";
+import type { Octocat } from "../Octocat.js";
 
 export class InstallationManager {
 	/** The octokit instance that handles all GitHub requests */
 	public readonly octokit: Octokit;
 
+	/** The Octocat instance that initialised this manager */
+	public readonly octocat: Octocat;
+
 	/** Collection containing cached github installations */
 	public readonly cache = new Collection<string, GitHubInstallation>();
 
-	public constructor(octokit: Octokit) {
-		this.octokit = octokit;
+	/** An array of accounts which are allowed to be loaded */
+	public readonly allowedInstallations?: string[];
+
+	public constructor(octocat: Octocat, allowedInstallations?: string[]) {
+		this.octocat = octocat;
+		this.octokit = octocat.octokit;
+		this.allowedInstallations = allowedInstallations;
 	}
 
+	/**
+	 * Loads all the GitHub app installations
+	 */
 	public async loadAll() {
-		const installations = await this.getInstallations();
+		let installations = await this.getInstallations();
 		if (!installations) return;
+		if (this.allowedInstallations) {
+			const filterFn = (installation: ListInstallationsItem) => {
+				if (!installation.account) return false;
+				if (!("login" in installation.account)) return false;
+
+				return this.allowedInstallations!.includes(installation.account.login);
+			};
+
+			installations = installations.filter(filterFn.bind(this));
+		}
 
 		await Promise.all(installations.map(this.loadInstallation.bind(this)));
 	}

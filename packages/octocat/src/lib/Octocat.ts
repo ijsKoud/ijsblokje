@@ -21,7 +21,7 @@ export class Octocat {
 			clientSecret: options.clientSecret
 		});
 
-		this.installations = new InstallationManager(this.octokit);
+		this.installations = new InstallationManager(this, options.allowedInstallations);
 	}
 
 	/**
@@ -52,4 +52,7 @@ export interface OctocatOptions {
 
 	/** The Redis database url */
 	redisUrl: string;
+
+	/** A list of account names which are allowed to be loaded */
+	allowedInstallations?: string[];
 }
