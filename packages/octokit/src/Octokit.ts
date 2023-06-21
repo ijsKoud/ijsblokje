@@ -24,18 +24,19 @@ export class Octokit extends ExtendableOctokit {
 	public readonly userAgent: string;
 
 	public get options() {
-		return {
+		const options: OctokitOptions = {
 			appId: this.appId,
 			privateKey: this.privateKey,
 			clientId: this.clientId,
-			clientSecret: this.clientSecret,
-			installationId: this.installationId
+			clientSecret: this.clientSecret
 		};
+
+		if (this.installationId) options.installationId = this.installationId;
+		return options;
 	}
 
 	public constructor(options: OctokitOptions) {
 		const userAgent = "@ijsblokje/octokit (https://github.com/ijsKoud/ijsblokje)";
-
 		super({
 			userAgent,
 			auth: options,
