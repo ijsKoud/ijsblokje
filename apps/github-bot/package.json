@@ -8,11 +8,12 @@
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
-		"start": "node .",
+		"start": "NODE_ENV=production node .",
 		"lint": "TIMING=1 eslint"
 	},
 	"dependencies": {
 		"@ijsblokje/octocat": "*",
+		"@ijsblokje/utils": "*",
 		"dotenv": "16.3.1"
 	},
 	"devDependencies": {
