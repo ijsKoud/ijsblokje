@@ -14,10 +14,10 @@
 	"dependencies": {
 		"@discordjs/collection": "^1.5.1",
 		"@ijsblokje/octokit": "*",
+		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
 		"@octokit/request": "7.0.0",
 		"redis": "^4.6.7",
-		"smee-client": "^1.2.3",
 		"zod": "^3.21.4"
 	},
 	"devDependencies": {

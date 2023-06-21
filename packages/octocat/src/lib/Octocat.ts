@@ -1,7 +1,7 @@
 import { Octokit, type OctokitOptions } from "@ijsblokje/octokit";
 import { InstallationManager } from "./managers/InstallationManager.js";
 import { createClient } from "redis";
-import SmeeClient from "smee-client";
+import { Server } from "@ijsblokje/server";
 
 export class Octocat {
 	public readonly installations: InstallationManager;
@@ -25,18 +25,16 @@ export class Octocat {
 		this.installations = new InstallationManager(this.octokit);
 	}
 
-	public async start(port: number, smeeUrl?: string): Promise<void> {
+	/**
+	 * Starts the GitHub bot and opens the webhook connection
+	 * @param urlOrPort The url or port to listen to
+	 * @example urlOrPort: "https://smee.io/xxxxxxx"
+	 * @param secret The webhook secret
+	 */
+	public async start(urlOrPort: string | number, secret: string): Promise<void> {
 		await this.installations.loadAll();
-		// TODO: start express server
-		if (smeeUrl) {
-			const smee = new SmeeClient({
-				target: `http://localhost:${port}/events`,
-				source: smeeUrl,
-				logger: console
-			});
-
-			smee.start();
-		}
+		const server = new Server({ secret, urlOrPort });
+		server;
 	}
 }
 
