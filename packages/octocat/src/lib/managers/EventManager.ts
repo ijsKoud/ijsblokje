@@ -60,7 +60,6 @@ export class EventManager {
 	private handleEvent(event: any, handler: GitHubEvent) {
 		const installationId = event.payload.installation.id;
 		const installation = this.octocat.installations.cache.get(installationId);
-		if (!installation) return;
 
 		void handler.run(event, installation);
 	}

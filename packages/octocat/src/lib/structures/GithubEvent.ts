@@ -19,8 +19,8 @@ export abstract class GitHubEvent {
 	 * @param event The event data
 	 * @param installation The installation that triggered this event
 	 */
-	public run(event: EmitterWebhookEvent, installation: GitHubInstallation): Awaitable<void> {
-		console.error(`GitHubEvent#run() is not overwritten!\nInstallation: ${installation.name}\nEvent: ${this.event}`);
+	public run(event: EmitterWebhookEvent, installation?: GitHubInstallation): Awaitable<void> {
+		console.error(`GitHubEvent#run() is not overwritten!\nInstallation: ${installation?.name ?? "unknown"}\nEvent: ${this.event}`);
 	}
 
 	/**
