@@ -1,4 +1,4 @@
-import { Octokit, type OctokitOptions } from "@ijsblokje/octokit";
+import { Octokit } from "@ijsblokje/octokit";
 import { InstallationManager } from "./managers/InstallationManager.js";
 import { createClient } from "redis";
 import { Server } from "@ijsblokje/server";
@@ -10,7 +10,7 @@ export class Octocat {
 	public readonly octokit: Octokit;
 
 	/** The redis instance */
-	public readonly redis: OctokitOptions["redis"];
+	public readonly redis: ReturnType<typeof createClient>;
 
 	public constructor(options: OctocatOptions) {
 		this.redis = createClient({ url: options.redisUrl });
@@ -18,8 +18,7 @@ export class Octocat {
 			appId: options.appId,
 			privateKey: options.privateKey,
 			clientId: options.clientId,
-			clientSecret: options.clientSecret,
-			redis: this.redis
+			clientSecret: options.clientSecret
 		});
 
 		this.installations = new InstallationManager(this.octokit);
