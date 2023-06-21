@@ -22,10 +22,10 @@ describe("Octokit", () => {
 		expect(octokit.options).toStrictEqual(baseOptions);
 
 		expect(octokit.userAgent).toBe("@ijsblokje/octokit (https://github.com/ijsKoud/ijsblokje)");
-		expect(typeof octokit.request === "function").toBe(true);
-		expect(typeof octokit.hook === "function").toBe(true);
-		expect(typeof octokit.graphql === "function").toBe(true);
-		expect(typeof octokit.log === "object").toBe(true);
+		expect(octokit.request).toBeTypeOf("function");
+		expect(octokit.hook).toBeTypeOf("function");
+		expect(octokit.graphql).toBeTypeOf("function");
+		expect(octokit.log).toBeTypeOf("object");
 	});
 
 	test("With installationId", () => {

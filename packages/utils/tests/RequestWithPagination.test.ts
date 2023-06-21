@@ -2,7 +2,7 @@ import RequestWithPagination from "../src/RequestWithPagination.js";
 
 describe("RequestWithPagination", () => {
 	test("RequestWithPagination should be a function", () => {
-		expect(typeof RequestWithPagination === "function").toBe(true);
+		expect(RequestWithPagination).toBeTypeOf("function");
 	});
 
 	const mockdata = [
