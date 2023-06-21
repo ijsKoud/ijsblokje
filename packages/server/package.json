@@ -9,7 +9,8 @@
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
-		"lint": "TIMING=1 eslint"
+		"lint": "TIMING=1 eslint",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"@octokit/webhooks": "^12.0.1",
