@@ -29,6 +29,8 @@ export class Server extends Webhooks {
 			signature: getSingleHeader(req.headers["x-hub-signature"]),
 			payload: req.body
 		}).catch(console.error);
+
+		res.sendStatus(204);
 	}
 
 	private async onEventSourceMessage(event: MessageEvent<any>) {
