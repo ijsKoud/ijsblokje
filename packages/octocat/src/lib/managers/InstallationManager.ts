@@ -17,7 +17,7 @@ export class InstallationManager {
 	public readonly octocat: Octocat;
 
 	/** Collection containing cached github installations */
-	public readonly cache = new Collection<string, GitHubInstallation>();
+	public readonly cache = new Collection<number, GitHubInstallation>();
 
 	/** An array of accounts which are allowed to be loaded */
 	public readonly allowedInstallations?: string[];
@@ -65,7 +65,7 @@ export class InstallationManager {
 		if (!repositories) return;
 
 		const instance = new GitHubInstallation(installation, { manager: this, readme, labels });
-		this.cache.set(instance.name, instance);
+		this.cache.set(instance.installationId, instance);
 
 		await request("DELETE /installation/token", { headers: { authorization: `Bearer ${token.token}` } }).catch(() => void 0);
 	}
