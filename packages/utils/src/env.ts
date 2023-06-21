@@ -17,7 +17,8 @@ const envSchema = z.object({
 	GITHUB_CLIENT_SECRET: z.string(),
 
 	PORT: z.string().max(4),
-	NODE_ENV: z.string(),
+	SMEE_URL: z.string().url().optional(),
+	NODE_ENV: z.literal("production").or(z.literal("development")),
 
 	REDIS_DATABASE_URL: z.string().url()
 });
