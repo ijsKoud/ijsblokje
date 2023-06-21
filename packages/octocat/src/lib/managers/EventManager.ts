@@ -60,8 +60,9 @@ export class EventManager {
 	private handleEvent(event: any, handler: GitHubEvent) {
 		const installationId = event.payload.installation.id;
 		const installation = this.octocat.installations.cache.get(installationId);
+		const octokit = this.octokit.new({ installationId });
 
-		void handler.run(event, installation);
+		void handler.run(event, octokit, installation);
 	}
 
 	/**

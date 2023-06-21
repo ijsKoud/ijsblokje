@@ -2,6 +2,7 @@ import type { EmitterWebhookEvent, EmitterWebhookEventName } from "@ijsblokje/se
 import type { Awaitable } from "@ijsblokje/utils/types.js";
 import type { Octocat } from "../Octocat.js";
 import type { GitHubInstallation } from "./GitHubInstallation.js";
+import type { Octokit } from "@ijsblokje/octokit";
 
 export abstract class GitHubEvent {
 	/** The octocat instance */
@@ -17,9 +18,10 @@ export abstract class GitHubEvent {
 	/**
 	 * The function which handles the GitHub event
 	 * @param event The event data
+	 * @param octokit The octokit instance
 	 * @param installation The installation that triggered this event
 	 */
-	public run(event: EmitterWebhookEvent, installation?: GitHubInstallation): Awaitable<void> {
+	public run(event: EmitterWebhookEvent, octokit: Octokit, installation?: GitHubInstallation): Awaitable<void> {
 		console.error(`GitHubEvent#run() is not overwritten!\nInstallation: ${installation?.name ?? "unknown"}\nEvent: ${this.event}`);
 	}
 
