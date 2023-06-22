@@ -544,6 +544,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ijsblokje/release@workspace:packages/release":
+  version: 0.0.0-use.local
+  resolution: "@ijsblokje/release@workspace:packages/release"
+  dependencies:
+    "@ijsblokje/octokit": "*"
+    "@ijsblokje/utils": "*"
+    "@octokit/types": 10.0.0
+    "@types/node": ^18.16.18
+    "@types/semver": 7.5.0
+    eslint: ^8.43.0
+    prettier: ^2.8.8
+    semver: 7.5.2
+    typescript: 5.1.3
+    vitest: ^0.32.2
+  languageName: unknown
+  linkType: soft
+
 "@ijsblokje/server@*, @ijsblokje/server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@ijsblokje/server@workspace:packages/server"
@@ -856,7 +873,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^10.0.0":
+"@octokit/types@npm:10.0.0, @octokit/types@npm:^10.0.0":
   version: 10.0.0
   resolution: "@octokit/types@npm:10.0.0"
   dependencies:
@@ -1191,6 +1208,13 @@ __metadata:
   version: 1.2.4
   resolution: "@types/range-parser@npm:1.2.4"
   checksum: b7c0dfd5080a989d6c8bb0b6750fc0933d9acabeb476da6fe71d8bdf1ab65e37c136169d84148034802f48378ab94e3c37bb4ef7656b2bec2cb9c0f8d4146a95
+  languageName: node
+  linkType: hard
+
+"@types/semver@npm:7.5.0":
+  version: 7.5.0
+  resolution: "@types/semver@npm:7.5.0"
+  checksum: 0a64b9b9c7424d9a467658b18dd70d1d781c2d6f033096a6e05762d20ebbad23c1b69b0083b0484722aabf35640b78ccc3de26368bcae1129c87e9df028a22e2
   languageName: node
   linkType: hard
 
@@ -5152,7 +5176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.8":
+"semver@npm:7.5.2, semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.8":
   version: 7.5.2
   resolution: "semver@npm:7.5.2"
   dependencies:
