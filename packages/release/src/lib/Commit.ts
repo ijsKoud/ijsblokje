@@ -3,6 +3,10 @@ import type { Endpoints } from "@octokit/types";
 export class Commit {
 	public constructor(public data: GitHubCommit) {}
 
+	/**
+	 * Parses the commit message
+	 * @returns
+	 */
 	public parse(): CommitParserResult | null {
 		const commitRegex =
 			/^(?<type>build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|types|¯\\_\(ツ\)_\/¯)(?<scope>\(\w+\)?((?=:\s)|(?=!:\s)))?(?<breaking>!)?(?<subject>:\s.*)?|^(?<merge>Merge \w+)/gm;
@@ -23,12 +27,20 @@ export class Commit {
 			merge: Boolean(merge)
 		};
 	}
+
+	public get sha() {
+		const name = this.data.sha.slice(0, 7);
+		const url = this.data.html_url;
+
+		return { name, url };
+	}
 }
 
 export interface CommitParserResult {
 	type: CommitType;
-	scope: string;
+	scope?: string;
 	message: string;
+
 	breaking: boolean;
 	merge: boolean;
 }
