@@ -1,16 +1,11 @@
-import type { Octokit } from "@ijsblokje/octokit";
 import type { Commit, CommitType } from "./Commit.js";
 
 export class Changelog {
 	/** The list of commits for this changelog */
 	public readonly commits: Commit[];
 
-	/** The octokit instance with an authenticated installation token */
-	public readonly octokit: Octokit;
-
-	public constructor(commits: Commit[], octokit: Octokit) {
+	public constructor(commits: Commit[]) {
 		this.commits = commits;
-		this.octokit = octokit;
 	}
 
 	/**
@@ -26,16 +21,21 @@ export class Changelog {
 			if (!parsed) continue;
 
 			const changelogMessage = parsed.scope ? `**${parsed.scope}**: ${parsed.message}` : parsed.message;
+			const message = parsed.breaking ? `${changelogMessage} **💥 breaking change**` : changelogMessage;
 			const commitSha = `(${commit.sha.name})[${commit.sha.url}]`;
 
 			categories[parsed.type] ??= [];
-			categories[parsed.type]!.push(`- ${changelogMessage} (${commitSha})`);
+			categories[parsed.type]!.push(`- ${message} (${commitSha})`);
 		}
 
 		const categoryKeys = Object.keys(categories) as CommitType[];
-		const categoryContent = categoryKeys.map((key) => `## ${key}\n${categories[key]!.join("\n")}`).join("\n\n");
+		const categoryContent = categoryKeys
+			.sort((a, b) => ChangelogPosition[a] - ChangelogPosition[b])
+			.map((key) => `## ${ChangelogScope[key]}\n${categories[key]!.join("\n")}`)
+			.join("\n\n");
 
-		return `# Release v${version} 🎉\n${additionalMessage}\n${categoryContent}`;
+		const message = Boolean(additionalMessage) ? `${additionalMessage}\n` : "";
+		return [`# Release v${version} 🎉`, message, categoryContent].join("\n");
 	}
 }
 
@@ -52,4 +52,22 @@ export enum ChangelogScope {
 	style = "💎 Styles",
 	test = "🧪 Tests",
 	types = "🚨 Typings"
+}
+
+export enum ChangelogPosition {
+	feat,
+	fix,
+	revert,
+
+	refactor,
+	perf,
+	types,
+
+	chore,
+	docs,
+	build,
+
+	style,
+	test,
+	ci
 }
