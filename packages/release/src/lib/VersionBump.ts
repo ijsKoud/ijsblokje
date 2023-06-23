@@ -34,6 +34,19 @@ export class VersionBump {
 
 		return "patch";
 	}
+
+	/**
+	 * Bumps the package json version
+	 * @param version The version to go to
+	 * @param packageJson The package json to bump
+	 * @returns
+	 */
+	public static bumpJavaScript(version: string, packageJson: string) {
+		const json = JSON.parse(packageJson);
+		if ("version" in json && typeof json.version === "string") json.version = version;
+
+		return JSON.stringify(json);
+	}
 }
 
 export type VersionBumpType = "patch" | "minor" | "major";

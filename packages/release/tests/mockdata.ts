@@ -313,3 +313,14 @@ export const featBreakingMockCommit = {
 		}
 	]
 };
+
+export const mockPackageJson = {
+	name: "@ijsblokje/mock-data",
+	version: "0.0.0",
+	author: "ijsKoud <github@ijskoud.dev>",
+	license: "MIT",
+	type: "module",
+	main: "dist/src/index.js",
+	types: "dist/src/index.d.ts",
+	packageManager: "yarn@3.6.0"
+};

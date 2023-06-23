@@ -1,5 +1,5 @@
 import { VersionBump, Commit } from "../src/index.js";
-import { fixScopeMockCommit, fixMockCommit, featBreakingMockCommit, featScopeMockCommit } from "./mockdata.js";
+import { fixScopeMockCommit, fixMockCommit, featBreakingMockCommit, featScopeMockCommit, mockPackageJson } from "./mockdata.js";
 
 /** Checks whether the input is a class or not */
 function isClass(input: unknown) {
@@ -32,5 +32,10 @@ describe("VersionBump", () => {
 	test("parse: major", () => {
 		const newVersion = VersionBump.getNewVersion(commitsMajor, "1.0.0");
 		expect(newVersion).toBe("2.0.0");
+	});
+
+	test("bumpJavaScript", () => {
+		const bumpedPkgJson = VersionBump.bumpJavaScript("1.0.0", JSON.stringify(mockPackageJson));
+		expect(bumpedPkgJson).toBe(JSON.stringify(mockPackageJson).replace("0.0.0", "1.0.0"));
 	});
 });
