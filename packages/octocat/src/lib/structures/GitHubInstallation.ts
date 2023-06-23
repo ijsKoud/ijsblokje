@@ -3,6 +3,7 @@ import { Collection } from "@discordjs/collection";
 import type { Label } from "@ijsblokje/utils/types.js";
 import type { Octokit } from "@ijsblokje/octokit";
 import { z } from "zod";
+import { ReadmeSync, type ReadmeConfig } from "./ReadmeSync.js";
 
 export class GitHubInstallation {
 	/** The name of the account associated with this installation */
@@ -14,14 +15,17 @@ export class GitHubInstallation {
 	/** Whether or not this installation is from a user or not */
 	public readonly isUser: boolean;
 
-	/** The readme template from the readme repository of this account */
-	public readme: string | null;
-
 	/** The labels config for specific repositories */
 	public labels = new Collection<string, Label[]>();
 
 	/** The default labels that apply to all repositories */
 	public defaultLabels: Label[] = [];
+
+	/** The readme sync instance */
+	public readme: ReadmeSync | null;
+
+	/** A map of readme configurations */
+	public configs: Map<string, ReadmeConfig | null>;
 
 	/** The installation Manager */
 	public readonly manager: InstallationManager;
@@ -29,7 +33,7 @@ export class GitHubInstallation {
 	/** The installation Manager */
 	public readonly octokit: Octokit;
 
-	public constructor(data: ListInstallationsItem, context: GitHubInstallationContext) {
+	public constructor(data: ListInstallationsItem, context: GitHubInstallationContext, configs: GitHubInstallation["configs"]) {
 		if (!data.account || !("login" in data.account)) throw new Error("INVALID_INSTALLATION_DATA");
 
 		this.name = data.account.login;
@@ -38,7 +42,9 @@ export class GitHubInstallation {
 
 		this.octokit = context.manager.octokit.new({ installationId: data.id });
 		this.manager = context.manager;
-		this.readme = context.readme ? Buffer.from(context.readme, "base64").toString() : null;
+		this.readme = context.readme ? new ReadmeSync(Buffer.from(context.readme, "base64").toString()) : null;
+
+		this.configs = configs;
 
 		if (context.labels) this._parseLabels(Buffer.from(context.labels, "base64").toString());
 	}

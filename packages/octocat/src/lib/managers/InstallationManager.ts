@@ -3,11 +3,12 @@ import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
 import type { components } from "@octokit/openapi-types";
 import { GitHubInstallation } from "../structures/GitHubInstallation.js";
 import { Collection } from "@discordjs/collection";
-import { LABEL_CONFIG_LOCATION, README_TEMPLATE_LOCATION } from "@ijsblokje/utils/constants.js";
+import { LABEL_CONFIG_LOCATION, README_CONFIG_LOCATION, README_TEMPLATE_LOCATION } from "@ijsblokje/utils/constants.js";
 import type { Endpoints } from "@octokit/types";
 import type { Octokit } from "@ijsblokje/octokit";
 import { request } from "@octokit/request";
 import type { Octocat } from "../Octocat.js";
+import { ReadmeSync, type ReadmeConfig } from "../structures/ReadmeSync.js";
 
 export class InstallationManager {
 	/** The octokit instance that handles all GitHub requests */
@@ -64,10 +65,38 @@ export class InstallationManager {
 		const repositories = await this.getRepositories(token.token);
 		if (!repositories) return;
 
-		const instance = new GitHubInstallation(installation, { manager: this, readme, labels });
+		const configMap = new Map<string, ReadmeConfig | null>();
+		for await (const repository of repositories) {
+			const config = await this.getRepositoryConfig(token.token, repository.owner.login, repository.name);
+			configMap.set(repository.name, config ? ReadmeSync.getConfig(repository as any, config) : null);
+		}
+
+		const instance = new GitHubInstallation(installation, { manager: this, readme, labels }, configMap);
 		this.cache.set(instance.installationId, instance);
 
 		await request("DELETE /installation/token", { headers: { authorization: `Bearer ${token.token}` } }).catch(() => void 0);
+	}
+
+	/**
+	 * Fetches the list of repositories of an installation
+	 * @param token The installation access token
+	 * @param owner The repository owner
+	 * @param repo The repository name
+	 * @returns
+	 */
+	public async getRepositoryConfig(token: string, owner: string, repo: string) {
+		try {
+			const data = await request("GET /repos/{owner}/{repo}/contents/{path}", {
+				headers: { authorization: `Bearer ${token}` },
+				path: README_CONFIG_LOCATION,
+				owner,
+				repo
+			});
+
+			return "content" in data.data ? Buffer.from(data.data.content, "base64").toString() : null;
+		} catch (error) {
+			return null;
+		}
 	}
 
 	/**

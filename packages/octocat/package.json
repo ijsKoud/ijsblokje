@@ -19,12 +19,15 @@
 		"@octokit/request": "7.0.0",
 		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.2.7",
+		"lodash": "^4.17.21",
 		"redis": "^4.6.7",
+		"smol-toml": "^1.1.0",
 		"zod": "^3.21.4"
 	},
 	"devDependencies": {
 		"@octokit/openapi-types": "^18.0.0",
 		"@octokit/types": "^10.0.0",
+		"@types/lodash": "^4.14.195",
 		"@types/node": "^18.16.18",
 		"eslint": "^8.43.0",
 		"prettier": "^2.8.8",
