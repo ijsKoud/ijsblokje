@@ -36,11 +36,11 @@ export class ReadmeSync {
 		};
 
 		for await (const key of Object.keys(config) as (keyof typeof config)[]) {
-			const variables: Record<string, string> = config[key];
+			const variables: Record<string, string | string[]> = config[key];
 
 			for await (const variableKey of Object.keys(variables)) {
 				const variable = variables[variableKey];
-				if (key === "variables" && variable.endsWith(".md")) {
+				if (key === "variables" && typeof variable === "string" && variable.endsWith(".md")) {
 					const data = await getFile(variable);
 					if (data) {
 						readme = readme.replaceAll(`{${variableKey}}`, variable);
@@ -48,7 +48,8 @@ export class ReadmeSync {
 					}
 				}
 
-				readme = readme.replaceAll(`{${variableKey}}`, variable);
+				const cleanedVariable = typeof variable === "string" ? variable : variable.join("\n");
+				readme = readme.replaceAll(`{${variableKey}}`, cleanedVariable);
 			}
 		}
 
@@ -86,7 +87,7 @@ export class ReadmeSync {
 					icon_width: z.string(),
 					version: z.string()
 				}),
-				variables: z.record(z.string(), z.string())
+				variables: z.record(z.string(), z.string().or(z.array(z.string()))).default({})
 			});
 
 			const config = zodSchema.parse(mergedConfig);
