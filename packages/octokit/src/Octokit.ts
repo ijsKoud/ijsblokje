@@ -1,6 +1,7 @@
 import { createAppAuth } from "@octokit/auth-app";
 import { Octokit as CoreOctokit } from "@octokit/core";
 import { throttling } from "@octokit/plugin-throttling";
+import type { Logger } from "@snowcrystals/icicle";
 
 const ExtendableOctokit = CoreOctokit.plugin(throttling) as typeof CoreOctokit;
 
@@ -23,12 +24,16 @@ export class Octokit extends ExtendableOctokit {
 	/** The request user-agent */
 	public readonly userAgent: string;
 
+	/** The @snowcrystals/icicle logger instance */
+	public readonly logger: Logger;
+
 	public get options() {
 		const options: OctokitOptions = {
 			appId: this.appId,
 			privateKey: this.privateKey,
 			clientId: this.clientId,
-			clientSecret: this.clientSecret
+			clientSecret: this.clientSecret,
+			logger: this.logger
 		};
 
 		if (this.installationId) options.installationId = this.installationId;
@@ -41,6 +46,7 @@ export class Octokit extends ExtendableOctokit {
 			userAgent,
 			auth: options,
 			authStrategy: createAppAuth,
+			log: options.logger,
 			throttle: {
 				enabled: true,
 				onRateLimit: Octokit.onRateLimit.bind(Octokit),
@@ -55,6 +61,7 @@ export class Octokit extends ExtendableOctokit {
 		this.clientId = options.clientId;
 		this.clientSecret = options.clientSecret;
 		this.installationId = options.installationId;
+		this.logger = options.logger;
 	}
 
 	/**
@@ -113,4 +120,7 @@ export interface OctokitOptions {
 
 	/** The installation id */
 	installationId?: number;
+
+	/** The @snowcrystals/icicle logger instance */
+	logger: Logger;
 }

@@ -519,6 +519,7 @@ __metadata:
     "@octokit/openapi-types": ^18.0.0
     "@octokit/request": 7.0.0
     "@octokit/types": ^10.0.0
+    "@snowcrystals/icicle": 2.0.4
     "@types/node": ^18.16.18
     eslint: ^8.43.0
     glob: ^10.2.7
@@ -536,6 +537,7 @@ __metadata:
     "@octokit/auth-app": 5.0.5
     "@octokit/core": 4.2.4
     "@octokit/plugin-throttling": ^6.1.0
+    "@snowcrystals/icicle": ^2.0.4
     "@types/node": ^18.16.18
     eslint: ^8.43.0
     prettier: ^2.8.8
@@ -1021,7 +1023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/icicle@npm:^2.0.4":
+"@snowcrystals/icicle@npm:2.0.4, @snowcrystals/icicle@npm:^2.0.4":
   version: 2.0.4
   resolution: "@snowcrystals/icicle@npm:2.0.4"
   dependencies:

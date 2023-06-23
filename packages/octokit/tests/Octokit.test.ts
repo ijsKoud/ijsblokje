@@ -1,3 +1,4 @@
+import { Logger } from "@snowcrystals/icicle";
 import { Octokit, type OctokitOptions } from "../src/index.js";
 
 /** Checks whether the input is a class or not */
@@ -14,7 +15,8 @@ describe("Octokit", () => {
 		appId: 15483,
 		clientId: "",
 		clientSecret: "",
-		privateKey: "-----BEGIN RSA PRIVATE KEY-----\ntest test test\n-----END RSA PRIVATE KEY-----"
+		privateKey: "-----BEGIN RSA PRIVATE KEY-----\ntest test test\n-----END RSA PRIVATE KEY-----",
+		logger: new Logger({ name: "Octokit" })
 	};
 
 	test("Without installationId", () => {

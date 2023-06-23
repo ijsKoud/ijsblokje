@@ -3,6 +3,7 @@ import { InstallationManager } from "./managers/InstallationManager.js";
 import { createClient } from "redis";
 import { Server } from "@ijsblokje/server";
 import { EventManager } from "./managers/EventManager.js";
+import { Logger } from "@snowcrystals/icicle";
 
 export class Octocat {
 	public readonly installations: InstallationManager;
@@ -23,7 +24,8 @@ export class Octocat {
 			appId: options.appId,
 			privateKey: options.privateKey,
 			clientId: options.clientId,
-			clientSecret: options.clientSecret
+			clientSecret: options.clientSecret,
+			logger: new Logger({ name: "Octokit" })
 		});
 
 		this.installations = new InstallationManager(this, options.allowedInstallations);

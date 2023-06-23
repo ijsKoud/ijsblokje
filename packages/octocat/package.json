@@ -17,6 +17,7 @@
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
 		"@octokit/request": "7.0.0",
+		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.2.7",
 		"redis": "^4.6.7",
 		"zod": "^3.21.4"
