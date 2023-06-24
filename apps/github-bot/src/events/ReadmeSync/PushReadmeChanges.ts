@@ -1,14 +1,26 @@
-import type { GitHubInstallation } from "@ijsblokje/octocat";
-import type { ReadmeConfig } from "@ijsblokje/octocat/dist/lib/structures/ReadmeSync.js";
+import type { GitHubInstallation, ReadmeConfig } from "@ijsblokje/octocat";
 import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
 
-async function pushReadmeChanges(event: EmitterWebhookEvent<"push">, config: ReadmeConfig, octokit: Octokit, installation: GitHubInstallation) {
+/**
+ * Generates and pushes the readme changes
+ * @param event The push or repository event
+ * @param config The readme config
+ * @param octokit The authenticated octokit
+ * @param installation The GitHub installation
+ * @returns
+ */
+async function pushReadmeChanges(
+	event: EmitterWebhookEvent<"push" | "repository">,
+	config: ReadmeConfig,
+	octokit: Octokit,
+	installation: GitHubInstallation
+) {
 	if (!installation.readme) return;
 
 	const repo = event.payload.repository.name;
 	const owner = event.payload.repository.owner.login;
-	const refId = event.payload.ref.replace("refs/", "");
+	const refId = "ref" in event.payload ? event.payload.ref.replace("refs/", "") : "heads/main";
 
 	try {
 		const content = await installation.readme.generate(config, octokit, event.payload.repository.name);
