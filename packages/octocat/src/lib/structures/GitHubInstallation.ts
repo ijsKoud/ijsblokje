@@ -46,10 +46,14 @@ export class GitHubInstallation {
 
 		this.configs = configs;
 
-		if (context.labels) this._parseLabels(Buffer.from(context.labels, "base64").toString());
+		if (context.labels) this.updateLabels(Buffer.from(context.labels, "base64").toString());
 	}
 
-	private _parseLabels(labels: string) {
+	/**
+	 * Updates the labels list and collection
+	 * @param labels The label config
+	 */
+	public updateLabels(labels: string) {
 		try {
 			const label = z.object({
 				name: z.string().max(100),

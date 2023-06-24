@@ -78,7 +78,7 @@ export class InstallationManager {
 	}
 
 	/**
-	 * Fetches the list of repositories of an installation
+	 * Fetches the repository readme config
 	 * @param token The installation access token
 	 * @param owner The repository owner
 	 * @param repo The repository name
