@@ -1,13 +1,13 @@
 <div align="center">
-    <img src="{project.icon}" width="{project.icon_width}" />
-    <h1>{repo.name}</h1>
+    <img src="https://avatars.githubusercontent.com/in/214508" width="100px" />
+    <h1>ijsblokje</h1>
   
-  <p>{repo.description}</p>
+  <p>A personal GitHub bot which syncs data and runs automated systems</p>
   
   <p align="center">
-    <img alt="Version" src="https://img.shields.io/badge/version-{project.version}-blue.svg" />
+    <img alt="Version" src="https://img.shields.io/badge/version-2.4.1-blue.svg" />
     <a href="/LICENSE" target="_blank">
-      <img alt="License: {repo.license}" src="https://img.shields.io/badge/License-{repo.license}-yellow.svg" />
+      <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
     </a>
   </p>
 
@@ -43,6 +43,6 @@ This will always be open source project, even if I don't receive donations. But 
 
 ## License
 
-Project is licensed under the © [**{repo.license} License**](/LICENSE)
+Project is licensed under the © [**MIT License**](/LICENSE)
 
 ---
