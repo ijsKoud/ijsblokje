@@ -8,7 +8,7 @@
 	"scripts": {
 		"build": "tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
-		"start": "NODE_ENV=production node .",
+		"start": "NODE_ENV=development node .",
 		"lint": "TIMING=1 eslint"
 	},
 	"dependencies": {
