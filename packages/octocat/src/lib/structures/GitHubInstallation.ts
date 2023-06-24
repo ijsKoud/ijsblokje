@@ -42,7 +42,7 @@ export class GitHubInstallation {
 
 		this.octokit = context.manager.octokit.new({ installationId: data.id });
 		this.manager = context.manager;
-		this.readme = context.readme ? new ReadmeSync(Buffer.from(context.readme, "base64").toString()) : null;
+		this.readme = context.readme ? new ReadmeSync(Buffer.from(context.readme, "base64").toString(), this.name) : null;
 
 		this.configs = configs;
 

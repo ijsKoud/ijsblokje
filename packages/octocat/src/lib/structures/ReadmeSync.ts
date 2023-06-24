@@ -43,13 +43,13 @@ export class ReadmeSync {
 				if (key === "variables" && typeof variable === "string" && variable.endsWith(".md")) {
 					const data = await getFile(variable);
 					if (data) {
-						readme = readme.replaceAll(`{${variableKey}}`, variable);
+						readme = readme.replaceAll(`{${key}.${variableKey}}`, variable);
 						continue;
 					}
 				}
 
 				const cleanedVariable = typeof variable === "string" ? variable : variable.join("\n");
-				readme = readme.replaceAll(`{${variableKey}}`, cleanedVariable);
+				readme = readme.replaceAll(`{${key}.${variableKey}}`, cleanedVariable);
 			}
 		}
 

@@ -27,7 +27,7 @@ export class Server extends Webhooks {
 			id: getSingleHeader(req.headers["x-request-id"]),
 			name: getSingleHeader(req.headers["x-github-event"]) as any,
 			signature: getSingleHeader(req.headers["x-hub-signature"]),
-			payload: req.body
+			payload: JSON.stringify(req.body)
 		}).catch(console.error);
 
 		res.sendStatus(204);
@@ -40,7 +40,7 @@ export class Server extends Webhooks {
 				id: data["x-request-id"],
 				name: data["x-github-event"] as any,
 				signature: data["x-hub-signature"],
-				payload: data.body
+				payload: JSON.stringify(data.body)
 			});
 		} catch (error) {
 			console.log(error);

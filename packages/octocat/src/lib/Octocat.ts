@@ -44,6 +44,8 @@ export class Octocat {
 
 		await this.installations.loadAll();
 		await this.events.loadAll();
+
+		console.log("Ready");
 	}
 }
 

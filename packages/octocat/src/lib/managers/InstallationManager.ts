@@ -82,15 +82,17 @@ export class InstallationManager {
 	 * @param token The installation access token
 	 * @param owner The repository owner
 	 * @param repo The repository name
+	 * @param ref The ref you want to get the content from
 	 * @returns
 	 */
-	public async getRepositoryConfig(token: string, owner: string, repo: string) {
+	public async getRepositoryConfig(token: string, owner: string, repo: string, ref?: string) {
 		try {
 			const data = await request("GET /repos/{owner}/{repo}/contents/{path}", {
 				headers: { authorization: `Bearer ${token}` },
 				path: README_CONFIG_LOCATION,
 				owner,
-				repo
+				repo,
+				ref
 			});
 
 			return "content" in data.data ? Buffer.from(data.data.content, "base64").toString() : null;
