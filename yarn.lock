@@ -549,7 +549,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ijsblokje/release@workspace:packages/release":
+"@ijsblokje/release@*, @ijsblokje/release@workspace:packages/release":
   version: 0.0.0-use.local
   resolution: "@ijsblokje/release@workspace:packages/release"
   dependencies:
@@ -3228,6 +3228,7 @@ __metadata:
   resolution: "github-bot@workspace:apps/github-bot"
   dependencies:
     "@ijsblokje/octocat": "*"
+    "@ijsblokje/release": "*"
     "@ijsblokje/server": "*"
     "@ijsblokje/utils": "*"
     "@types/node": ^18.16.18

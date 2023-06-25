@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"@ijsblokje/octocat": "*",
+		"@ijsblokje/release": "*",
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
 		"dotenv": "16.3.1"
