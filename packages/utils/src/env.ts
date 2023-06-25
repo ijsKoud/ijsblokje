@@ -16,6 +16,8 @@ const envSchema = z.object({
 	GITHUB_CLIENT_ID: z.string(),
 	GITHUB_CLIENT_SECRET: z.string(),
 
+	ALLOWED_INSTALLATIONS: z.string(),
+
 	PORT: z.string().max(4),
 	SMEE_URL: z.string().url().optional(),
 	NODE_ENV: z.literal("production").or(z.literal("development")),

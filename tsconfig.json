@@ -8,5 +8,9 @@
 		"moduleResolution": "NodeNext",
 		"skipLibCheck": true
 	},
+	"buildOptions": {
+		"incremental": true,
+		"dry": true
+	},
 	"exclude": ["node_modules"]
 }
