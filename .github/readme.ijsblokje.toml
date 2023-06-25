@@ -1,0 +1,19 @@
+[project]
+version = "2.4.1"
+icon = "https://avatars.githubusercontent.com/in/214508"
+icon_width = "100px"
+
+[variables]
+information = [
+	"IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for example:\n",
+	"- 🏷️ Label PRs automatically according to the conventional commit types",
+	"- 🔃 Sync labels across mutliple repositories and allows for specific repo labels too",
+	"- 🔔 Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state",
+	"- 🗞️ Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud)",
+	"- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner: [@ijsblokjeee[bot]](https://github.com/apps/ijsblokjeee) release v**x.y.z**"
+]
+installation = [
+  "Although you cannot self-host this with docker due to the personal preferences and names you can edit the code to your likings and run it from there.\n",
+	"To do this, simply clone the repository (`git clone <url>`) and edit the code from there (Only edit the src/lib/constants.ts if you aren't looking to change the code). After that Rename the directory `ijsKoud` to your own GitHub username.\n",
+	"Once finished, build the app (`yarn run build`) and start it by running: `yarn run start`. Do NOT forget to edit the `.env` variables first and move them to the `/data` folder (create one if it is not there yet)!\n"
+]
