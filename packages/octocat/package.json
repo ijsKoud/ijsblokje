@@ -7,7 +7,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "tsc --build",
+		"build": "rm -rf ./dist && tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
 		"lint": "TIMING=1 eslint"
 	},
@@ -17,6 +17,7 @@
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
 		"@octokit/request": "7.0.1",
+		"@sapphire/duration": "^1.1.0",
 		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.3.0",
 		"lodash": "^4.17.21",

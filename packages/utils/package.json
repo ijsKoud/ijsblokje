@@ -12,7 +12,7 @@
 		"./RequestWithPagination.js": "./dist/src/RequestWithPagination.js"
 	},
 	"scripts": {
-		"build": "tsc --build",
+		"build": "rm -rf ./dist && tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
 		"lint": "TIMING=1 eslint",
 		"test": "vitest run"
