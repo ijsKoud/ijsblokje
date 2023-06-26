@@ -43,22 +43,32 @@ export default class extends Command<ExtendedIgloClient> {
 			.setDescription(
 				[
 					`## We are almost there! 🎉`,
-					`Before I release a new version for \`${owner}/${repo}\` I need to know a couple of things:`,
+					`Before I release a new version for [\`${owner}/${repo}\`](https://github.com/${owner}/${repo}) I need to know a couple of things:`,
 					`- The proposed next version is **${version ?? "unknown"}**, would you like to change this?`,
 					`- Is there a message you would like to leave in the release changelog?`
 				].join("\n")
 			);
 
-		const customIdPrefix = `${owner}-${repo}-${interaction.user.id}`;
-		const actionRow = new ActionRowBuilder<ButtonBuilder>();
-		actionRow.addComponents(
-			new ButtonBuilder().setCustomId(`${customIdPrefix}-edit`).setLabel("Edit release").setEmoji("✏️").setStyle(ButtonStyle.Primary),
+		const customIdPrefix = `${owner}-${repo}-${interaction.user.id}-release`;
+		const actionSemverRow = new ActionRowBuilder<ButtonBuilder>();
+		actionSemverRow.addComponents(
 			new ButtonBuilder().setCustomId(`${customIdPrefix}-patch`).setLabel("Patch release").setEmoji("🐛").setStyle(ButtonStyle.Secondary),
 			new ButtonBuilder().setCustomId(`${customIdPrefix}-minor`).setLabel("Minor release").setEmoji("⚒️").setStyle(ButtonStyle.Secondary),
 			new ButtonBuilder().setCustomId(`${customIdPrefix}-major`).setLabel("Major release").setEmoji("⚠️").setStyle(ButtonStyle.Danger)
 		);
 
-		await interaction.editReply({ embeds: [embed], components: [actionRow] });
+		const actionEditRow = new ActionRowBuilder<ButtonBuilder>();
+		actionEditRow.addComponents(
+			new ButtonBuilder().setCustomId(`${customIdPrefix}-edit`).setLabel("Edit release").setEmoji("✏️").setStyle(ButtonStyle.Primary),
+			new ButtonBuilder()
+				.setCustomId(`${customIdPrefix}-${version}`)
+				.setLabel("Proposed release")
+				.setEmoji("✅")
+				.setStyle(ButtonStyle.Success)
+				.setDisabled(!Boolean(version))
+		);
+
+		await interaction.editReply({ embeds: [embed], components: [actionSemverRow, actionEditRow] });
 	}
 
 	/**
@@ -74,10 +84,10 @@ export default class extends Command<ExtendedIgloClient> {
 			}, 12e4);
 
 			const checkFn = (data: WebsocketVersionEvent["d"]) => {
-				if (!("version" in data)) return;
+				if (!Object.keys(data).includes("version")) return;
 				if (data.owner !== owner || data.repo !== repo) return;
 
-				res(data.version);
+				res((data as any).version);
 				clearTimeout(timeout);
 				this.client.websocket.off("proposed_check_response", checkFn);
 			};
