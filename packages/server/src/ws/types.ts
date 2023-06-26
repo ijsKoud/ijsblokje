@@ -6,11 +6,14 @@ export enum WebsocketMessageType {
 	RELEASE = 2,
 
 	/** Event for a proposed version */
-	PROPOSED_VERSION = 3
+	PROPOSED_VERSION = 3,
+
+	/** Event for updating the readme */
+	UPDATE_README = 4
 }
 
 export type WebsocketEvent<T extends WebsocketMessageType> = { t: T; d: unknown } & WebsocketEvents;
-export type WebsocketEvents = WebsocketPingEvent | WebsocketReleaseEvent | WebsocketVersionEvent;
+export type WebsocketEvents = WebsocketPingEvent | WebsocketReleaseEvent | WebsocketVersionEvent | WebsocketReadmeEvent;
 
 export interface WebsocketPingEvent {
 	t: WebsocketMessageType.PING;
@@ -22,7 +25,7 @@ export interface WebsocketReleaseEvent {
 	d: {
 		owner: string;
 		repo: string;
-		version?: string;
+		version: string;
 		message?: string;
 	};
 }
@@ -39,4 +42,12 @@ export interface WebsocketVersionEvent {
 				repo: string;
 				version: string | null | undefined;
 		  };
+}
+
+export interface WebsocketReadmeEvent {
+	t: WebsocketMessageType.UPDATE_README;
+	d: {
+		owner: string;
+		repo: string;
+	};
 }

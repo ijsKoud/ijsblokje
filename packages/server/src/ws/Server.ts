@@ -47,6 +47,9 @@ export class WebsocketServer extends EventEmitter {
 							send({ t, d: { ...d, version } });
 						}
 						break;
+					case WebsocketMessageType.RELEASE:
+						this.emit("release_version", d);
+						break;
 					default:
 						break;
 				}
