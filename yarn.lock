@@ -2433,6 +2433,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"discord-bot@workspace:apps/discord-bot":
+  version: 0.0.0-use.local
+  resolution: "discord-bot@workspace:apps/discord-bot"
+  dependencies:
+    "@ijsblokje/server": "*"
+    "@ijsblokje/utils": "*"
+    "@types/node": ^18.16.18
+    dotenv: 16.3.1
+    eslint: ^8.43.0
+    prettier: ^2.8.8
+    typescript: 5.1.3
+  languageName: unknown
+  linkType: soft
+
 "doctrine@npm:^3.0.0":
   version: 3.0.0
   resolution: "doctrine@npm:3.0.0"
