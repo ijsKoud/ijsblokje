@@ -2,7 +2,7 @@
     <img src="https://avatars.githubusercontent.com/in/214508" width="{project.icon_width}" />
     <h1>ijsblokje</h1>
   
-  <p>A personal GitHub bot which syncs data and runs automated systems</p>
+  <p>Co-pilot for GitHub operations ✈️</p>
   
   <p align="center">
     <img alt="Version" src="https://img.shields.io/badge/version-2.4.1-blue.svg" />
