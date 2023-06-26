@@ -23,7 +23,7 @@
 		},
 
 		"start": {
-			"dependsOn": ["build"],
+			"dependsOn": [],
 			"outputs": [],
 
 			"persistent": true,
