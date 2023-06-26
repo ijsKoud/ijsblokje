@@ -4,6 +4,7 @@ import { createClient } from "redis";
 import { Server } from "@ijsblokje/server";
 import { EventManager } from "./managers/EventManager.js";
 import { Logger } from "@snowcrystals/icicle";
+import { DurationFormatter } from "@sapphire/duration";
 
 export class Octocat {
 	public readonly installations: InstallationManager;
@@ -17,6 +18,8 @@ export class Octocat {
 
 	/** The server handling the incoming GitHub event data */
 	public server!: Server;
+
+	public logger = new Logger({ name: "Octocat" });
 
 	public constructor(options: OctocatOptions) {
 		this.redis = createClient({ url: options.redisUrl });
@@ -39,13 +42,16 @@ export class Octocat {
 	 * @param secret The webhook secret
 	 */
 	public async start(urlOrPort: string | number, secret: string): Promise<void> {
+		const start = performance.now();
 		const server = new Server({ secret, urlOrPort });
 		this.server = server;
 
 		await this.installations.loadAll();
 		await this.events.loadAll();
 
-		console.log("Ready");
+		const end = performance.now();
+		const formatter = new DurationFormatter();
+		this.logger.info(`Octocat is ready! Startup took ${formatter.format(end - start, 4)}`);
 	}
 }
 
