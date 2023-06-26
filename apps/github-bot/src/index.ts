@@ -1,4 +1,4 @@
-import "@ijsblokje/utils/env.js";
+import "@ijsblokje/utils/env/github.js";
 import { Octocat } from "@ijsblokje/octocat";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
