@@ -578,6 +578,7 @@ __metadata:
   dependencies:
     "@discordjs/collection": ^1.5.1
     "@ijsblokje/octokit": "*"
+    "@ijsblokje/release": "*"
     "@ijsblokje/server": "*"
     "@ijsblokje/utils": "*"
     "@octokit/openapi-types": ^18.0.0
@@ -636,15 +637,18 @@ __metadata:
   resolution: "@ijsblokje/server@workspace:packages/server"
   dependencies:
     "@octokit/webhooks": ^12.0.1
+    "@snowcrystals/icicle": 2.0.4
     "@types/eventsource": ^1.1.11
     "@types/express": ^4.17.17
     "@types/node": ^18.16.18
+    "@types/ws": 8.5.5
     eslint: ^8.43.0
     eventsource: 2.0.2
     express: ^4.18.2
     prettier: ^2.8.8
     typescript: 5.1.3
     vitest: ^0.32.2
+    ws: 8.13.0
   languageName: unknown
   linkType: soft
 
@@ -1384,7 +1388,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.5.4":
+"@types/ws@npm:8.5.5, @types/ws@npm:^8.5.4":
   version: 8.5.5
   resolution: "@types/ws@npm:8.5.5"
   dependencies:
@@ -6554,7 +6558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.13.0":
+"ws@npm:8.13.0, ws@npm:^8.13.0":
   version: 8.13.0
   resolution: "ws@npm:8.13.0"
   peerDependencies:
