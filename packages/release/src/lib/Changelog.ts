@@ -22,7 +22,7 @@ export class Changelog {
 
 			const changelogMessage = parsed.scope ? `**${parsed.scope}**: ${parsed.message}` : parsed.message;
 			const message = parsed.breaking ? `${changelogMessage} **💥 breaking change**` : changelogMessage;
-			const commitSha = `(${commit.sha.name})[${commit.sha.url}]`;
+			const commitSha = `[${commit.sha.name}](${commit.sha.url})`;
 
 			categories[parsed.type] ??= [];
 			categories[parsed.type]!.push(`- ${message} (${commitSha})`);
