@@ -3,7 +3,7 @@ name: "CD(Docker): Publish stable image"
 on:
   workflow_dispatch:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   ghcr:
@@ -14,8 +14,11 @@ jobs:
     strategy:
       matrix:
         include:
+          # GitHub bot
           - dockerfile: docker/github-bot.dockerfile
             tags: ghcr.io/ijskoud/ijsblokje:github-bot
+
+          # Discord bot
           - dockerfile: docker/discord-bot.dockerfile
             tags: ghcr.io/ijskoud/ijsblokje:discord-bot
 
