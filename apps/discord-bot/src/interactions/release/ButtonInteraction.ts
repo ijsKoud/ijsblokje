@@ -1,5 +1,14 @@
 import { ApplyOptions, InteractionListener, type InteractionListenerOptions } from "@snowcrystals/iglo";
-import { ComponentType, type ButtonInteraction, ButtonBuilder, ActionRowBuilder } from "discord.js";
+import {
+	ComponentType,
+	type ButtonInteraction,
+	ButtonBuilder,
+	ActionRowBuilder,
+	ModalBuilder,
+	TextInputBuilder,
+	TextInputStyle,
+	type ModalActionRowComponentBuilder
+} from "discord.js";
 import type ExtendedIgloClient from "../../lib/bot.js";
 import { WebsocketMessageType } from "@ijsblokje/server";
 
@@ -24,10 +33,29 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 		}
 
 		if (type === "edit") {
+			const modal = new ModalBuilder();
+			modal.setTitle(`Edit release for ${owner}/${repo}`).setCustomId(`${owner}-${repo}-${userId}-release-edit_response`);
+
+			const additionalMessage = new TextInputBuilder()
+				.setLabel("Additional Message")
+				.setCustomId("additional-message")
+				.setRequired(true)
+				.setPlaceholder("This release contains **2** breaking changes...")
+				.setStyle(TextInputStyle.Paragraph);
+
+			const versionInput = new TextInputBuilder()
+				.setLabel("Version")
+				.setCustomId("version")
+				.setRequired(true)
+				.setPlaceholder("Examples: 1.0.1, major, minor, patch - If an incorrect value is provided the modal will not submit")
+				.setStyle(TextInputStyle.Short);
+
+			const actionRow = new ActionRowBuilder<ModalActionRowComponentBuilder>().setComponents(additionalMessage, versionInput);
+			modal.addComponents(actionRow);
+
+			await interaction.showModal(modal);
 			return;
 		}
-
-		this.client.websocket.send({ t: WebsocketMessageType.RELEASE, d: { owner, repo, version: type } });
 
 		const components = interaction.message.components.map((row) =>
 			row.components
@@ -35,6 +63,8 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 				.map((component) => new ButtonBuilder(component.data).setDisabled(true))
 		);
 		await interaction.message.edit({ components: components.map((buttons) => new ActionRowBuilder<ButtonBuilder>().setComponents(...buttons)) });
+
+		this.client.websocket.send({ t: WebsocketMessageType.RELEASE, d: { owner, repo, version: type } });
 		await interaction.reply({
 			content: `🚀 A [new release](https://github.com/${owner}/${repo}/releases) is on its way to GitHub!`,
 			flags: ["SuppressEmbeds"]
