@@ -21,7 +21,7 @@ export class Websocket extends EventEmitter {
 
 			this.websocket.onclose = (ev) => {
 				this.logger.warn(`Lost websocket connection - code: ${ev.code} | reason: ${ev.reason}`);
-				connect();
+				setTimeout(() => connect(), 5e3);
 			};
 
 			this.websocket.onmessage = this.onMessage.bind(this);
