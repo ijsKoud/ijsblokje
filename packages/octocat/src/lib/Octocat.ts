@@ -23,7 +23,7 @@ export class Octocat {
 	/** The redis instance */
 	public readonly redis: ReturnType<typeof createClient>;
 
-	public logger = new Logger({ name: "Octocat" });
+	public logger = new Logger({ parser: { color: true }, name: "Octocat" });
 
 	public constructor(options: OctocatOptions) {
 		this.redis = createClient({ url: options.redisUrl });
@@ -32,7 +32,7 @@ export class Octocat {
 			privateKey: options.privateKey,
 			clientId: options.clientId,
 			clientSecret: options.clientSecret,
-			logger: new Logger({ name: "Octokit" })
+			logger: new Logger({ parser: { color: true }, name: "Octokit" })
 		});
 
 		this.installations = new InstallationManager(this, options.allowedInstallations);

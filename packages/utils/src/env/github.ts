@@ -7,7 +7,7 @@ import { Logger } from "@snowcrystals/icicle";
 import { bold } from "colorette";
 import { PRIVATE_KEY_REGEX } from "../regex.js";
 
-const logger = new Logger({ name: "ENV PARSER" });
+const logger = new Logger({ parser: { color: true }, name: "ENV PARSER" });
 const envSchema = z.object({
 	APP_ID: z.string(),
 	PRIVATE_KEY: z.string().regex(PRIVATE_KEY_REGEX),

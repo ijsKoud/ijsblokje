@@ -16,7 +16,7 @@ describe("Octokit", () => {
 		clientId: "",
 		clientSecret: "",
 		privateKey: "-----BEGIN RSA PRIVATE KEY-----\ntest test test\n-----END RSA PRIVATE KEY-----",
-		logger: new Logger({ name: "Octokit" })
+		logger: new Logger({ parser: { color: true }, name: "Octokit" })
 	};
 
 	test("Without installationId", () => {

@@ -4,7 +4,7 @@ import { WebsocketMessageType, type WebsocketEvent } from "./types.js";
 import EventEmitter from "events";
 
 export class Websocket extends EventEmitter {
-	public logger = new Logger({ name: "Websocket" });
+	public logger = new Logger({ parser: { color: true }, name: "Websocket" });
 	public websocket!: WebSocket;
 
 	public constructor() {

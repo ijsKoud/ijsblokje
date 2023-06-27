@@ -6,7 +6,7 @@ import EventEmitter from "events";
 
 export class WebsocketServer extends EventEmitter {
 	public server: WebSocketServer;
-	public logger = new Logger({ name: "Websocket Server" });
+	public logger = new Logger({ parser: { color: true }, name: "Websocket Server" });
 
 	public constructor() {
 		super();

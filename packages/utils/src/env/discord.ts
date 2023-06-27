@@ -6,7 +6,7 @@ import { ZodError, z } from "zod";
 import { Logger } from "@snowcrystals/icicle";
 import { bold } from "colorette";
 
-const logger = new Logger({ name: "ENV PARSER" });
+const logger = new Logger({ parser: { color: true }, name: "ENV PARSER" });
 const envSchema = z.object({
 	DISCORD_TOKEN: z.string(),
 	ALLOWED_DISCORD_USERS: z.string(),
