@@ -35,10 +35,11 @@ export class ReadmeSync {
 			}
 		};
 
-		for await (const key of Object.keys(config) as (keyof typeof config)[]) {
+		const keys = Object.keys(config) as (keyof typeof config)[];
+		for (const key of keys) {
 			const variables: Record<string, string | string[]> = config[key];
 
-			for await (const variableKey of Object.keys(variables)) {
+			for (const variableKey of Object.keys(variables)) {
 				const variable = variables[variableKey];
 				if (key === "variables" && typeof variable === "string" && variable.endsWith(".md")) {
 					const data = await getFile(variable);

@@ -10,6 +10,15 @@ jobs:
     name: Push Image to GitHub Packages
     runs-on: ubuntu-latest
     if: github.ref_name == 'main'
+
+    strategy:
+      matrix:
+        include:
+          - dockerfile: docker/github-bot.dockerfile
+            tags: ghcr.io/ijskoud/ijsblokje:github-bot
+          - dockerfile: docker/discord-bot.dockerfile
+            tags: ghcr.io/ijskoud/ijsblokje:discord-bot
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -32,6 +41,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: |
-            ghcr.io/ijskoud/ijsblokje:latest
-            ghcr.io/ijskoud/ijsblokje:v2
+          context: .
+          file: ${{ matrix.dockerfile }}
+          tags: ${{ matrix.tags }}

@@ -1,5 +1,6 @@
 import { config } from "dotenv";
-config();
+import { join } from "node:path";
+config({ path: join(process.cwd(), ".env"), debug: true });
 
 import { ZodError, z } from "zod";
 import { Logger } from "@snowcrystals/icicle";
@@ -13,6 +14,7 @@ const envSchema = z.object({
 });
 
 try {
+	logger.info(`Parsing .env from ${bold(join(process.cwd(), ".env"))}`);
 	envSchema.parse(process.env);
 } catch (err) {
 	if (!(err instanceof ZodError)) {

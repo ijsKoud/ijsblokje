@@ -15,8 +15,8 @@
 		"build:watch": "turbo build:watch",
 		"lint": "turbo lint",
 		"test": "turbo test",
-		"start:dev": "nodemon ./dist",
 		"start": "turbo start",
+		"start:dev": "nodemon ./dist",
 		"postinstall": "is-ci || husky install"
 	},
 	"devDependencies": {
@@ -35,6 +35,7 @@
 		"is-ci": "^3.0.1",
 		"lint-staged": "^13.2.2",
 		"prettier": "^2.8.8",
+		"tslib": "2.6.0",
 		"turbo": "^1.10.6",
 		"typescript": "5.1.3"
 	},
