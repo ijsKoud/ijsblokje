@@ -23,6 +23,10 @@ export class WebsocketServer extends EventEmitter {
 		return null;
 	};
 
+	/**
+	 * Handles the incoming socket connection
+	 * @param websocket The websocket connection to handle
+	 */
 	private handleSocket(websocket: WebSocket) {
 		const send = <T extends WebsocketMessageType>(data: WebsocketEvent<T>) => {
 			websocket.send(JSON.stringify(data));
@@ -49,6 +53,9 @@ export class WebsocketServer extends EventEmitter {
 						break;
 					case WebsocketMessageType.RELEASE:
 						this.emit("release_version", d);
+						break;
+					case WebsocketMessageType.UPDATE_README:
+						this.emit("sync_readme", d);
 						break;
 					default:
 						break;

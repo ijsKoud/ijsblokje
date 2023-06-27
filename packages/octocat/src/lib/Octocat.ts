@@ -62,7 +62,9 @@ export class Octocat {
 
 	private assignHandlers() {
 		this.websocket.getVersion = this.websocketRequestHandler.getProposedVersion.bind(this.websocketRequestHandler);
-		this.websocket.on("release_version", this.websocketRequestHandler.releaseVersion.bind(this.websocketRequestHandler));
+		this.websocket
+			.on("release_version", this.websocketRequestHandler.releaseVersion.bind(this.websocketRequestHandler))
+			.on("sync_readme", this.websocketRequestHandler.updateReadme.bind(this.websocketRequestHandler));
 	}
 }
 
