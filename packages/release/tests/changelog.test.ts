@@ -18,12 +18,12 @@ describe("Changelog", () => {
 		"# Release v1.0.0 🎉",
 		"",
 		"## ✨ Features",
-		"- **Manager**: add better caching ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
-		"- **Manager**: add better caching **💥 breaking change** ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
+		"- **Manager**: add better caching ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
+		"- **Manager**: add better caching **💥 breaking change** ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
 		"",
 		"## 🐛 Bug Fixes",
-		"- **Manager**: all the bugs ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
-		"- all the bugs ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])"
+		"- **Manager**: all the bugs ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
+		"- all the bugs ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))"
 	].join("\n");
 
 	const messageChangelog = [
@@ -31,12 +31,12 @@ describe("Changelog", () => {
 		"This is a message!",
 		"",
 		"## ✨ Features",
-		"- **Manager**: add better caching ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
-		"- **Manager**: add better caching **💥 breaking change** ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
+		"- **Manager**: add better caching ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
+		"- **Manager**: add better caching **💥 breaking change** ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
 		"",
 		"## 🐛 Bug Fixes",
-		"- **Manager**: all the bugs ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])",
-		"- all the bugs ((6dcb09b)[https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e])"
+		"- **Manager**: all the bugs ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))",
+		"- all the bugs ([6dcb09b](https://github.com/octocat/Hello-World/commit/6dcb09b5b57875f334f61aebed695e2e4193db5e))"
 	].join("\n");
 
 	test("constructor", () => {

@@ -6,7 +6,8 @@
 	"type": "module",
 	"exports": {
 		"./regex.js": "./dist/src/regex.js",
-		"./env.js": "./dist/src/env.js",
+		"./env/github.js": "./dist/src/env/github.js",
+		"./env/discord.js": "./dist/src/env/discord.js",
 		"./types.js": "./dist/src/types.js",
 		"./constants.js": "./dist/src/constants.js",
 		"./RequestWithPagination.js": "./dist/src/RequestWithPagination.js"

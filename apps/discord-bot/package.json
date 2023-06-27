@@ -1,36 +1,24 @@
 {
-	"name": "@ijsblokje/octocat",
+	"name": "discord-bot",
 	"version": "0.0.0",
 	"author": "ijsKoud <github@ijskoud.dev>",
 	"license": "MIT",
 	"type": "module",
 	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "rm -rf ./dist && tsc --build",
 		"build:watch": "tsc --watch > /dev/null",
+		"start": "NODE_ENV=production node .",
 		"lint": "TIMING=1 eslint"
 	},
 	"dependencies": {
-		"@discordjs/collection": "^1.5.1",
-		"@ijsblokje/octokit": "*",
-		"@ijsblokje/release": "*",
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
-		"@octokit/request": "7.0.1",
-		"@sapphire/duration": "^1.1.0",
-		"@snowcrystals/icicle": "2.0.4",
-		"glob": "^10.3.0",
-		"lodash": "^4.17.21",
-		"redis": "^4.6.7",
-		"semver": "7.5.3",
-		"smol-toml": "^1.1.0",
-		"zod": "^3.21.4"
+		"@snowcrystals/iglo": "1.2.6",
+		"discord.js": "14.11.0",
+		"dotenv": "16.3.1"
 	},
 	"devDependencies": {
-		"@octokit/openapi-types": "^18.0.0",
-		"@octokit/types": "^10.0.0",
-		"@types/lodash": "^4.14.195",
 		"@types/node": "^18.16.18",
 		"eslint": "^8.43.0",
 		"prettier": "^2.8.8",

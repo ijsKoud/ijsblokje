@@ -1,10 +1,11 @@
-import "@ijsblokje/utils/env.js";
+import "@ijsblokje/utils/env/github.js";
 import { Octocat } from "@ijsblokje/octocat";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const eventsDirectory = join(__dirname, "events");
+
 const allowedInstallations = process.env.ALLOWED_INSTALLATIONS.split(",");
 const urlOrPort = process.env.NODE_ENV === "production" ? Number(process.env.PORT) : process.env.SMEE_URL!;
 

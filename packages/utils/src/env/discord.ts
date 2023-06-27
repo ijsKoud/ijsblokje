@@ -4,25 +4,12 @@ config();
 import { ZodError, z } from "zod";
 import { Logger } from "@snowcrystals/icicle";
 import { bold } from "colorette";
-import { PRIVATE_KEY_REGEX } from "./regex.js";
 
 const logger = new Logger({ name: "ENV PARSER" });
 const envSchema = z.object({
-	APP_ID: z.string(),
-	PRIVATE_KEY: z.string().regex(PRIVATE_KEY_REGEX),
-
-	WEBHOOK_SECRET: z.string(),
-
-	GITHUB_CLIENT_ID: z.string(),
-	GITHUB_CLIENT_SECRET: z.string(),
-
-	ALLOWED_INSTALLATIONS: z.string(),
-
-	PORT: z.string().max(4),
-	SMEE_URL: z.string().url().optional(),
-	NODE_ENV: z.literal("production").or(z.literal("development")),
-
-	REDIS_DATABASE_URL: z.string().url()
+	DISCORD_TOKEN: z.string(),
+	ALLOWED_DISCORD_USERS: z.string(),
+	NODE_ENV: z.literal("production").or(z.literal("development"))
 });
 
 try {

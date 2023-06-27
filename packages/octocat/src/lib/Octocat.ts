@@ -1,10 +1,11 @@
 import { Octokit } from "@ijsblokje/octokit";
 import { InstallationManager } from "./managers/InstallationManager.js";
 import { createClient } from "redis";
-import { Server } from "@ijsblokje/server";
+import { Server, WebsocketServer } from "@ijsblokje/server";
 import { EventManager } from "./managers/EventManager.js";
 import { Logger } from "@snowcrystals/icicle";
 import { DurationFormatter } from "@sapphire/duration";
+import { WebsocketRequestHandler } from "./WebsocketRequestHandler.js";
 
 export class Octocat {
 	public readonly installations: InstallationManager;
@@ -12,12 +13,15 @@ export class Octocat {
 
 	/** The octokit instance that handles all GitHub requests */
 	public readonly octokit: Octokit;
+	/** The server handling the incoming GitHub event data */
+	public server!: Server;
+
+	/** The websocket server connecting the Discord bot and GitHub app */
+	public readonly websocket = new WebsocketServer();
+	public readonly websocketRequestHandler = new WebsocketRequestHandler(this);
 
 	/** The redis instance */
 	public readonly redis: ReturnType<typeof createClient>;
-
-	/** The server handling the incoming GitHub event data */
-	public server!: Server;
 
 	public logger = new Logger({ name: "Octocat" });
 
@@ -44,7 +48,9 @@ export class Octocat {
 	public async start(urlOrPort: string | number, secret: string): Promise<void> {
 		const start = performance.now();
 		const server = new Server({ secret, urlOrPort });
+
 		this.server = server;
+		this.assignHandlers();
 
 		await this.installations.loadAll();
 		await this.events.loadAll();
@@ -52,6 +58,13 @@ export class Octocat {
 		const end = performance.now();
 		const formatter = new DurationFormatter();
 		this.logger.info(`Octocat is ready! Startup took ${formatter.format(end - start, 4)}`);
+	}
+
+	private assignHandlers() {
+		this.websocket.getVersion = this.websocketRequestHandler.getProposedVersion.bind(this.websocketRequestHandler);
+		this.websocket
+			.on("release_version", this.websocketRequestHandler.releaseVersion.bind(this.websocketRequestHandler))
+			.on("sync_readme", this.websocketRequestHandler.updateReadme.bind(this.websocketRequestHandler));
 	}
 }
 
