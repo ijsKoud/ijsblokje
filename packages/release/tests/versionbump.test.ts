@@ -36,6 +36,6 @@ describe("VersionBump", () => {
 
 	test("bumpJavaScript", () => {
 		const bumpedPkgJson = VersionBump.bumpJavaScript("1.0.0", JSON.stringify(mockPackageJson));
-		expect(bumpedPkgJson).toBe(JSON.stringify(mockPackageJson).replace("0.0.0", "1.0.0"));
+		expect(JSON.stringify(JSON.parse(bumpedPkgJson))).toBe(JSON.stringify(mockPackageJson).replace("0.0.0", "1.0.0"));
 	});
 });

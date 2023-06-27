@@ -42,10 +42,8 @@ export class VersionBump {
 	 * @returns
 	 */
 	public static bumpJavaScript(version: string, packageJson: string) {
-		const json = JSON.parse(packageJson);
-		if ("version" in json && typeof json.version === "string") json.version = version;
-
-		return JSON.stringify(json);
+		const regex = /"version":\s?"(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)"/g;
+		return packageJson.replace(regex, `"version": "${version}"`);
 	}
 }
 

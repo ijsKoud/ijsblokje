@@ -37,7 +37,7 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 			t: WebsocketMessageType.RELEASE,
 			d: { owner, repo, version: isSemverBumpType ? version : cleanedVersion!, message }
 		});
-		await interaction.reply({
+		await interaction.followUp({
 			content: `🚀 A [new release](https://github.com/${owner}/${repo}/releases) is on its way to GitHub!`,
 			flags: ["SuppressEmbeds"]
 		});
