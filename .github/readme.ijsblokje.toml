@@ -14,7 +14,7 @@ information = [
 ]
 installation = [
   "Docker is required to host this app yourself. To install and run the GitHub app first pull the image using `docker pull ghcr.io/ijskoud/ijsblokje:github-bot` and after that run it using `docker run --name=ijsblokje-github-bot -v ~/.env:/ijsblokje/.env -d ghcr.io/ijskoud/ijsblokje:github-bot`, you can do the same with the Discord bot.",
-	"Alternatively if you would like to use both the GitHub app and Discord bot you can use the provided `docker-compose.yml` file to install it. Simply copy the file to a directory on your pc/server, add the required `.env` files (examples are in the designated app directories) and run `docker-compose up`",
+	"\nAlternatively if you would like to use both the GitHub app and Discord bot you can use the provided `docker-compose.yml` file to install it. Simply copy the file to a directory on your pc/server, add the required `.env` files (examples are in the designated app directories) and run `docker-compose up`",
 	"\n{variables.credits}"
 ]
 credits = ["## Credits", "The logo was created using the <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>"]
