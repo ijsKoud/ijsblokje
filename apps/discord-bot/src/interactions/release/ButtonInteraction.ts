@@ -34,7 +34,7 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 
 		if (type === "edit") {
 			const modal = new ModalBuilder();
-			modal.setTitle(`Edit release for ${owner}/${repo}`).setCustomId(`${owner}-${repo}-${userId}-release-edit_response`);
+			modal.setTitle(`Edit release for ${owner}/${repo}`).setCustomId(`${owner}-${repo}-${userId}-release_edit_response`);
 
 			const versionInput = new TextInputBuilder()
 				.setLabel("Version")
