@@ -9,7 +9,7 @@ information = [
 	"- 🏷️ Label PRs automatically according to the conventional commit types",
 	"- 🔃 Sync labels across mutliple repositories with the ability to add repository specific ones too",
 	"- 🔔 Automatically adds a [GitCord](https://github.com/ijskoud/gitcord) webhook url to the webhooks everytime a repository is created and toggles it depending on the visibility state",
-	"- 🗞️ Syncs the readme's of multiple repositories using a config (readme.ijsblokje.toml) and a base readme (which is located at your own account repository -> ijsKoud/ijsKoud)",
+	"- 🗞️ Syncs the readme's of multiple repositories using a config (`readme.ijsblokje.toml`) and a base readme (which is located at your own account repository -> ijsKoud/ijsKoud)",
 	"- 🎉 Releases a new version with automatic changelog generation (This can be done via the Discord bot integration)"
 ]
 installation = [
