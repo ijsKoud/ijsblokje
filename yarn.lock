@@ -1156,14 +1156,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@snowcrystals/iglo@npm:1.2.6":
-  version: 1.2.6
-  resolution: "@snowcrystals/iglo@npm:1.2.6"
+"@snowcrystals/iglo@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "@snowcrystals/iglo@npm:1.2.7"
   dependencies:
     "@snowcrystals/icicle": ^2.0.4
     discord.js: ^14.11.0
     lodash: ^4.17.21
-  checksum: dae9708e41b9bb01aafa05c8939736674b1cc59de4d21a61a24c128a26c2b9672080321366d538b1f12f7d180f1848d653e1780d1f733bb84c9592765c8a91df
+  checksum: 69eb136b3f4e41e20446e7ad48504d62dc69afc5a11e00f2fb329929e8522b453dcffc24b0f6c0c9f7a1c062edc030fb79fa762dee54b85a2633eff914aa10cd
   languageName: node
   linkType: hard
 
@@ -2608,7 +2608,7 @@ __metadata:
   dependencies:
     "@ijsblokje/server": "*"
     "@ijsblokje/utils": "*"
-    "@snowcrystals/iglo": 1.2.6
+    "@snowcrystals/iglo": ^1.2.7
     "@types/node": ^18.16.18
     "@types/semver": 7.5.0
     discord.js: 14.11.0
