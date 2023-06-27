@@ -9,7 +9,6 @@ jobs:
   ghcr:
     name: Push Image to GitHub Packages
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main'
 
     strategy:
       matrix:
