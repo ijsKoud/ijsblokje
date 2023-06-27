@@ -32,8 +32,8 @@ export default class extends Command<ExtendedIgloClient> {
 
 		await interaction.deferReply();
 		const version = await this.getProposedVersion(owner, repo);
-		if (version === undefined) {
-			await interaction.reply({ content: `The repository \`${owner}/${repo}\` does not exist.` });
+		if (version === "none") {
+			await interaction.editReply({ content: `The repository \`${owner}/${repo}\` does not exist.` });
 			return;
 		}
 
@@ -84,7 +84,7 @@ export default class extends Command<ExtendedIgloClient> {
 			}, 12e4);
 
 			const checkFn = (data: WebsocketVersionEvent["d"]) => {
-				if (!Object.keys(data).includes("version")) return;
+				if (!("version" in data)) return;
 				if (data.owner !== owner || data.repo !== repo) return;
 
 				res((data as any).version);

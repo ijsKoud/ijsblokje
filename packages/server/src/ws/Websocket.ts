@@ -53,7 +53,7 @@ export class Websocket extends EventEmitter {
 					this.send({ t: WebsocketMessageType.PING, d: "acknowledged" });
 					break;
 				case WebsocketMessageType.PROPOSED_VERSION:
-					if (!Object.keys(d).includes("version")) return;
+					if (!("version" in d)) return;
 					this.emit("proposed_check_response", d);
 					break;
 				default:

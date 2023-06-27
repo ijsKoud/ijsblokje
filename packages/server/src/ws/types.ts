@@ -40,7 +40,7 @@ export interface WebsocketVersionEvent {
 		| {
 				owner: string;
 				repo: string;
-				version: string | null | undefined;
+				version: string | null;
 		  };
 }
 

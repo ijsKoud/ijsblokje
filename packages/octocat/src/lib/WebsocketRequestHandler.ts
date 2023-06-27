@@ -20,9 +20,9 @@ export class WebsocketRequestHandler {
 	 * @param repo The name of the repository
 	 * @returns
 	 */
-	public async getProposedVersion(owner: string, repo: string): Promise<string | null | undefined> {
-		const installation = this.octocat.installations.cache.find((installation) => installation.name.toLowerCase() === owner);
-		if (!installation || !installation.configs.has(repo)) return undefined;
+	public async getProposedVersion(owner: string, repo: string): Promise<string | null> {
+		const installation = this.octocat.installations.cache.find((installation) => installation.name.toLowerCase() === owner.toLowerCase());
+		if (!installation || !installation.configs.has(repo)) return "none";
 
 		const repoContext = { owner, repo } satisfies BaseRepositoryData;
 		const latestRelease = await installation.octokit.request("GET /repos/{owner}/{repo}/releases/latest", { owner, repo }).catch(() => null);
@@ -52,7 +52,7 @@ export class WebsocketRequestHandler {
 	 * @returns
 	 */
 	public async releaseVersion(data: WebsocketReleaseEvent["d"]) {
-		const installation = this.octocat.installations.cache.find((installation) => installation.name.toLowerCase() === data.owner);
+		const installation = this.octocat.installations.cache.find((installation) => installation.name.toLowerCase() === data.owner.toLowerCase());
 		if (!installation || !installation.configs.has(data.repo)) return;
 
 		const repoContext = { owner: data.owner, repo: data.repo } satisfies BaseRepositoryData;
@@ -89,7 +89,9 @@ export class WebsocketRequestHandler {
 	 * @returns
 	 */
 	public async updateReadme(repoContext: WebsocketReadmeEvent["d"], version?: string) {
-		const installation = this.octocat.installations.cache.find((installation) => installation.name.toLowerCase() === repoContext.owner);
+		const installation = this.octocat.installations.cache.find(
+			(installation) => installation.name.toLowerCase() === repoContext.owner.toLowerCase()
+		);
 		if (!installation || !installation.readme) return;
 
 		const ref = "heads/main";
