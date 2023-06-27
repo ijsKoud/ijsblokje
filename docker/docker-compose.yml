@@ -1,19 +1,25 @@
 services:
   discord-bot:
-    restart: always
+    container_name: ijsblokje-discord_bot
     image: ghcr.io/ijskoud/ijsblokje:discord-bot
+    restart: always
+
     volumes:
       - ~/ijsblokje/.env.discord-bot:/ijsblokje/.env
     networks:
       - ijsblokje
-    ports:
-      - "8000:5000"
+
   github-bot:
-    restart: always
+    container_name: ijsblokje-github_bot
     image: ghcr.io/ijskoud/ijsblokje:github-bot
+    restart: always
+
     volumes:
       - ~/ijsblokje/.env.github-bot:/ijsblokje/.env
     networks:
       - ijsblokje
     ports:
       - 3010:3000
+
+networks:
+  ijsblokje:

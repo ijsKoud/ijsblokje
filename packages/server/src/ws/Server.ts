@@ -11,7 +11,7 @@ export class WebsocketServer extends EventEmitter {
 	public constructor() {
 		super();
 
-		this.server = new WebSocketServer({ host: "localhost", port: Websocket.PORT });
+		this.server = new WebSocketServer({ port: Websocket.PORT });
 		this.server
 			.on("listening", () => this.logger.info("Websocket server is listening"))
 			.on("error", (err) => this.logger.error(`Received an error: ${err.message} - `, err))

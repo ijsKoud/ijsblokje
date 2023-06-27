@@ -11,7 +11,7 @@ export class Websocket extends EventEmitter {
 		super();
 
 		const connect = () => {
-			this.websocket = new WebSocket(`ws://localhost:${Websocket.PORT}`);
+			this.websocket = new WebSocket(`ws://${process.env.WEBSOCKET_ADDRESS || "localhost"}:${Websocket.PORT}`);
 			this.websocket.onopen = () => this.logger.info("Connected to websocket.");
 
 			this.websocket.onerror = (ev) => {
