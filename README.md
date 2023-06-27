@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://avatars.githubusercontent.com/in/214508" width="{project.icon_width}" />
+    <img src="https://avatars.githubusercontent.com/in/214508" width="100px" />
     <h1>ijsblokje</h1>
   
   <p>Co-pilot for GitHub operations ✈️</p>
@@ -20,25 +20,21 @@
 
 ## Information
 
-IJsblokje is a custom GitHub app build to automate a bunch of stuff, it can for example:
+IJsblokje is my co-pilot for GitHub operations! It is able to:
 
 - 🏷️ Label PRs automatically according to the conventional commit types
-- 🔃 Sync labels across mutliple repositories and allows for specific repo labels too
-- 🔔 Automatically adds the Discord feed webhook URL and enables/disables it depending on the visibility state
-- 🗞️ Syncs the readme's of multiple repositories using a config and a base readme (which is located at ijsKoud/ijsKoud)
-- 🎉 Releases a new version with automatic changelog generation everytime a command is ran by the owner: [@ijsblokjeee[bot]](https://github.com/apps/ijsblokjeee) release v**x.y.z**
+- 🔃 Sync labels across mutliple repositories with the ability to add repository specific ones too
+- 🔔 Automatically adds a [GitCord](https://github.com/ijskoud/gitcord) webhook url to the webhooks everytime a repository is created and toggles it depending on the visibility state
+- 🗞️ Syncs the readme's of multiple repositories using a config (readme.ijsblokje.toml) and a base readme (which is located at your own account repository -> ijsKoud/ijsKoud)
+- 🎉 Releases a new version with automatic changelog generation (This can be done via the Discord bot integration)
 
 ## Install
 
-Although you cannot self-host this with docker due to the personal preferences and names you can edit the code to your likings and run it from there.
-
-To do this, simply clone the repository (`git clone <url>`) and edit the code from there (Only edit the src/lib/constants.ts if you aren't looking to change the code). After that Rename the directory `ijsKoud` to your own GitHub username.
-
-Once finished, build the app (`yarn run build`) and start it by running: `yarn run start`. Do NOT forget to edit the `.env` variables first and move them to the `/data` folder (create one if it is not there yet)!
-
+Docker is required to host this app yourself. To install and run the GitHub app first pull the image using `docker pull ghcr.io/ijskoud/ijsblokje:github-bot` and after that run it using `docker run --name=ijsblokje-github-bot -v ~/.env:/ijsblokje/.env -d ghcr.io/ijskoud/ijsblokje:github-bot`, you can do the same with the Discord bot.
+Alternatively if you would like to use both the GitHub app and Discord bot you can use the provided `docker-compose.yml` file to install it. Simply copy the file to a directory on your pc/server, add the required `.env` files (examples are in the designated app directories) and run `docker-compose up`
 
 ## Credits
-- Logo: <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
+The logo was created using the <a href='https://www.freepik.com/vectors/melting-ice'>Melting ice vector created by freepik</a>
 
 ## Author
 
