@@ -66,7 +66,7 @@ export class InstallationManager {
 		if (!repositories) return;
 
 		const configMap = new Map<string, ReadmeConfig | null>();
-		for await (const repository of repositories) {
+		for (const repository of repositories) {
 			const config = await this.getRepositoryConfig(token.token, repository.owner.login, repository.name);
 			configMap.set(repository.name, config ? ReadmeSync.getConfig(repository as any, config) : null);
 		}
