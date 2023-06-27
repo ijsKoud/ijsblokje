@@ -36,13 +36,6 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 			const modal = new ModalBuilder();
 			modal.setTitle(`Edit release for ${owner}/${repo}`).setCustomId(`${owner}-${repo}-${userId}-release-edit_response`);
 
-			const additionalMessage = new TextInputBuilder()
-				.setLabel("Additional Message")
-				.setCustomId("additional-message")
-				.setRequired(true)
-				.setPlaceholder("This release contains **2** breaking changes...")
-				.setStyle(TextInputStyle.Paragraph);
-
 			const versionInput = new TextInputBuilder()
 				.setLabel("Version")
 				.setCustomId("version")
@@ -50,8 +43,16 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 				.setPlaceholder("Examples: 1.0.1, major, minor, patch - If an incorrect value is provided the modal will not submit")
 				.setStyle(TextInputStyle.Short);
 
-			const actionRow = new ActionRowBuilder<ModalActionRowComponentBuilder>().setComponents(additionalMessage, versionInput);
-			modal.addComponents(actionRow);
+			const additionalMessage = new TextInputBuilder()
+				.setLabel("Additional Message")
+				.setCustomId("additional-message")
+				.setRequired(true)
+				.setPlaceholder("This release contains **2** breaking changes...")
+				.setStyle(TextInputStyle.Paragraph);
+
+			const actionRowOne = new ActionRowBuilder<ModalActionRowComponentBuilder>().setComponents(versionInput);
+			const actionRowTwo = new ActionRowBuilder<ModalActionRowComponentBuilder>().setComponents(additionalMessage);
+			modal.addComponents(actionRowOne, actionRowTwo);
 
 			await interaction.showModal(modal);
 			return;
