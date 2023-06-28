@@ -1,5 +1,6 @@
 FROM node:18-alpine AS base
 
+
 # --- Builder ---
 FROM base AS builder
 WORKDIR /ijsblokje
@@ -28,14 +29,16 @@ COPY --from=builder /ijsblokje/out/yarn.lock ./yarn.lock
 COPY --from=builder /ijsblokje/.yarnrc.yml .yarnrc.yml
 COPY --from=builder /ijsblokje/.yarn .yarn
 
-RUN yarn set version berry
-RUN yarn install
+RUN yarn --immutable
 
 # Build the project
 COPY --from=builder /ijsblokje/out/full/ .
 COPY --from=builder /ijsblokje/tsconfig.json tsconfig.json
-
 RUN yarn turbo run build --filter=discord-bot
+
+# Remove dev-dependencies from node_modules
+RUN yarn pinst --disable
+RUN yarn workspaces focus --production --all
 
 
 # --- Runner ---
