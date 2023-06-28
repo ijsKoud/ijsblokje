@@ -104,14 +104,7 @@ export class WebsocketRequestHandler {
 		if (!config) return null;
 
 		try {
-			const content = await installation.readme.generate(config, installation.octokit, repoContext.repo);
-			const readmeBlob = await installation.octokit.request("POST /repos/{owner}/{repo}/git/blobs", {
-				...repoContext,
-				content,
-				encoding: "utf-8"
-			});
-
-			const trees: TreeObject[] = [{ mode: "100644", path: "README.md", type: "blob", sha: readmeBlob.data.sha }];
+			const blobs: TreeObject[] = [];
 
 			if (version) {
 				config.project.version = version;
@@ -124,12 +117,20 @@ export class WebsocketRequestHandler {
 					encoding: "utf-8"
 				});
 
-				trees.push({ mode: "100644", path: README_CONFIG_LOCATION, type: "blob", sha: configBlob.data.sha });
+				blobs.push({ mode: "100644", path: README_CONFIG_LOCATION, type: "blob", sha: configBlob.data.sha });
 			}
 
-			if (!push) return trees;
+			const content = await installation.readme.generate(config, installation.octokit, repoContext.repo);
+			const readmeBlob = await installation.octokit.request("POST /repos/{owner}/{repo}/git/blobs", {
+				...repoContext,
+				content,
+				encoding: "utf-8"
+			});
 
-			await this.createCommit(trees, repoContext, ref, "docs(Readme): update readme content [skip ci]", installation.octokit);
+			blobs.push({ mode: "100644", path: "README.md", type: "blob", sha: readmeBlob.data.sha });
+			if (!push) return blobs;
+
+			await this.createCommit(blobs, repoContext, ref, "docs(Readme): update readme content [skip ci]", installation.octokit);
 			return null;
 		} catch (err) {
 			this.octocat.logger.error(`Unable to update readme for ${repoContext.owner}/${repoContext.repo}`, err);
