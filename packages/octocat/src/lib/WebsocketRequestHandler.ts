@@ -70,7 +70,11 @@ export class WebsocketRequestHandler {
 
 			const changelog = generator.getMarkdown(version, data.message);
 
-			await this.updateReadme(repoContext, version);
+			const readmeBlob = await this.updateReadme(repoContext, version, false);
+			const pkgBlob = await this.updatePackageJson(repoContext, version, installation.octokit);
+			const blobs = [...(readmeBlob ?? []), pkgBlob].filter(Boolean) as TreeObject[];
+			if (!blobs.length) await this.createCommit(blobs, repoContext, "heads/main", `chore(Release): v${version} 🎉`, installation.octokit);
+
 			await installation.octokit.request("POST /repos/{owner}/{repo}/releases", {
 				...repoContext,
 				body: changelog,
@@ -86,42 +90,33 @@ export class WebsocketRequestHandler {
 	 * Updates the readme and optionally the version too
 	 * @param repoContext The readme repository data
 	 * @param version The version to update to
+	 * @param push whether or not to push the commit to GitHub
 	 * @returns
 	 */
-	public async updateReadme(repoContext: WebsocketReadmeEvent["d"], version?: string) {
+	public async updateReadme(repoContext: WebsocketReadmeEvent["d"], version?: string, push = true) {
 		const installation = this.octocat.installations.cache.find(
 			(installation) => installation.name.toLowerCase() === repoContext.owner.toLowerCase()
 		);
-		if (!installation || !installation.readme) return;
+		if (!installation || !installation.readme) return null;
 
 		const ref = "heads/main";
 		const config = installation.configs.get(repoContext.repo);
-		if (!config) return;
+		if (!config) return null;
 
 		try {
-			if (version) {
-				config.project.version = version;
-				installation.configs.set(repoContext.repo, config);
-			}
-
 			const content = await installation.readme.generate(config, installation.octokit, repoContext.repo);
-
-			const refContext = await installation.octokit.request("GET /repos/{owner}/{repo}/git/ref/{ref}", { ...repoContext, ref });
-			const currentSha = refContext.data.object.sha;
-
-			const latestCommit = await installation.octokit.request("GET /repos/{owner}/{repo}/git/commits/{commit_sha}", {
-				...repoContext,
-				commit_sha: currentSha
-			});
-
-			const treeSha = latestCommit.data.tree.sha;
 			const readmeBlob = await installation.octokit.request("POST /repos/{owner}/{repo}/git/blobs", {
 				...repoContext,
 				content,
 				encoding: "utf-8"
 			});
+
 			const trees: TreeObject[] = [{ mode: "100644", path: "README.md", type: "blob", sha: readmeBlob.data.sha }];
+
 			if (version) {
+				config.project.version = version;
+				installation.configs.set(repoContext.repo, config);
+
 				const configContent = stringify(config);
 				const configBlob = await installation.octokit.request("POST /repos/{owner}/{repo}/git/blobs", {
 					...repoContext,
@@ -130,31 +125,15 @@ export class WebsocketRequestHandler {
 				});
 
 				trees.push({ mode: "100644", path: README_CONFIG_LOCATION, type: "blob", sha: configBlob.data.sha });
-
-				const packageJsonBlob = await this.updatePackageJson(repoContext, version, installation.octokit);
-				if (packageJsonBlob) trees.push(packageJsonBlob);
 			}
 
-			const tree = await installation.octokit.request("POST /repos/{owner}/{repo}/git/trees", {
-				...repoContext,
-				base_tree: treeSha,
-				tree: trees
-			});
+			if (!push) return trees;
 
-			const commit = await installation.octokit.request("POST /repos/{owner}/{repo}/git/commits", {
-				...repoContext,
-				message: "docs(Readme): update readme content [skip ci]",
-				tree: tree.data.sha,
-				parents: [currentSha]
-			});
-
-			await installation.octokit.request("PATCH /repos/{owner}/{repo}/git/refs/{ref}", {
-				...repoContext,
-				ref,
-				sha: commit.data.sha
-			});
+			await this.createCommit(trees, repoContext, ref, "docs(Readme): update readme content [skip ci]", installation.octokit);
+			return null;
 		} catch (err) {
 			this.octocat.logger.error(`Unable to update readme for ${repoContext.owner}/${repoContext.repo}`, err);
+			return null;
 		}
 	}
 
@@ -179,6 +158,44 @@ export class WebsocketRequestHandler {
 		});
 
 		return { mode: "100644", type: "blob", path: packageJson.data.path, sha: blob.data.sha };
+	}
+
+	/**
+	 * Creates a commit with the provided blobs
+	 * @param trees The array of tree blobs
+	 * @param repoContext The base repository information
+	 * @param ref The commit ref
+	 * @param message The commit Message
+	 * @param octokit The authenticated octokit
+	 */
+	private async createCommit(trees: TreeObject[], repoContext: BaseRepositoryData, ref: string, message: string, octokit: Octokit) {
+		const refContext = await octokit.request("GET /repos/{owner}/{repo}/git/ref/{ref}", { ...repoContext, ref });
+		const currentSha = refContext.data.object.sha;
+
+		const latestCommit = await octokit.request("GET /repos/{owner}/{repo}/git/commits/{commit_sha}", {
+			...repoContext,
+			commit_sha: currentSha
+		});
+
+		const treeSha = latestCommit.data.tree.sha;
+		const tree = await octokit.request("POST /repos/{owner}/{repo}/git/trees", {
+			...repoContext,
+			base_tree: treeSha,
+			tree: trees
+		});
+
+		const commit = await octokit.request("POST /repos/{owner}/{repo}/git/commits", {
+			...repoContext,
+			message,
+			tree: tree.data.sha,
+			parents: [currentSha]
+		});
+
+		await octokit.request("PATCH /repos/{owner}/{repo}/git/refs/{ref}", {
+			...repoContext,
+			ref,
+			sha: commit.data.sha
+		});
 	}
 
 	/**

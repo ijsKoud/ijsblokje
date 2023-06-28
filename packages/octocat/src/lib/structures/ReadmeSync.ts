@@ -74,7 +74,6 @@ export class ReadmeSync {
 		try {
 			const parsedToml = parse(toml);
 			const mergedConfig = _.merge(baseConfig, parsedToml);
-			// if (typeof parsedToml.repo === "object") mergedConfig.repo = { ...baseConfig.repo, ...parsedToml.repo };
 
 			const zodSchema = z.object({
 				repo: z.object({
