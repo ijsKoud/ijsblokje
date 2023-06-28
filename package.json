@@ -1,6 +1,6 @@
 {
 	"name": "ijsblokje",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "A personal GitHub bot which syncs data and runs automated systems",
 	"author": "ijsKoud <github@ijskoud.dev>",
 	"license": "MIT",
