@@ -73,7 +73,7 @@ export class WebsocketRequestHandler {
 			const readmeBlob = await this.updateReadme(repoContext, version, false);
 			const pkgBlob = await this.updatePackageJson(repoContext, version, installation.octokit);
 			const blobs = [...(readmeBlob ?? []), pkgBlob].filter(Boolean) as TreeObject[];
-			if (!blobs.length) await this.createCommit(blobs, repoContext, "heads/main", `chore(Release): v${version} 🎉`, installation.octokit);
+			if (blobs.length) await this.createCommit(blobs, repoContext, "heads/main", `chore(Release): v${version} 🎉`, installation.octokit);
 
 			await installation.octokit.request("POST /repos/{owner}/{repo}/releases", {
 				...repoContext,
