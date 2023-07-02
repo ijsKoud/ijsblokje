@@ -20,7 +20,7 @@
 		"@octokit/request": "7.0.1",
 		"@sapphire/duration": "^1.1.0",
 		"@snowcrystals/icicle": "2.0.4",
-		"glob": "^10.3.0",
+		"glob": "^10.3.1",
 		"lodash": "^4.17.21",
 		"redis": "^4.6.7",
 		"semver": "7.5.3",
