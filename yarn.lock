@@ -590,7 +590,7 @@ __metadata:
     "@types/node": ^18.16.18
     "@types/semver": 7.5.0
     eslint: ^8.43.0
-    glob: ^10.3.0
+    glob: ^10.3.1
     lodash: ^4.17.21
     prettier: ^2.8.8
     redis: ^4.6.7
@@ -639,7 +639,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ijsblokje/server@workspace:packages/server"
   dependencies:
-    "@octokit/webhooks": ^12.0.1
+    "@octokit/webhooks": ^12.0.2
     "@snowcrystals/icicle": 2.0.4
     "@types/body-parser": ^1.19.2
     "@types/eventsource": ^1.1.11
@@ -992,22 +992,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/webhooks-types@npm:7.0.3":
-  version: 7.0.3
-  resolution: "@octokit/webhooks-types@npm:7.0.3"
-  checksum: 2edcfc275e413ff488742aa44ccc9fa688673b5c81ceaea3aad9eb39b6508628fdc721e863cab1d4d509f7ec4d2d4e3a02aa59281345df3d54cba139507e7c18
+"@octokit/webhooks-types@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@octokit/webhooks-types@npm:7.1.0"
+  checksum: 5aea38c38e97cb1b8d54c805c17c4015ee937d0b1ad550adc64eaf2e90bfbaf1e00c878490c10b43e31a11563e8d02183b86268ed588b04e39b22d5fd27807cf
   languageName: node
   linkType: hard
 
-"@octokit/webhooks@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "@octokit/webhooks@npm:12.0.1"
+"@octokit/webhooks@npm:^12.0.2":
+  version: 12.0.2
+  resolution: "@octokit/webhooks@npm:12.0.2"
   dependencies:
     "@octokit/request-error": ^4.0.0
     "@octokit/webhooks-methods": ^4.0.0
-    "@octokit/webhooks-types": 7.0.3
+    "@octokit/webhooks-types": 7.1.0
     aggregate-error: ^3.1.0
-  checksum: 6698287b049ca52682945adc51991db5f86ca17fc21ec451c03cc631f28d01db2ba1c85977e3319e14a51a10b6e368d2dac8816514cf2f31e0bf410cabc131aa
+  checksum: 48092a99d597064a1062b8abf012a11afc72dad39df2a7efa9a8c8aed784413a6eb3dcb348c34f4fa91a457041a6e93464c4d4defc5a216c1f2a79afa5bc3e19
   languageName: node
   linkType: hard
 
@@ -3518,18 +3518,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.3.0":
-  version: 10.3.0
-  resolution: "glob@npm:10.3.0"
+"glob@npm:^10.3.1":
+  version: 10.3.1
+  resolution: "glob@npm:10.3.1"
   dependencies:
     foreground-child: ^3.1.0
     jackspeak: ^2.0.3
     minimatch: ^9.0.1
     minipass: ^5.0.0 || ^6.0.2
-    path-scurry: ^1.7.0
+    path-scurry: ^1.10.0
   bin:
     glob: dist/cjs/src/bin.js
-  checksum: 6fa4ac0a86ffec1c5715a2e6fbdd63e1e7f1c2c8f5db08cc3256cdfcb81093678e7c80a3d100b502a1b9d141369ecf87bc24fe2bcb72acec7b14626d358a4eb0
+  checksum: 19c8c2805658b1002fecf0722cd609a33153d756a0d5260676bd0e9c5e6ef889ec9cce6d3dac0411aa90bce8de3d14f25b6f5589a3292582cccbfeddd0e98cc4
   languageName: node
   linkType: hard
 
@@ -4327,7 +4327,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^10.0.0":
+"lru-cache@npm:^10.0.0, lru-cache@npm:^9.1.1 || ^10.0.0":
   version: 10.0.0
   resolution: "lru-cache@npm:10.0.0"
   checksum: 18f101675fe283bc09cda0ef1e3cc83781aeb8373b439f086f758d1d91b28730950db785999cd060d3c825a8571c03073e8c14512b6655af2188d623031baf50
@@ -5006,6 +5006,16 @@ __metadata:
   version: 1.0.7
   resolution: "path-parse@npm:1.0.7"
   checksum: 49abf3d81115642938a8700ec580da6e830dde670be21893c62f4e10bd7dd4c3742ddc603fe24f898cba7eb0c6bc1777f8d9ac14185d34540c6d4d80cd9cae8a
+  languageName: node
+  linkType: hard
+
+"path-scurry@npm:^1.10.0":
+  version: 1.10.0
+  resolution: "path-scurry@npm:1.10.0"
+  dependencies:
+    lru-cache: ^9.1.1 || ^10.0.0
+    minipass: ^5.0.0 || ^6.0.2
+  checksum: 3b66a4a6ab66e45755b577c966ecf0da92d3e068b3c992d8f69aa2cc908ef4eda9358253e9b4f86cad43d3ad810ec445be164105975f5cb3fdab68459c59dc6e
   languageName: node
   linkType: hard
 
