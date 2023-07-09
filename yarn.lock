@@ -597,11 +597,11 @@ __metadata:
     "@types/node": ^18.16.19
     "@types/semver": 7.5.0
     eslint: ^8.44.0
-    glob: ^10.3.1
+    glob: ^10.3.3
     lodash: ^4.17.21
     prettier: ^2.8.8
     redis: ^4.6.7
-    semver: 7.5.3
+    semver: 7.5.4
     smol-toml: ^1.1.0
     tslib: 2.6.0
     typescript: 5.1.6
@@ -636,7 +636,7 @@ __metadata:
     "@types/semver": 7.5.0
     eslint: ^8.44.0
     prettier: ^2.8.8
-    semver: 7.5.3
+    semver: 7.5.4
     typescript: 5.1.6
     vitest: ^0.32.2
   languageName: unknown
@@ -646,7 +646,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ijsblokje/server@workspace:packages/server"
   dependencies:
-    "@octokit/webhooks": ^12.0.2
+    "@octokit/webhooks": ^12.0.3
     "@snowcrystals/icicle": 2.0.4
     "@types/body-parser": ^1.19.2
     "@types/eventsource": ^1.1.11
@@ -923,7 +923,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/request-error@npm:^4.0.0, @octokit/request-error@npm:^4.0.1, @octokit/request-error@npm:^4.0.2":
+"@octokit/request-error@npm:^4.0.1, @octokit/request-error@npm:^4.0.2":
   version: 4.0.2
   resolution: "@octokit/request-error@npm:4.0.2"
   dependencies:
@@ -931,6 +931,17 @@ __metadata:
     deprecation: ^2.0.0
     once: ^1.4.0
   checksum: 9510078f718be08cf74e7b04b45f67aa545a388787192ff1cd3ca0d066499963d641bf1fea76ef47d2657a55f0cf3e612e46bbf4f33a96436415d30a2e3bb00a
+  languageName: node
+  linkType: hard
+
+"@octokit/request-error@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@octokit/request-error@npm:5.0.0"
+  dependencies:
+    "@octokit/types": ^11.0.0
+    deprecation: ^2.0.0
+    once: ^1.4.0
+  checksum: 2012eca66f6b8fa4038b3bfe81d65a7134ec58e2caf45d229aca13b9653ab260abd95229bd1a8c11180ee0bcf738e2556831a85de28f39b175175653c3b79fdd
   languageName: node
   linkType: hard
 
@@ -983,6 +994,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/types@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "@octokit/types@npm:11.0.0"
+  dependencies:
+    "@octokit/openapi-types": ^18.0.0
+  checksum: 415717e782736eb634ff7e893b592f749c371116fdde4802cb0fb594d654c48de4ded6ebc64ab82e2394ca44e8f4f9ac47431c7221aa30d911f9e06ce455c810
+  languageName: node
+  linkType: hard
+
 "@octokit/types@npm:^9.0.0":
   version: 9.3.2
   resolution: "@octokit/types@npm:9.3.2"
@@ -1006,15 +1026,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/webhooks@npm:^12.0.2":
-  version: 12.0.2
-  resolution: "@octokit/webhooks@npm:12.0.2"
+"@octokit/webhooks@npm:^12.0.3":
+  version: 12.0.3
+  resolution: "@octokit/webhooks@npm:12.0.3"
   dependencies:
-    "@octokit/request-error": ^4.0.0
+    "@octokit/request-error": ^5.0.0
     "@octokit/webhooks-methods": ^4.0.0
     "@octokit/webhooks-types": 7.1.0
     aggregate-error: ^3.1.0
-  checksum: 48092a99d597064a1062b8abf012a11afc72dad39df2a7efa9a8c8aed784413a6eb3dcb348c34f4fa91a457041a6e93464c4d4defc5a216c1f2a79afa5bc3e19
+  checksum: 2db63122eab1852047379f9cb0024cdb22a2bf16356907b66bc71d5a01814b069178aee07fe61faeb80cde3dcd513a39526974f8bae5ec6e26b63fe87877ace1
   languageName: node
   linkType: hard
 
@@ -2622,7 +2642,7 @@ __metadata:
     dotenv: 16.3.1
     eslint: ^8.44.0
     prettier: ^2.8.8
-    semver: 7.5.3
+    semver: 7.5.4
     tslib: 2.6.0
     typescript: 5.1.6
   languageName: unknown
@@ -3525,18 +3545,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.3.1":
-  version: 10.3.1
-  resolution: "glob@npm:10.3.1"
+"glob@npm:^10.3.3":
+  version: 10.3.3
+  resolution: "glob@npm:10.3.3"
   dependencies:
     foreground-child: ^3.1.0
     jackspeak: ^2.0.3
     minimatch: ^9.0.1
-    minipass: ^5.0.0 || ^6.0.2
-    path-scurry: ^1.10.0
+    minipass: ^5.0.0 || ^6.0.2 || ^7.0.0
+    path-scurry: ^1.10.1
   bin:
     glob: dist/cjs/src/bin.js
-  checksum: 19c8c2805658b1002fecf0722cd609a33153d756a0d5260676bd0e9c5e6ef889ec9cce6d3dac0411aa90bce8de3d14f25b6f5589a3292582cccbfeddd0e98cc4
+  checksum: 29190d3291f422da0cb40b77a72fc8d2c51a36524e99b8bf412548b7676a6627489528b57250429612b6eec2e6fe7826d328451d3e694a9d15e575389308ec53
   languageName: node
   linkType: hard
 
@@ -4646,6 +4666,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minipass@npm:^5.0.0 || ^6.0.2 || ^7.0.0":
+  version: 7.0.1
+  resolution: "minipass@npm:7.0.1"
+  checksum: fedd1293f6a1b4e406c242a1cecfb75d0a81422bb2c365d999e33a88642fb68d70a89d95b550e08c640b3c0d9162829310e0c58b9b846b9218de25779818c709
+  languageName: node
+  linkType: hard
+
 "minizlib@npm:^2.1.1, minizlib@npm:^2.1.2":
   version: 2.1.2
   resolution: "minizlib@npm:2.1.2"
@@ -5030,13 +5057,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-scurry@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "path-scurry@npm:1.10.0"
+"path-scurry@npm:^1.10.1":
+  version: 1.10.1
+  resolution: "path-scurry@npm:1.10.1"
   dependencies:
     lru-cache: ^9.1.1 || ^10.0.0
-    minipass: ^5.0.0 || ^6.0.2
-  checksum: 3b66a4a6ab66e45755b577c966ecf0da92d3e068b3c992d8f69aa2cc908ef4eda9358253e9b4f86cad43d3ad810ec445be164105975f5cb3fdab68459c59dc6e
+    minipass: ^5.0.0 || ^6.0.2 || ^7.0.0
+  checksum: e2557cff3a8fb8bc07afdd6ab163a92587884f9969b05bbbaf6fe7379348bfb09af9ed292af12ed32398b15fb443e81692047b786d1eeb6d898a51eb17ed7d90
   languageName: node
   linkType: hard
 
@@ -5528,14 +5555,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.5.3":
-  version: 7.5.3
-  resolution: "semver@npm:7.5.3"
+"semver@npm:7.5.4":
+  version: 7.5.4
+  resolution: "semver@npm:7.5.4"
   dependencies:
     lru-cache: ^6.0.0
   bin:
     semver: bin/semver.js
-  checksum: 9d58db16525e9f749ad0a696a1f27deabaa51f66e91d2fa2b0db3de3e9644e8677de3b7d7a03f4c15bc81521e0c3916d7369e0572dbde250d9bedf5194e2a8a7
+  checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
   languageName: node
   linkType: hard
 
