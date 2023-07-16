@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@ijsblokje/octokit": "*",
 		"@ijsblokje/utils": "*",
-		"@octokit/types": "11.0.0",
+		"@octokit/types": "11.1.0",
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
