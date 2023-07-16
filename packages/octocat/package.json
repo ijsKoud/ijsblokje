@@ -17,14 +17,14 @@
 		"@ijsblokje/release": "*",
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
-		"@octokit/request": "8.0.2",
+		"@octokit/request": "8.1.0",
 		"@sapphire/duration": "^1.1.0",
 		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.3.3",
 		"lodash": "^4.17.21",
 		"redis": "^4.6.7",
 		"semver": "7.5.4",
-		"smol-toml": "^1.1.0",
+		"smol-toml": "^1.1.1",
 		"zod": "^3.21.4"
 	},
 	"devDependencies": {

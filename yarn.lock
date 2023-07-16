@@ -554,7 +554,7 @@ __metadata:
     "@ijsblokje/server": "*"
     "@ijsblokje/utils": "*"
     "@octokit/openapi-types": ^18.0.0
-    "@octokit/request": 8.0.2
+    "@octokit/request": 8.1.0
     "@octokit/types": ^11.0.0
     "@sapphire/duration": ^1.1.0
     "@snowcrystals/icicle": 2.0.4
@@ -567,7 +567,7 @@ __metadata:
     prettier: ^3.0.0
     redis: ^4.6.7
     semver: 7.5.4
-    smol-toml: ^1.1.0
+    smol-toml: ^1.1.1
     tslib: 2.6.0
     typescript: 5.1.6
     zod: ^3.21.4
@@ -596,7 +596,7 @@ __metadata:
   dependencies:
     "@ijsblokje/octokit": "*"
     "@ijsblokje/utils": "*"
-    "@octokit/types": 11.0.0
+    "@octokit/types": 11.1.0
     "@types/node": ^18.16.19
     "@types/semver": 7.5.0
     eslint: ^8.44.0
@@ -908,16 +908,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/request@npm:8.0.2, @octokit/request@npm:^8.0.0, @octokit/request@npm:^8.0.2":
-  version: 8.0.2
-  resolution: "@octokit/request@npm:8.0.2"
+"@octokit/request@npm:8.1.0":
+  version: 8.1.0
+  resolution: "@octokit/request@npm:8.1.0"
   dependencies:
     "@octokit/endpoint": ^9.0.0
     "@octokit/request-error": ^5.0.0
-    "@octokit/types": ^11.0.0
+    "@octokit/types": ^11.1.0
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
-  checksum: 7f4de5e31086cab3630fdd3bf2c5fbef5d6fe2f6c5862f810090656ef06f86834802d910f18cf264b305eecc7777bdd0d3372563aa21eac50ef4a04d86a03688
+  checksum: 00f71e1ca0bff84a1a903ca9f79a7837aac830cae3560d44f03272d062ef98e5a8170fdab8a47169c41db88e6894717cc71387604486d559f9eae409fab93f6f
   languageName: node
   linkType: hard
 
@@ -935,7 +935,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:11.0.0, @octokit/types@npm:^11.0.0":
+"@octokit/request@npm:^8.0.0, @octokit/request@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "@octokit/request@npm:8.0.2"
+  dependencies:
+    "@octokit/endpoint": ^9.0.0
+    "@octokit/request-error": ^5.0.0
+    "@octokit/types": ^11.0.0
+    is-plain-object: ^5.0.0
+    universal-user-agent: ^6.0.0
+  checksum: 7f4de5e31086cab3630fdd3bf2c5fbef5d6fe2f6c5862f810090656ef06f86834802d910f18cf264b305eecc7777bdd0d3372563aa21eac50ef4a04d86a03688
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:11.1.0, @octokit/types@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "@octokit/types@npm:11.1.0"
+  dependencies:
+    "@octokit/openapi-types": ^18.0.0
+  checksum: 72627a94ddaf7bc14db06572bcde67649aad608cd86548818380db9305f4c0ca9ca078a62dd883858a267e8ec8fd596a0fce416aa04197c439b9548efef609a7
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:^11.0.0":
   version: 11.0.0
   resolution: "@octokit/types@npm:11.0.0"
   dependencies:
@@ -5405,10 +5427,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"smol-toml@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "smol-toml@npm:1.1.0"
-  checksum: ba735a48caecefc230520b98de020c52e9cfedc809bca9def088b7b7ec695ada3ae9d523f8ba6522b7e94eddd50e077faaf104a2b553b17705507d96e6a9c55c
+"smol-toml@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "smol-toml@npm:1.1.1"
+  checksum: da9f332232801f67893395d7982c1caed253b16366a203309138cd87ac762dd820a9c625ca89a7730acc6bec852867fdac28e276eb5b7cd4f0104b9a819d8e4d
   languageName: node
   linkType: hard
 
