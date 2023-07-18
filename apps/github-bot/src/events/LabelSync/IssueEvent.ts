@@ -10,21 +10,15 @@ export default class extends GitHubEvent {
 		if (!parsedTitle || !installation) return;
 
 		const defaultLabels = installation.defaultLabels.filter((label) => label.name.toLowerCase().includes(parsedTitle.type));
-		const repoLabels = (installation.labels.get(event.payload.repository.name) ?? []).filter((label) =>
-			label.name.toLowerCase().includes(parsedTitle.type)
-		);
-		const currentLabels = (event.payload.issue.labels ?? []).filter((label) => label.name.toLowerCase().includes("merge"));
+		const repositoryLabels = installation.labels.get(event.payload.repository.name) ?? [];
+		const repoLabels = repositoryLabels.filter((label) => label.name.toLowerCase().includes(parsedTitle.type));
 
 		await octokit
 			.request("PUT /repos/{owner}/{repo}/issues/{issue_number}/labels", {
 				issue_number: event.payload.issue.number,
 				owner: installation.name,
 				repo: event.payload.repository.name,
-				labels: [
-					...defaultLabels.map((label) => label.name),
-					...repoLabels.map((label) => label.name),
-					...currentLabels.map((label) => label.name)
-				]
+				labels: [...defaultLabels.map((label) => label.name), ...repoLabels.map((label) => label.name)]
 			})
 			.catch(() => void 0);
 	}
