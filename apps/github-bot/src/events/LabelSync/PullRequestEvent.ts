@@ -19,7 +19,7 @@ export default class extends GitHubEvent {
 		);
 		const currentLabels = (event.payload.pull_request.labels ?? []).filter((label) => label.name.toLowerCase().includes("merge"));
 
-		if (event.payload.sender.login === "renovate[bot]") {
+		if (event.payload.pull_request.user.login === "renovate[bot]") {
 			const dependencyLabel = installation.defaultLabels.find((label) => label.name.toLowerCase().includes("dependencies"));
 			if (dependencyLabel) defaultLabels.push(dependencyLabel);
 		}
