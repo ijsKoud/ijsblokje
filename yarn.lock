@@ -572,7 +572,7 @@ __metadata:
     "@ijsblokje/server": "*"
     "@ijsblokje/utils": "*"
     "@octokit/openapi-types": ^18.0.0
-    "@octokit/request": 8.1.0
+    "@octokit/request": 8.1.1
     "@octokit/types": ^11.1.0
     "@sapphire/duration": ^1.1.0
     "@snowcrystals/icicle": 2.0.4
@@ -904,16 +904,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/request@npm:8.1.0, @octokit/request@npm:^8.0.1":
-  version: 8.1.0
-  resolution: "@octokit/request@npm:8.1.0"
+"@octokit/request@npm:8.1.1":
+  version: 8.1.1
+  resolution: "@octokit/request@npm:8.1.1"
   dependencies:
     "@octokit/endpoint": ^9.0.0
     "@octokit/request-error": ^5.0.0
     "@octokit/types": ^11.1.0
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
-  checksum: 00f71e1ca0bff84a1a903ca9f79a7837aac830cae3560d44f03272d062ef98e5a8170fdab8a47169c41db88e6894717cc71387604486d559f9eae409fab93f6f
+  checksum: dec3ba2cba14739159cd8d1653ad8ac6d58095e4ac294d312d20ce2c63c60c3cad2e5499137244dba3d681fd5cd7f74b4b5d4df024a19c0ee1831204e5a3a894
   languageName: node
   linkType: hard
 
@@ -927,6 +927,19 @@ __metadata:
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
   checksum: 7f4de5e31086cab3630fdd3bf2c5fbef5d6fe2f6c5862f810090656ef06f86834802d910f18cf264b305eecc7777bdd0d3372563aa21eac50ef4a04d86a03688
+  languageName: node
+  linkType: hard
+
+"@octokit/request@npm:^8.0.1":
+  version: 8.1.0
+  resolution: "@octokit/request@npm:8.1.0"
+  dependencies:
+    "@octokit/endpoint": ^9.0.0
+    "@octokit/request-error": ^5.0.0
+    "@octokit/types": ^11.1.0
+    is-plain-object: ^5.0.0
+    universal-user-agent: ^6.0.0
+  checksum: 00f71e1ca0bff84a1a903ca9f79a7837aac830cae3560d44f03272d062ef98e5a8170fdab8a47169c41db88e6894717cc71387604486d559f9eae409fab93f6f
   languageName: node
   linkType: hard
 
