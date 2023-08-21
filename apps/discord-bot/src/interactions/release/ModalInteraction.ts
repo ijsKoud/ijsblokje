@@ -26,7 +26,7 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 			const components = interaction.message.components.map((row) =>
 				row.components
 					.filter((component) => component.type === ComponentType.Button)
-					.map((component) => new ButtonBuilder(component.data).setDisabled(true))
+					.map((component) => new ButtonBuilder(component.data as any).setDisabled(true))
 			);
 			await interaction.message.edit({
 				components: components.map((buttons) => new ActionRowBuilder<ButtonBuilder>().setComponents(...buttons))
