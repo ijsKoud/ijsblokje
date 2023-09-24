@@ -24,11 +24,11 @@
 		"zod": "3.22.2"
 	},
 	"devDependencies": {
-		"@types/node": "^18.17.17",
-		"eslint": "^8.49.0",
+		"@types/node": "^18.17.19",
+		"eslint": "^8.50.0",
 		"prettier": "^3.0.3",
 		"typescript": "5.2.2",
-		"vitest": "^0.34.4"
+		"vitest": "^0.34.5"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
