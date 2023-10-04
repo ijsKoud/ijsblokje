@@ -19,12 +19,12 @@
 		"semver": "7.5.4"
 	},
 	"devDependencies": {
-		"@types/node": "^18.17.19",
-		"@types/semver": "7.5.2",
+		"@types/node": "^18.18.3",
+		"@types/semver": "7.5.3",
 		"eslint": "^8.50.0",
 		"prettier": "^3.0.3",
 		"typescript": "5.2.2",
-		"vitest": "^0.34.5"
+		"vitest": "^0.34.6"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
