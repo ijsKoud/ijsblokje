@@ -31,7 +31,7 @@
 		"@octokit/openapi-types": "^18.1.1",
 		"@octokit/types": "^11.1.0",
 		"@types/lodash": "^4.14.199",
-		"@types/node": "^18.18.4",
+		"@types/node": "^18.18.5",
 		"@types/semver": "7.5.3",
 		"eslint": "^8.51.0",
 		"prettier": "^3.0.3",
