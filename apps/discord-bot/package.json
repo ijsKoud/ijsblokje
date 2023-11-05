@@ -21,9 +21,9 @@
 		"tslib": "2.6.2"
 	},
 	"devDependencies": {
-		"@types/node": "^20.8.9",
+		"@types/node": "^20.8.10",
 		"@types/semver": "7.5.4",
-		"eslint": "^8.52.0",
+		"eslint": "^8.53.0",
 		"prettier": "^3.0.3",
 		"typescript": "5.2.2"
 	},
