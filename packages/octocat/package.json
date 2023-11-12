@@ -17,7 +17,7 @@
 		"@ijsblokje/release": "*",
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
-		"@octokit/request": "8.1.4",
+		"@octokit/request": "8.1.5",
 		"@sapphire/duration": "^1.1.0",
 		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.3.10",
