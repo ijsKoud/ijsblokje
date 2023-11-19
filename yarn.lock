@@ -263,6 +263,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordjs/collection@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@discordjs/collection@npm:2.0.0"
+  checksum: 5cc29341935af3705e909f71f30f1514ef491c2afb4411f5972ccffa9584f10d6d1dc3463354b2af00e7c0bdf874032a7b81740bb5affe0f2eedf7eef65080cd
+  languageName: node
+  linkType: hard
+
 "@discordjs/formatters@npm:^0.3.2":
   version: 0.3.2
   resolution: "@discordjs/formatters@npm:0.3.2"
@@ -598,7 +605,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ijsblokje/octocat@workspace:packages/octocat"
   dependencies:
-    "@discordjs/collection": "npm:^1.5.3"
+    "@discordjs/collection": "npm:^2.0.0"
     "@ijsblokje/octokit": "npm:*"
     "@ijsblokje/release": "npm:*"
     "@ijsblokje/server": "npm:*"
