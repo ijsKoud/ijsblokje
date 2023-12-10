@@ -579,7 +579,7 @@ __metadata:
     eslint: "npm:^8.55.0"
     glob: "npm:^10.3.10"
     lodash: "npm:^4.17.21"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     redis: "npm:^4.6.10"
     semver: "npm:7.5.4"
     smol-toml: "npm:^1.1.3"
@@ -599,7 +599,7 @@ __metadata:
     "@snowcrystals/icicle": "npm:^2.0.4"
     "@types/node": "npm:^20.10.4"
     eslint: "npm:^8.55.0"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     typescript: "npm:5.3.3"
     vitest: "npm:0.34.6"
   languageName: unknown
@@ -615,7 +615,7 @@ __metadata:
     "@types/node": "npm:^20.10.4"
     "@types/semver": "npm:7.5.6"
     eslint: "npm:^8.55.0"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     semver: "npm:7.5.4"
     typescript: "npm:5.3.3"
     vitest: "npm:^0.34.6"
@@ -637,7 +637,7 @@ __metadata:
     eslint: "npm:^8.55.0"
     eventsource: "npm:2.0.2"
     express: "npm:^4.18.2"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     typescript: "npm:5.3.3"
     vitest: "npm:^0.34.6"
     ws: "npm:8.14.2"
@@ -652,7 +652,7 @@ __metadata:
     "@types/node": "npm:^20.10.4"
     dotenv: "npm:16.3.1"
     eslint: "npm:^8.55.0"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     typescript: "npm:5.3.3"
     vitest: "npm:^0.34.6"
     zod: "npm:3.22.4"
@@ -2448,7 +2448,7 @@ __metadata:
     discord.js: "npm:14.13.0"
     dotenv: "npm:16.3.1"
     eslint: "npm:^8.55.0"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     semver: "npm:7.5.4"
     tslib: "npm:2.6.2"
     typescript: "npm:5.3.3"
@@ -3289,7 +3289,7 @@ __metadata:
     dotenv: "npm:16.3.1"
     eslint: "npm:^8.55.0"
     lodash: "npm:4.17.21"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     tslib: "npm:2.6.2"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -3608,7 +3608,7 @@ __metadata:
     is-ci: "npm:^3.0.1"
     lint-staged: "npm:^15.2.0"
     pinst: "npm:^3.0.0"
-    prettier: "npm:^3.1.0"
+    prettier: "npm:^3.1.1"
     tslib: "npm:2.6.2"
     turbo: "npm:^1.11.1"
     typescript: "npm:5.3.3"
@@ -4990,6 +4990,15 @@ __metadata:
   bin:
     prettier: bin/prettier.cjs
   checksum: a45ea70aa97fde162ea4c4aba3dfc7859aa6a732a1db34458d9535dc3c2c16d3bc3fb5689e6cd76aa835562555303b02d9449fd2e15af3b73c8053557e25c5b6
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "prettier@npm:3.1.1"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: facc944ba20e194ff4db765e830ffbcb642803381f0d2033ed397e79904fa4ccc877dc25ad68f42d36985c01d051c990ca1b905fb83d2d7d65fe69e4386fa1a3
   languageName: node
   linkType: hard
 
