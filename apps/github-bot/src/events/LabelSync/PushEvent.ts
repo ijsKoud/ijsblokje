@@ -14,14 +14,14 @@ export default class extends GitHubEvent {
 		if (!installation || !installation.defaultLabels) return;
 		if (event.payload.repository.name !== (installation.isUser ? installation!.name : ".github")) return;
 
-		if (event.payload.commits.some((commit) => commit.removed.includes(LABEL_CONFIG_LOCATION))) {
+		if (event.payload.commits.some((commit) => (commit.removed ?? []).includes(LABEL_CONFIG_LOCATION))) {
 			installation!.defaultLabels = [];
 			installation!.labels.clear();
 
 			return;
 		}
 
-		if (!event.payload.commits.some((commit) => [...commit.added, ...commit.modified].includes(LABEL_CONFIG_LOCATION))) return;
+		if (!event.payload.commits.some((commit) => [...(commit.added ?? []), ...(commit.modified ?? [])].includes(LABEL_CONFIG_LOCATION))) return;
 
 		const labelConfig = await this.getLabelConfig(octokit, installation.name, event.payload.repository.name);
 		if (!labelConfig) return;

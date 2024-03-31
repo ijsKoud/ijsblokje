@@ -19,7 +19,7 @@ async function pushReadmeChanges(
 	if (!installation.readme) return;
 
 	const repo = event.payload.repository.name;
-	const owner = event.payload.repository.owner.login;
+	const owner = event.payload.repository.owner?.login ?? "";
 	const refId = "ref" in event.payload ? event.payload.ref.replace("refs/", "") : "heads/main";
 
 	try {
