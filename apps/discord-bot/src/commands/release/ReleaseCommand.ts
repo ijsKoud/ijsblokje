@@ -50,7 +50,7 @@ export default class extends Command<ExtendedIgloClient> {
 				].join("\n")
 			);
 
-		const customIdPrefix = `${owner}-${repo}-${interaction.user.id}-release`;
+		const customIdPrefix = `${owner}-${repo.replace("-", "\\_")}-${interaction.user.id}-release`;
 		const actionSemverRow = new ActionRowBuilder<ButtonBuilder>();
 		actionSemverRow.addComponents(
 			new ButtonBuilder().setCustomId(`${customIdPrefix}-patch`).setLabel("Patch release").setEmoji("🐛").setStyle(ButtonStyle.Secondary),

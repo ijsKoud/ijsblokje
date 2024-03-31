@@ -9,7 +9,8 @@ import type ExtendedIgloClient from "../../lib/bot.js";
 @ApplyOptions<InteractionListenerOptions>({ name: "-release_edit_response", strategy: "endsWith", type: InteractionType.ModalSubmit })
 export default class ButtonReleaseInteraction extends InteractionListener<ExtendedIgloClient> {
 	public override async run(interaction: ModalSubmitInteraction) {
-		const [owner, repo, userId] = interaction.customId.split("-");
+		let [owner, repo, userId] = interaction.customId.split("-");
+		repo = repo.replace("\\_", "-");
 		if (userId !== interaction.user.id) {
 			await interaction.deferUpdate();
 			return;

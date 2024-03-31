@@ -27,7 +27,9 @@ function checkInteractionId(id: string): boolean {
 @ApplyOptions<InteractionListenerOptions>({ name: "", type: ComponentType.Button, check: checkInteractionId })
 export default class ButtonReleaseInteraction extends InteractionListener<ExtendedIgloClient> {
 	public override async run(interaction: ButtonInteraction) {
-		const [owner, repo, userId, , type] = interaction.customId.split("-");
+		let [owner, repo, userId, , type] = interaction.customId.split("-");
+		repo = repo.replace("\\_", "-");
+
 		if (userId !== interaction.user.id) {
 			await interaction.deferUpdate();
 			return;
@@ -59,6 +61,7 @@ export default class ButtonReleaseInteraction extends InteractionListener<Extend
 			return;
 		}
 
+		console.log("hello");
 		const components = interaction.message.components.map((row) =>
 			row.components
 				.filter((component) => component.type === ComponentType.Button)
