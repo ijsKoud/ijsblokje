@@ -25,7 +25,12 @@ export default class extends GitHubEvent {
 	 */
 	private async create(event: EmitterWebhookEvent<"installation.created" | "installation.suspend">) {
 		const manager = this.octocat.installations;
-		if (manager.allowedInstallations && !manager.allowedInstallations.includes(event.payload.installation.account.login)) return;
+		const name = event.payload.installation.account
+			? "login" in event.payload.installation.account
+				? event.payload.installation.account.login
+				: event.payload.installation.account?.name
+			: "";
+		if (manager.allowedInstallations && !manager.allowedInstallations.includes(name)) return;
 
 		await manager.loadInstallation(event.payload.installation as any);
 	}

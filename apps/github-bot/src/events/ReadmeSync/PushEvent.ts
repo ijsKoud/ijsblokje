@@ -18,9 +18,9 @@ export default class extends GitHubEvent {
 		];
 
 		const fileWasUpdated = event.payload.commits.some((commit) => {
-			if (commit.added.some((file) => watched.includes(file))) return true;
-			if (commit.modified.some((file) => watched.includes(file))) return true;
-			if (commit.removed.some((file) => watched.includes(file))) return true;
+			if ((commit.added ?? []).some((file) => watched.includes(file))) return true;
+			if ((commit.modified ?? []).some((file) => watched.includes(file))) return true;
+			if ((commit.removed ?? []).some((file) => watched.includes(file))) return true;
 
 			return false;
 		});
@@ -28,7 +28,7 @@ export default class extends GitHubEvent {
 		if (!fileWasUpdated) return;
 
 		const repo = event.payload.repository.name;
-		const owner = event.payload.repository.owner.login;
+		const owner = event.payload.repository.owner?.login ?? "";
 		const token = await octokit
 			.request("POST /app/installations/{installation_id}/access_tokens", {
 				installation_id: installation.installationId,
