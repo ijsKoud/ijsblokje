@@ -51,10 +51,10 @@ importers:
   apps/discord-bot:
     dependencies:
       '@ijsblokje/server':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/server
       '@ijsblokje/utils':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/utils
       '@snowcrystals/iglo':
         specifier: ^1.2.8
@@ -91,19 +91,19 @@ importers:
   apps/github-bot:
     dependencies:
       '@ijsblokje/octocat':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/octocat
       '@ijsblokje/octokit':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/octokit
       '@ijsblokje/release':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/release
       '@ijsblokje/server':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/server
       '@ijsblokje/utils':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../../packages/utils
       dotenv:
         specifier: 16.4.5
@@ -137,16 +137,16 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@ijsblokje/octokit':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../octokit
       '@ijsblokje/release':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../release
       '@ijsblokje/server':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../server
       '@ijsblokje/utils':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../utils
       '@octokit/request':
         specifier: 9.0.1
@@ -238,10 +238,10 @@ importers:
   packages/release:
     dependencies:
       '@ijsblokje/octokit':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../octokit
       '@ijsblokje/utils':
-        specifier: '*'
+        specifier: workspace:^
         version: link:../utils
       '@octokit/types':
         specifier: 12.6.0
