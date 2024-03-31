@@ -1,3 +1,3 @@
 module.exports = {
-	"**/*.{js,jsx,ts,tsx}": (filenames) => ["yarn turbo lint test", `prettier --write ${filenames.join(" ")}`]
+	"**/*.{js,jsx,ts,tsx}": (filenames) => ["pnpm turbo lint test", `prettier --write ${filenames.join(" ")}`]
 };

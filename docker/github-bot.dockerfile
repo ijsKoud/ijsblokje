@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 
 # Copy obly the needed files
-RUN yarn global add turbo
+RUN pnpm add turbo --global
 COPY . .
 RUN turbo prune --scope=github-bot --docker
 
@@ -24,21 +24,18 @@ RUN apk update
 # Install dependencies
 COPY .gitignore .gitignore
 COPY --from=builder /ijsblokje/out/json/ .
-COPY --from=builder /ijsblokje/out/yarn.lock ./yarn.lock
+COPY --from=builder /ijsblokje/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-COPY --from=builder /ijsblokje/.yarnrc.yml .yarnrc.yml
-COPY --from=builder /ijsblokje/.yarn .yarn
-
-RUN yarn --immutable
+RUN pnpm install --frozen-lockfile
 
 # Build the project
 COPY --from=builder /ijsblokje/out/full/ .
 COPY --from=builder /ijsblokje/tsconfig.json tsconfig.json
-RUN yarn turbo run build --filter=github-bot
+RUN pnpm turbo build --filter=github-bot
 
 # Remove dev-dependencies from node_modules
-RUN yarn pinst --disable
-RUN yarn workspaces focus --production --all
+RUN pnpm pinst --disable
+RUN pnpm install --prod
 
 
 # --- Runner ---

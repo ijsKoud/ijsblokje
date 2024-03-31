@@ -18,10 +18,10 @@ To work on the project you must do the following:
 
 **1**. Fork and clone the repository, make sure you are in the correct branch in this case the **main** branch.
 
-**2**. Install Yarn (we do not accept npm/pnpm package manager usage here), after that run `yarn install` to install all the dependencies.
+**2**. Install pnpm (we do not accept npm/pnpm package manager usage here), after that run `pnpm install` to install all the dependencies.
 
 **3**. Do whatever you want to do (add things, change things, fixed things, etc)
 
-**4**. Use `yarn run build` to build the app and `yarn run start` to start it. `yarn run dev` is usefull if you want to get up-to-date data`.
+**4**. Use `pnpm run build` to build the app and `pnpm run start` to start it. `pnpm run dev` is usefull if you want to get up-to-date data`.
 
 **4**. Open a [pull request](/compare) and wait for someone to review it (remember to always use semantic commit names for a PR and preferably for commits too!).
