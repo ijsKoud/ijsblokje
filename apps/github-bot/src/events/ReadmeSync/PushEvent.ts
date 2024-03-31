@@ -1,7 +1,9 @@
-import { ApplyOptions, GitHubEvent, GitHubInstallation, ReadmeSync } from "@ijsblokje/octocat";
+import type { GitHubInstallation } from "@ijsblokje/octocat";
+import { ApplyOptions, GitHubEvent, ReadmeSync } from "@ijsblokje/octocat";
 import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
 import { README_CONFIG_LOCATION } from "@ijsblokje/utils/constants.js";
+
 import pushReadmeChanges from "./PushReadmeChanges.js";
 
 @ApplyOptions({ event: "push" })

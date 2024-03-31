@@ -1,9 +1,11 @@
-import type { Octokit } from "@ijsblokje/octokit";
-import type { Octocat } from "../Octocat.js";
-import { fileURLToPath } from "node:url";
 import { join } from "node:path";
-import { glob } from "glob";
+import { fileURLToPath } from "node:url";
+
 import { Collection } from "@discordjs/collection";
+import type { Octokit } from "@ijsblokje/octokit";
+import { glob } from "glob";
+
+import type { Octocat } from "../Octocat.js";
 import { GitHubEvent } from "../structures/GithubEvent.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));

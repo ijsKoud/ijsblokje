@@ -1,7 +1,8 @@
-import { ApplyOptions, GitHubEvent, GitHubInstallation } from "@ijsblokje/octocat";
+import type { GitHubInstallation } from "@ijsblokje/octocat";
+import { ApplyOptions, GitHubEvent } from "@ijsblokje/octocat";
 import type { Octokit } from "@ijsblokje/octokit";
-import type { EmitterWebhookEvent } from "@ijsblokje/server";
 import { Commit } from "@ijsblokje/release";
+import type { EmitterWebhookEvent } from "@ijsblokje/server";
 
 @ApplyOptions({ event: "pull_request" })
 export default class extends GitHubEvent {

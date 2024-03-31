@@ -1,11 +1,12 @@
-import type { WebsocketReadmeEvent, WebsocketReleaseEvent } from "@ijsblokje/server";
-import type { Octocat } from "./Octocat.js";
-import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
-import { Changelog, Commit, VersionBump } from "@ijsblokje/release";
 import type { Octokit } from "@ijsblokje/octokit";
+import { Changelog, Commit, VersionBump } from "@ijsblokje/release";
+import type { WebsocketReadmeEvent, WebsocketReleaseEvent } from "@ijsblokje/server";
+import { README_CONFIG_LOCATION } from "@ijsblokje/utils/constants.js";
+import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
 import semver from "semver";
 import { stringify } from "smol-toml";
-import { README_CONFIG_LOCATION } from "@ijsblokje/utils/constants.js";
+
+import type { Octocat } from "./Octocat.js";
 
 export class WebsocketRequestHandler {
 	public readonly octocat: Octocat;

@@ -1,4 +1,5 @@
 import semver from "semver";
+
 import type { Commit, CommitParserResult } from "./Commit.js";
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class

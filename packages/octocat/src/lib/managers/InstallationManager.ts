@@ -1,14 +1,15 @@
-import type { GitHubRepoContext } from "@ijsblokje/utils/types.js";
-import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
-import type { components } from "@octokit/openapi-types";
-import { GitHubInstallation } from "../structures/GitHubInstallation.js";
 import { Collection } from "@discordjs/collection";
-import { LABEL_CONFIG_LOCATION, README_CONFIG_LOCATION, README_TEMPLATE_LOCATION } from "@ijsblokje/utils/constants.js";
-import type { Endpoints } from "@octokit/types";
 import type { Octokit } from "@ijsblokje/octokit";
+import { LABEL_CONFIG_LOCATION, README_CONFIG_LOCATION, README_TEMPLATE_LOCATION } from "@ijsblokje/utils/constants.js";
+import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
+import type { GitHubRepoContext } from "@ijsblokje/utils/types.js";
+import type { components } from "@octokit/openapi-types";
 import { request } from "@octokit/request";
+import type { Endpoints } from "@octokit/types";
+
 import type { Octocat } from "../Octocat.js";
-import { ReadmeSync, type ReadmeConfig } from "../structures/ReadmeSync.js";
+import { GitHubInstallation } from "../structures/GitHubInstallation.js";
+import { type ReadmeConfig, ReadmeSync } from "../structures/ReadmeSync.js";
 
 export class InstallationManager {
 	/** The octokit instance that handles all GitHub requests */

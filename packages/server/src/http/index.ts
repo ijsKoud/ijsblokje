@@ -1,7 +1,7 @@
+import { Webhooks } from "@octokit/webhooks";
+import parser from "body-parser";
 import EventSource from "eventsource";
 import express, { type Express, type Request, type Response } from "express";
-import parser from "body-parser";
-import { Webhooks } from "@octokit/webhooks";
 
 export class Server extends Webhooks {
 	/** The source where all the messages are coming from */

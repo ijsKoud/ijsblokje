@@ -1,7 +1,10 @@
 import "@ijsblokje/utils/env/discord.js";
-import { GatewayIntentBits } from "discord.js";
+
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { GatewayIntentBits } from "discord.js";
+
 import ExtendedIgloClient from "./lib/bot.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));

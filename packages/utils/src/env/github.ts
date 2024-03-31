@@ -1,11 +1,13 @@
-import { config } from "dotenv";
 import { join } from "node:path";
-config({ path: join(process.cwd(), ".env"), debug: true });
 
-import { ZodError, z } from "zod";
 import { Logger } from "@snowcrystals/icicle";
 import { bold } from "colorette";
+import { config } from "dotenv";
+import { z, ZodError } from "zod";
+
 import { PRIVATE_KEY_REGEX } from "../regex.js";
+
+config({ path: join(process.cwd(), ".env"), debug: true });
 
 const logger = new Logger({ parser: { color: true }, name: "ENV PARSER" });
 const envSchema = z.object({

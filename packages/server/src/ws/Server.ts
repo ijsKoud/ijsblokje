@@ -1,8 +1,9 @@
-import { WebSocketServer, type WebSocket } from "ws";
-import { Websocket } from "./Websocket.js";
 import { Logger } from "@snowcrystals/icicle";
-import { type WebsocketEvent, WebsocketMessageType } from "./types.js";
 import EventEmitter from "events";
+import { type WebSocket, WebSocketServer } from "ws";
+
+import { type WebsocketEvent, WebsocketMessageType } from "./types.js";
+import { Websocket } from "./Websocket.js";
 
 export class WebsocketServer extends EventEmitter {
 	public server: WebSocketServer;

@@ -1,9 +1,11 @@
-import { ApplyOptions, GitHubEvent, GitHubInstallation } from "@ijsblokje/octocat";
+import type { GitHubInstallation } from "@ijsblokje/octocat";
+import { ApplyOptions, GitHubEvent } from "@ijsblokje/octocat";
 import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
 import { LABEL_CONFIG_LOCATION } from "@ijsblokje/utils/constants.js";
 import type { Label } from "@ijsblokje/utils/types.js";
 import _ from "lodash";
+
 import { CreateLabel, DeleteLabel, UpdateLabel } from "./LabelSyncUtils.js";
 
 @ApplyOptions({ event: "push" })

@@ -1,4 +1,5 @@
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
+
 import { ApplyOptions, GitHubEvent } from "../index.js";
 
 @ApplyOptions({ event: "installation" })

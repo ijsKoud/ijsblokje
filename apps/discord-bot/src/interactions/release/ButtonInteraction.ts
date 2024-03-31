@@ -1,16 +1,17 @@
+import { WebsocketMessageType } from "@ijsblokje/server";
 import { ApplyOptions, InteractionListener, type InteractionListenerOptions } from "@snowcrystals/iglo";
 import {
-	ComponentType,
-	type ButtonInteraction,
-	ButtonBuilder,
 	ActionRowBuilder,
+	ButtonBuilder,
+	type ButtonInteraction,
+	ComponentType,
+	type ModalActionRowComponentBuilder,
 	ModalBuilder,
 	TextInputBuilder,
-	TextInputStyle,
-	type ModalActionRowComponentBuilder
+	TextInputStyle
 } from "discord.js";
+
 import type ExtendedIgloClient from "../../lib/bot.js";
-import { WebsocketMessageType } from "@ijsblokje/server";
 
 /**
  * Method for checking the interaction Id

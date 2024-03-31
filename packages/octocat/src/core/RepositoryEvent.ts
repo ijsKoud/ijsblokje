@@ -1,7 +1,9 @@
-import { ApplyOptions, GitHubEvent, GitHubInstallation, ReadmeSync } from "../index.js";
 import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
 import { README_CONFIG_LOCATION } from "@ijsblokje/utils/constants.js";
+
+import type { GitHubInstallation } from "../index.js";
+import { ApplyOptions, GitHubEvent, ReadmeSync } from "../index.js";
 
 @ApplyOptions({ event: "repository" })
 export default class extends GitHubEvent {

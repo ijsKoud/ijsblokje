@@ -1,9 +1,10 @@
-import type { InstallationManager, ListInstallationsItem } from "../managers/InstallationManager.js";
 import { Collection } from "@discordjs/collection";
-import type { Label } from "@ijsblokje/utils/types.js";
 import type { Octokit } from "@ijsblokje/octokit";
+import type { Label } from "@ijsblokje/utils/types.js";
 import { z } from "zod";
-import { ReadmeSync, type ReadmeConfig } from "./ReadmeSync.js";
+
+import type { InstallationManager, ListInstallationsItem } from "../managers/InstallationManager.js";
+import { type ReadmeConfig, ReadmeSync } from "./ReadmeSync.js";
 
 export class GitHubInstallation {
 	/** The name of the account associated with this installation */

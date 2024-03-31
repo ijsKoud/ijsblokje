@@ -1,8 +1,8 @@
+import type { Octokit } from "@ijsblokje/octokit";
 import type { Endpoints } from "@octokit/types";
+import _ from "lodash";
 import { parse } from "smol-toml";
 import { z } from "zod";
-import _ from "lodash";
-import type { Octokit } from "@ijsblokje/octokit";
 
 export class ReadmeSync {
 	/** The readme template */

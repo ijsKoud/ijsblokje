@@ -1,6 +1,8 @@
-import type { EmitterWebhookEvent } from "@ijsblokje/server";
-import { ApplyOptions, GitHubEvent, GitHubInstallation } from "../index.js";
 import type { Octokit } from "@ijsblokje/octokit";
+import type { EmitterWebhookEvent } from "@ijsblokje/server";
+
+import type { GitHubInstallation } from "../index.js";
+import { ApplyOptions, GitHubEvent } from "../index.js";
 
 @ApplyOptions({ event: "installation_target.renamed" })
 export default class extends GitHubEvent {

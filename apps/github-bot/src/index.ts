@@ -1,7 +1,9 @@
 import "@ijsblokje/utils/env/github.js";
-import { Octocat } from "@ijsblokje/octocat";
+
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { Octocat } from "@ijsblokje/octocat";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const eventsDirectory = join(__dirname, "events");

@@ -1,8 +1,9 @@
+import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent, EmitterWebhookEventName } from "@ijsblokje/server";
 import type { Awaitable } from "@ijsblokje/utils/types.js";
+
 import type { Octocat } from "../Octocat.js";
 import type { GitHubInstallation } from "./GitHubInstallation.js";
-import type { Octokit } from "@ijsblokje/octokit";
 
 export abstract class GitHubEvent {
 	/** The octocat instance */

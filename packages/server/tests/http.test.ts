@@ -1,4 +1,5 @@
 import EventSource from "eventsource";
+
 import { Server } from "../src/index.js";
 
 /** Checks whether the input is a class or not */

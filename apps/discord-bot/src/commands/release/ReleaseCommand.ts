@@ -1,15 +1,16 @@
+import { WebsocketMessageType, type WebsocketVersionEvent } from "@ijsblokje/server";
 import { ApplyOptions, Command, type CommandOptions } from "@snowcrystals/iglo";
 import {
-	type CommandInteraction,
-	type CacheType,
-	EmbedBuilder,
-	ApplicationCommandOptionType,
 	ActionRowBuilder,
+	ApplicationCommandOptionType,
 	ButtonBuilder,
-	ButtonStyle
+	ButtonStyle,
+	type CacheType,
+	type CommandInteraction,
+	EmbedBuilder
 } from "discord.js";
+
 import type ExtendedIgloClient from "../../lib/bot.js";
-import { WebsocketMessageType, type WebsocketVersionEvent } from "@ijsblokje/server";
 
 @ApplyOptions<CommandOptions>({
 	name: "release",

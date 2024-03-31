@@ -1,4 +1,5 @@
 import { Logger } from "@snowcrystals/icicle";
+
 import { Octokit, type OctokitOptions } from "../src/index.js";
 
 /** Checks whether the input is a class or not */

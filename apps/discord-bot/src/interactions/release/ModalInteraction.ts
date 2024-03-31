@@ -1,8 +1,10 @@
-import { ApplyOptions, InteractionListener, type InteractionListenerOptions } from "@snowcrystals/iglo";
-import { ComponentType, ButtonBuilder, ActionRowBuilder, InteractionType, ModalSubmitInteraction } from "discord.js";
-import type ExtendedIgloClient from "../../lib/bot.js";
 import { WebsocketMessageType } from "@ijsblokje/server";
+import { ApplyOptions, InteractionListener, type InteractionListenerOptions } from "@snowcrystals/iglo";
+import type { ModalSubmitInteraction } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ComponentType, InteractionType } from "discord.js";
 import { clean } from "semver";
+
+import type ExtendedIgloClient from "../../lib/bot.js";
 
 @ApplyOptions<InteractionListenerOptions>({ name: "-release_edit_response", strategy: "endsWith", type: InteractionType.ModalSubmit })
 export default class ButtonReleaseInteraction extends InteractionListener<ExtendedIgloClient> {

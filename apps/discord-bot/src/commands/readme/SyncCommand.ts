@@ -1,7 +1,8 @@
-import { ApplyOptions, Command, type CommandOptions } from "@snowcrystals/iglo";
-import { type CommandInteraction, type CacheType, ApplicationCommandOptionType } from "discord.js";
-import type ExtendedIgloClient from "../../lib/bot.js";
 import { WebsocketMessageType } from "@ijsblokje/server";
+import { ApplyOptions, Command, type CommandOptions } from "@snowcrystals/iglo";
+import { ApplicationCommandOptionType, type CacheType, type CommandInteraction } from "discord.js";
+
+import type ExtendedIgloClient from "../../lib/bot.js";
 
 @ApplyOptions<CommandOptions>({
 	name: "readme-sync",

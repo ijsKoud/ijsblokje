@@ -1,7 +1,8 @@
 import { Logger } from "@snowcrystals/icicle";
-import { WebSocket, type MessageEvent } from "ws";
-import { WebsocketMessageType, type WebsocketEvent } from "./types.js";
 import EventEmitter from "events";
+import { type MessageEvent, WebSocket } from "ws";
+
+import { type WebsocketEvent, WebsocketMessageType } from "./types.js";
 
 export class Websocket extends EventEmitter {
 	public logger = new Logger({ parser: { color: true }, name: "Websocket" });

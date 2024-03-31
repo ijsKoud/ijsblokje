@@ -1,10 +1,11 @@
 import { Octokit } from "@ijsblokje/octokit";
-import { InstallationManager } from "./managers/InstallationManager.js";
-import { createClient } from "redis";
 import { Server, WebsocketServer } from "@ijsblokje/server";
-import { EventManager } from "./managers/EventManager.js";
-import { Logger } from "@snowcrystals/icicle";
 import { DurationFormatter } from "@sapphire/duration";
+import { Logger } from "@snowcrystals/icicle";
+import { createClient } from "redis";
+
+import { EventManager } from "./managers/EventManager.js";
+import { InstallationManager } from "./managers/InstallationManager.js";
 import { WebsocketRequestHandler } from "./WebsocketRequestHandler.js";
 
 export class Octocat {

@@ -1,8 +1,9 @@
-import { ApplyOptions, GitHubEvent, GitHubInstallation } from "@ijsblokje/octocat";
+import type { GitHubInstallation } from "@ijsblokje/octocat";
+import { ApplyOptions, GitHubEvent } from "@ijsblokje/octocat";
 import type { Octokit } from "@ijsblokje/octokit";
 import type { EmitterWebhookEvent } from "@ijsblokje/server";
-import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
 import { WEBHOOK_EVENTS } from "@ijsblokje/utils/constants.js";
+import requestWithPagination from "@ijsblokje/utils/RequestWithPagination.js";
 
 @ApplyOptions({ event: "repository" })
 export default class extends GitHubEvent {
