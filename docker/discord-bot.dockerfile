@@ -8,6 +8,9 @@ WORKDIR /ijsblokje
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
+# Install pnpm
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+
 # Copy obly the needed files
 RUN pnpm add turbo --global
 COPY . .
@@ -20,6 +23,9 @@ WORKDIR /ijsblokje
 
 RUN apk add --no-cache libc6-compat
 RUN apk update
+
+# Install pnpm
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
 
 # Install dependencies
 COPY .gitignore .gitignore
