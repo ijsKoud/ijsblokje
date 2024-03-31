@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 
 # Install pnpm
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
 # Copy obly the needed files
 RUN pnpm add turbo --global
@@ -25,7 +25,7 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 
 # Install pnpm
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
 
 # Install dependencies
 COPY .gitignore .gitignore
