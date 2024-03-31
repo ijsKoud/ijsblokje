@@ -62,22 +62,27 @@ COPY --from=installer --chown=app:app /ijsblokje/node_modules node_modules
 
 # @ijsblokje/octocat
 COPY --from=installer --chown=app:app /ijsblokje/packages/octocat/dist ./packages/octocat/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/octocat/node_modules ./packages/octocat/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/octocat/package.json ./packages/octocat/package.json
 
 # @ijsblokje/octokit
 COPY --from=installer --chown=app:app /ijsblokje/packages/octokit/dist ./packages/octokit/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/octokit/node_modules ./packages/octokit/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/octokit/package.json ./packages/octokit/package.json
 
 # @ijsblokje/release
 COPY --from=installer --chown=app:app /ijsblokje/packages/release/dist ./packages/release/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/release/node_modules ./packages/release/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/release/package.json ./packages/release/package.json
 
 # @ijsblokje/server
 COPY --from=installer --chown=app:app /ijsblokje/packages/server/dist ./packages/server/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/server/node_modules ./packages/server/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/server/package.json ./packages/server/package.json
 
 # @ijsblokje/utils
 COPY --from=installer --chown=app:app /ijsblokje/packages/utils/dist ./packages/utils/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/utils/node_modules ./packages/utils/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/utils/package.json ./packages/utils/package.json
 
 CMD node ./apps/github-bot/dist/index.js

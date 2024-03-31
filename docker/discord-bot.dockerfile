@@ -62,10 +62,12 @@ COPY --from=installer --chown=app:app /ijsblokje/node_modules node_modules
 
 # @ijsblokje/server
 COPY --from=installer --chown=app:app /ijsblokje/packages/server/dist ./packages/server/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/server/node_modules ./packages/server/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/server/package.json ./packages/server/package.json
 
 # @ijsblokje/utils
 COPY --from=installer --chown=app:app /ijsblokje/packages/utils/dist ./packages/utils/dist
+COPY --from=installer --chown=app:app /ijsblokje/packages/utils/node_modules ./packages/utils/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/packages/utils/package.json ./packages/utils/package.json
 
 CMD node ./apps/discord-bot/dist/index.js

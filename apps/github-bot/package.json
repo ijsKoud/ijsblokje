@@ -12,11 +12,11 @@
 		"lint": "TIMING=1 eslint"
 	},
 	"dependencies": {
-		"@ijsblokje/octocat": "*",
-		"@ijsblokje/octokit": "*",
-		"@ijsblokje/release": "*",
-		"@ijsblokje/server": "*",
-		"@ijsblokje/utils": "*",
+		"@ijsblokje/octocat": "workspace:^",
+		"@ijsblokje/octokit": "workspace:^",
+		"@ijsblokje/release": "workspace:^",
+		"@ijsblokje/server": "workspace:^",
+		"@ijsblokje/utils": "workspace:^",
 		"dotenv": "16.4.5",
 		"lodash": "4.17.21",
 		"tslib": "2.6.2"

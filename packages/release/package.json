@@ -13,8 +13,8 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@ijsblokje/octokit": "*",
-		"@ijsblokje/utils": "*",
+		"@ijsblokje/octokit": "workspace:^",
+		"@ijsblokje/utils": "workspace:^",
 		"@octokit/types": "12.6.0",
 		"semver": "7.6.0"
 	},
