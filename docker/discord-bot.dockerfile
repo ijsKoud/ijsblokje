@@ -1,5 +1,7 @@
 FROM node:18-alpine AS base
-
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
 # --- Builder ---
 FROM base AS builder
@@ -8,11 +10,8 @@ WORKDIR /ijsblokje
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-# Install pnpm
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
-
 # Copy obly the needed files
-RUN pnpm add turbo --global
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm add turbo --global
 COPY . .
 RUN turbo prune --scope=discord-bot --docker
 
@@ -24,15 +23,12 @@ WORKDIR /ijsblokje
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-# Install pnpm
-RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.shrc" SHELL="$(which sh)" sh -
-
 # Install dependencies
 COPY .gitignore .gitignore
 COPY --from=builder /ijsblokje/out/json/ .
 COPY --from=builder /ijsblokje/out/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 # Build the project
 COPY --from=builder /ijsblokje/out/full/ .
@@ -41,7 +37,7 @@ RUN pnpm turbo build --filter=discord-bot
 
 # Remove dev-dependencies from node_modules
 RUN pnpm pinst --disable
-RUN pnpm install --prod
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod
 
 
 # --- Runner ---
