@@ -54,6 +54,7 @@ USER app
 
 # Copy over the application
 COPY --from=installer --chown=app:app /ijsblokje/apps/github-bot/dist ./apps/github-bot/dist
+COPY --from=installer --chown=app:app /ijsblokje/apps/github-bot/node_modules ./apps/github-bot/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/apps/github-bot/package.json ./apps/github-bot/package.json
 
 # Copy over the packages

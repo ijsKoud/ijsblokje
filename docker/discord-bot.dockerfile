@@ -54,6 +54,7 @@ USER app
 
 # Copy over the application
 COPY --from=installer --chown=app:app /ijsblokje/apps/discord-bot/dist ./apps/discord-bot/dist
+COPY --from=installer --chown=app:app /ijsblokje/apps/discord-bot/node_modules ./apps/discord-bot/node_modules
 COPY --from=installer --chown=app:app /ijsblokje/apps/discord-bot/package.json ./apps/discord-bot/package.json
 
 # Copy over the packages
