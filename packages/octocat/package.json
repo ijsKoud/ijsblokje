@@ -17,7 +17,7 @@
 		"@ijsblokje/release": "*",
 		"@ijsblokje/server": "*",
 		"@ijsblokje/utils": "*",
-		"@octokit/request": "8.2.0",
+		"@octokit/request": "9.0.1",
 		"@sapphire/duration": "^1.1.2",
 		"@snowcrystals/icicle": "2.0.4",
 		"glob": "^10.3.12",
@@ -28,8 +28,8 @@
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {
-		"@octokit/openapi-types": "^18.1.1",
-		"@octokit/types": "^11.1.0",
+		"@octokit/openapi-types": "^20.0.0",
+		"@octokit/types": "^12.6.0",
 		"@types/lodash": "^4.17.0",
 		"@types/node": "^20.12.2",
 		"@types/semver": "7.5.8",

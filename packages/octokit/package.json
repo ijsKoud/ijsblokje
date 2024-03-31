@@ -14,8 +14,8 @@
 	},
 	"dependencies": {
 		"@octokit/auth-app": "6.0.4",
-		"@octokit/core": "5.1.0",
-		"@octokit/plugin-throttling": "^7.0.0"
+		"@octokit/core": "6.0.1",
+		"@octokit/plugin-throttling": "^9.0.3"
 	},
 	"devDependencies": {
 		"@snowcrystals/icicle": "^2.0.4",
