@@ -207,14 +207,14 @@ importers:
   packages/octokit:
     dependencies:
       '@octokit/auth-app':
-        specifier: 6.0.4
-        version: 6.0.4
+        specifier: 6.1.0
+        version: 6.1.0
       '@octokit/core':
-        specifier: 6.0.1
-        version: 6.0.1
+        specifier: 6.1.1
+        version: 6.1.1
       '@octokit/plugin-throttling':
-        specifier: ^9.0.3
-        version: 9.0.3(@octokit/core@6.0.1)
+        specifier: ^9.1.0
+        version: 9.1.0(@octokit/core@6.1.1)
     devDependencies:
       '@snowcrystals/icicle':
         specifier: ^2.0.4
@@ -272,8 +272,8 @@ importers:
   packages/server:
     dependencies:
       '@octokit/webhooks':
-        specifier: ^13.1.1
-        version: 13.1.1
+        specifier: ^13.2.2
+        version: 13.2.2
       '@snowcrystals/icicle':
         specifier: 2.0.4
         version: 2.0.4
@@ -737,8 +737,8 @@ packages:
       fastq: 1.17.1
     dev: true
 
-  /@octokit/auth-app@6.0.4:
-    resolution: {integrity: sha512-TPmJYgd05ok3nzHj7Y6we/V7Ez1wU3ztLFW3zo/afgYFtqYZg0W7zb6Kp5ag6E85r8nCE1JfS6YZoZusa14o9g==}
+  /@octokit/auth-app@6.1.0:
+    resolution: {integrity: sha512-UlCxZAlNM1FKkRdSJjGo/Ly2rGKGeuW49sLFuii++A+Yylv+Dxgl/eCEBP46Cjr1Xuqpc4wTH0IDFXCztaiFuA==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/auth-oauth-app': 7.0.1
@@ -792,15 +792,15 @@ packages:
     engines: {node: '>= 18'}
     dev: false
 
-  /@octokit/core@6.0.1:
-    resolution: {integrity: sha512-MIpPQXu8Y8GjHwXM81JLveiV+DHJZtLMcB5nKekBGOl3iAtk0HT3i12Xl8Biybu+bCS1+k4qbuKEq5d0RxNRnQ==}
+  /@octokit/core@6.1.1:
+    resolution: {integrity: sha512-uVypPdnZV7YoEa69Ky2kTSw3neFLGT0PZ54OwUMDph7w6TmhF0ZnoVcvb/kYnjDHCFo2mfoeRDYifLKhLNasUg==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/auth-token': 5.0.1
       '@octokit/graphql': 8.0.1
       '@octokit/request': 9.0.1
       '@octokit/request-error': 6.0.2
-      '@octokit/types': 12.6.0
+      '@octokit/types': 13.1.0
       before-after-hook: 3.0.2
       universal-user-agent: 7.0.2
     dev: false
@@ -849,18 +849,22 @@ packages:
   /@octokit/openapi-types@20.0.0:
     resolution: {integrity: sha512-EtqRBEjp1dL/15V7WiX5LJMIxxkdiGJnabzYx5Apx4FkQIFgAfKumXeYAqqJCj1s+BMX4cPFIFC4OLCR6stlnA==}
 
-  /@octokit/openapi-webhooks-types@6.2.0:
-    resolution: {integrity: sha512-hsjJ08udv1BKkXSq9nyZNnUWoClaPhGVWmP/GieJQ1r8MNc7YdRbw0PzSlAwoY3olk6WsU+VHVvNKuf++P1kQQ==}
+  /@octokit/openapi-types@21.2.0:
+    resolution: {integrity: sha512-xx+Xd6I7rYvul/hgUDqv6TeGX0IOGnhSg9IOeYgd/uI7IAqUy6DE2B6Ipv2M4mWoxaMcWjIzgTIcv8pMO3F3vw==}
     dev: false
 
-  /@octokit/plugin-throttling@9.0.3(@octokit/core@6.0.1):
-    resolution: {integrity: sha512-DReKamrLBJOzld73dmmxV2H137QKJfsxszAczEZXeAJQ/Po6bzQacKajPdodA6T1jfmP9+waImus+d/R2j+R7Q==}
+  /@octokit/openapi-webhooks-types@8.0.0:
+    resolution: {integrity: sha512-5ms2KAKemeo4JATXYY6pT0gVEFQFPZ3dEIfsHoS7/oly3tQXwl6AD0GWy3Y3TAakT69mqsjPaPErRO0KmMV1hA==}
+    dev: false
+
+  /@octokit/plugin-throttling@9.1.0(@octokit/core@6.1.1):
+    resolution: {integrity: sha512-16lDMMhChavhvXKr2zRK7sD+hTpuVm697xZNf1a0C/MFRZU8CFkrNJEYX7Fqo2dc44lISp7V5Vm0sgJIx2bRkw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': ^6.0.0
     dependencies:
-      '@octokit/core': 6.0.1
-      '@octokit/types': 12.6.0
+      '@octokit/core': 6.1.1
+      '@octokit/types': 13.1.0
       bottleneck: 2.19.5
     dev: false
 
@@ -905,16 +909,22 @@ packages:
     dependencies:
       '@octokit/openapi-types': 20.0.0
 
+  /@octokit/types@13.1.0:
+    resolution: {integrity: sha512-nBwAFOYqVUUJ2AZFK4ZzESQptaAVqdTDKk8gE0Xr0o99WuPDSrhUC38x0F40xD9OUxXhOOuZKWNNVVLPSHQDvQ==}
+    dependencies:
+      '@octokit/openapi-types': 21.2.0
+    dev: false
+
   /@octokit/webhooks-methods@5.0.0:
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
     engines: {node: '>= 18'}
     dev: false
 
-  /@octokit/webhooks@13.1.1:
-    resolution: {integrity: sha512-CfM4WaW6JMwG5elZjb85clgCSr/iSv1MBARFA5qHt0Afx+2C4MynMIzgAIbWFDG1diVSBAk1wKJxHjKrwi2ZmQ==}
+  /@octokit/webhooks@13.2.2:
+    resolution: {integrity: sha512-2ZqUHvAKxq5sljcqGSMZZ4l3fwo283X2nPiWKpHyu6BUk5NpIh9aGBBxb3hy9Nk/cWoooitOt+InBxLviKBdfA==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/openapi-webhooks-types': 6.2.0
+      '@octokit/openapi-webhooks-types': 8.0.0
       '@octokit/request-error': 6.0.2
       '@octokit/webhooks-methods': 5.0.0
       aggregate-error: 5.0.0
