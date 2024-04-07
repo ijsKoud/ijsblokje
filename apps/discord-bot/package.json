@@ -21,11 +21,11 @@
 		"tslib": "2.6.2"
 	},
 	"devDependencies": {
-		"@types/node": "^20.12.2",
+		"@types/node": "^20.12.5",
 		"@types/semver": "7.5.8",
 		"eslint": "^8.57.0",
 		"prettier": "^3.2.5",
-		"typescript": "5.4.3"
+		"typescript": "5.4.4"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
