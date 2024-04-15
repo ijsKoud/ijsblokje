@@ -26,7 +26,7 @@ export class Server extends Webhooks {
 		await this.verifyAndReceive({
 			id: getSingleHeader(req.headers["x-request-id"]),
 			name: getSingleHeader(req.headers["x-github-event"]) as any,
-			signature: getSingleHeader(req.headers["x-hub-signature"]),
+			signature: getSingleHeader(req.headers["x-hub-signature-256"]),
 			payload: JSON.stringify(req.body)
 		}).catch(console.error);
 
@@ -39,7 +39,7 @@ export class Server extends Webhooks {
 			await this.verifyAndReceive({
 				id: data["x-request-id"],
 				name: data["x-github-event"] as any,
-				signature: data["x-hub-signature"],
+				signature: data["x-hub-signature-256"],
 				payload: JSON.stringify(data.body)
 			});
 		} catch (error) {
