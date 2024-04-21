@@ -149,8 +149,8 @@ importers:
         specifier: workspace:^
         version: link:../utils
       '@octokit/request':
-        specifier: 9.1.0
-        version: 9.1.0
+        specifier: 9.1.1
+        version: 9.1.1
       '@sapphire/duration':
         specifier: ^1.1.2
         version: 1.1.2
@@ -173,8 +173,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.22.5
+        version: 3.22.5
     devDependencies:
       '@octokit/openapi-types':
         specifier: ^22.0.1
@@ -213,8 +213,8 @@ importers:
         specifier: 6.1.2
         version: 6.1.2
       '@octokit/plugin-throttling':
-        specifier: ^9.1.0
-        version: 9.1.0(@octokit/core@6.1.2)
+        specifier: ^9.2.0
+        version: 9.2.0(@octokit/core@6.1.2)
     devDependencies:
       '@snowcrystals/icicle':
         specifier: ^2.0.4
@@ -244,8 +244,8 @@ importers:
         specifier: workspace:^
         version: link:../utils
       '@octokit/types':
-        specifier: 13.4.0
-        version: 13.4.0
+        specifier: 13.4.1
+        version: 13.4.1
       semver:
         specifier: 7.6.0
         version: 7.6.0
@@ -272,8 +272,8 @@ importers:
   packages/server:
     dependencies:
       '@octokit/webhooks':
-        specifier: ^13.2.3
-        version: 13.2.3
+        specifier: ^13.2.4
+        version: 13.2.4
       '@snowcrystals/icicle':
         specifier: 2.0.4
         version: 2.0.4
@@ -330,8 +330,8 @@ importers:
         specifier: 16.4.5
         version: 16.4.5
       zod:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 3.22.5
+        version: 3.22.5
     devDependencies:
       '@types/node':
         specifier: ^20.12.7
@@ -759,7 +759,7 @@ packages:
       '@octokit/auth-oauth-device': 6.1.0
       '@octokit/auth-oauth-user': 4.1.0
       '@octokit/request': 8.4.0
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       '@types/btoa-lite': 1.0.2
       btoa-lite: 1.0.0
       universal-user-agent: 6.0.1
@@ -771,7 +771,7 @@ packages:
     dependencies:
       '@octokit/oauth-methods': 4.1.0
       '@octokit/request': 8.4.0
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       universal-user-agent: 6.0.1
     dev: false
 
@@ -782,7 +782,7 @@ packages:
       '@octokit/auth-oauth-device': 6.1.0
       '@octokit/oauth-methods': 4.1.0
       '@octokit/request': 8.4.0
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       btoa-lite: 1.0.0
       universal-user-agent: 6.0.1
     dev: false
@@ -798,7 +798,7 @@ packages:
     dependencies:
       '@octokit/auth-token': 5.0.1
       '@octokit/graphql': 8.0.1
-      '@octokit/request': 9.1.0
+      '@octokit/request': 9.1.1
       '@octokit/request-error': 6.0.2
       '@octokit/types': 13.4.0
       before-after-hook: 3.0.2
@@ -825,7 +825,7 @@ packages:
     resolution: {integrity: sha512-lLDb6LhC1gBj2CxEDa5Xk10+H/boonhs+3Mi6jpRyetskDKNHe6crMeKmUE2efoLofMP8ruannLlCUgpTFmVzQ==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/request': 9.1.0
+      '@octokit/request': 9.1.1
       '@octokit/types': 12.6.0
       universal-user-agent: 7.0.2
     dev: false
@@ -842,7 +842,7 @@ packages:
       '@octokit/oauth-authorization-url': 6.0.2
       '@octokit/request': 8.4.0
       '@octokit/request-error': 5.1.0
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       btoa-lite: 1.0.0
     dev: false
 
@@ -853,18 +853,22 @@ packages:
   /@octokit/openapi-types@22.0.1:
     resolution: {integrity: sha512-1yN5m1IMNXthoBDUXFF97N1gHop04B3H8ws7wtOr8GgRyDO1gKALjwMHARNBoMBiB/2vEe/vxstrApcJZzQbnQ==}
 
+  /@octokit/openapi-types@22.1.0:
+    resolution: {integrity: sha512-pGUdSP+eEPfZiQHNkZI0U01HLipxncisdJQB4G//OAmfeO8sqTQ9KRa0KF03TUPCziNsoXUrTg4B2Q1EX++T0Q==}
+    dev: false
+
   /@octokit/openapi-webhooks-types@8.1.1:
     resolution: {integrity: sha512-cfavqtPS5W1vy2JGXODIL4LsoXYoaXIhiNbil53wb9sLsTFuSBl+r1L6nNiVq/Ie8j0MSB2rCAGrGKJTfjqVEw==}
     dev: false
 
-  /@octokit/plugin-throttling@9.1.0(@octokit/core@6.1.2):
-    resolution: {integrity: sha512-16lDMMhChavhvXKr2zRK7sD+hTpuVm697xZNf1a0C/MFRZU8CFkrNJEYX7Fqo2dc44lISp7V5Vm0sgJIx2bRkw==}
+  /@octokit/plugin-throttling@9.2.0(@octokit/core@6.1.2):
+    resolution: {integrity: sha512-zHZSZCC7wk3HbK3ZCuvc3iPrnFGoYIVJsJAY4l8ilsVu4fqPfe7BP7QLZ1A641yttLWqgy2oID3ETD3Z1036Gw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': ^6.0.0
     dependencies:
       '@octokit/core': 6.1.2
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       bottleneck: 2.19.5
     dev: false
 
@@ -872,7 +876,7 @@ packages:
     resolution: {integrity: sha512-GETXfE05J0+7H2STzekpKObFe765O5dlAKUTLNGeH+x47z7JjXHfsHKo5z21D/o/IOZTUEI6nyWyR+bZVP/n5Q==}
     engines: {node: '>= 18'}
     dependencies:
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       deprecation: 2.3.1
       once: 1.4.0
     dev: false
@@ -890,17 +894,17 @@ packages:
     dependencies:
       '@octokit/endpoint': 9.0.4
       '@octokit/request-error': 5.1.0
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       universal-user-agent: 6.0.1
     dev: false
 
-  /@octokit/request@9.1.0:
-    resolution: {integrity: sha512-1mDzqKSiryRKZM++MhO6WQBukWbikes6AN6UTxB5vpRnNUbPDkVfUhpSvZ3aXYEFnbcV8DZkikOnCr3pdgMD3Q==}
+  /@octokit/request@9.1.1:
+    resolution: {integrity: sha512-pyAguc0p+f+GbQho0uNetNQMmLG1e80WjkIaqqgUkihqUp0boRU6nKItXO4VWnr+nbZiLGEyy4TeKRwqaLvYgw==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/endpoint': 10.0.0
       '@octokit/request-error': 6.0.2
-      '@octokit/types': 13.4.0
+      '@octokit/types': 13.4.1
       universal-user-agent: 7.0.2
     dev: false
 
@@ -915,13 +919,19 @@ packages:
     dependencies:
       '@octokit/openapi-types': 22.0.1
 
+  /@octokit/types@13.4.1:
+    resolution: {integrity: sha512-Y73oOAzRBAUzR/iRAbGULzpNkX8vaxKCqEtg6K74Ff3w9f5apFnWtE/2nade7dMWWW3bS5Kkd6DJS4HF04xreg==}
+    dependencies:
+      '@octokit/openapi-types': 22.1.0
+    dev: false
+
   /@octokit/webhooks-methods@5.0.0:
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
     engines: {node: '>= 18'}
     dev: false
 
-  /@octokit/webhooks@13.2.3:
-    resolution: {integrity: sha512-sj3sR4SMpGO+nzQXZANuSnukDB3GfmbGz9TfgVlBsmA8HzqmikwsyMdpUv5STNPFpAOulP0OtrIeNQiUAOBdcA==}
+  /@octokit/webhooks@13.2.4:
+    resolution: {integrity: sha512-nvjEW4ncfXGABPjLTgjXJrLNpMJRe8K+EZPxuwczZLbRjxMU2NJhGxAEWJXWBW5ziMlqanDr10QBX75dDpuqLQ==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/openapi-webhooks-types': 8.1.1
@@ -4477,6 +4487,6 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+  /zod@3.22.5:
+    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
     dev: false
