@@ -173,8 +173,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4
       zod:
-        specifier: ^3.22.5
-        version: 3.22.5
+        specifier: ^3.23.4
+        version: 3.23.4
     devDependencies:
       '@octokit/openapi-types':
         specifier: ^22.1.0
@@ -213,8 +213,8 @@ importers:
         specifier: 6.1.2
         version: 6.1.2
       '@octokit/plugin-throttling':
-        specifier: ^9.2.0
-        version: 9.2.0(@octokit/core@6.1.2)
+        specifier: ^9.2.1
+        version: 9.2.1(@octokit/core@6.1.2)
     devDependencies:
       '@snowcrystals/icicle':
         specifier: ^2.0.4
@@ -272,8 +272,8 @@ importers:
   packages/server:
     dependencies:
       '@octokit/webhooks':
-        specifier: ^13.2.4
-        version: 13.2.4
+        specifier: ^13.2.6
+        version: 13.2.6
       '@snowcrystals/icicle':
         specifier: 2.0.4
         version: 2.0.4
@@ -330,8 +330,8 @@ importers:
         specifier: 16.4.5
         version: 16.4.5
       zod:
-        specifier: 3.22.5
-        version: 3.22.5
+        specifier: 3.23.4
+        version: 3.23.4
     devDependencies:
       '@types/node':
         specifier: ^20.12.7
@@ -627,11 +627,11 @@ packages:
   '@octokit/openapi-types@22.1.0':
     resolution: {integrity: sha512-pGUdSP+eEPfZiQHNkZI0U01HLipxncisdJQB4G//OAmfeO8sqTQ9KRa0KF03TUPCziNsoXUrTg4B2Q1EX++T0Q==}
 
-  '@octokit/openapi-webhooks-types@8.1.1':
-    resolution: {integrity: sha512-cfavqtPS5W1vy2JGXODIL4LsoXYoaXIhiNbil53wb9sLsTFuSBl+r1L6nNiVq/Ie8j0MSB2rCAGrGKJTfjqVEw==}
+  '@octokit/openapi-webhooks-types@8.2.1':
+    resolution: {integrity: sha512-msAU1oTSm0ZmvAE0xDemuF4tVs5i0xNnNGtNmr4EuATi+1Rn8cZDetj6NXioSf5LwnxEc209COa/WOSbjuhLUA==}
 
-  '@octokit/plugin-throttling@9.2.0':
-    resolution: {integrity: sha512-zHZSZCC7wk3HbK3ZCuvc3iPrnFGoYIVJsJAY4l8ilsVu4fqPfe7BP7QLZ1A641yttLWqgy2oID3ETD3Z1036Gw==}
+  '@octokit/plugin-throttling@9.2.1':
+    resolution: {integrity: sha512-n6EK4/1Npva54sAFDdpUxAbO14FbzudJ/k7DZPjQuLYOvNTWj4DGeH//J9ZCVoLkAlvRWV5sWKLaICsmGvqg2g==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': ^6.0.0
@@ -662,8 +662,8 @@ packages:
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
     engines: {node: '>= 18'}
 
-  '@octokit/webhooks@13.2.4':
-    resolution: {integrity: sha512-nvjEW4ncfXGABPjLTgjXJrLNpMJRe8K+EZPxuwczZLbRjxMU2NJhGxAEWJXWBW5ziMlqanDr10QBX75dDpuqLQ==}
+  '@octokit/webhooks@13.2.6':
+    resolution: {integrity: sha512-AGzIC+2UETfYdXDyvlPcxZH6VsWZ/t9bR25ia9PMIoRhzQgrWmp9FaV5RcVuUtU8Pi8Wf0iPtjW1zsEYrspjhQ==}
     engines: {node: '>= 18'}
 
   '@pkgjs/parseargs@0.11.0':
@@ -2599,8 +2599,8 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
 
-  zod@3.22.5:
-    resolution: {integrity: sha512-HqnGsCdVZ2xc0qWPLdO25WnseXThh0kEYKIdV5F/hTHO75hNZFp8thxSeHhiPrHZKrFTo1SOgkAj9po5bexZlw==}
+  zod@3.23.4:
+    resolution: {integrity: sha512-/AtWOKbBgjzEYYQRNfoGKHObgfAZag6qUJX1VbHo2PRBgS+wfWagEY2mizjfyAPcGesrJOcx/wcl0L9WnVrHFw==}
 
 snapshots:
 
@@ -2866,9 +2866,9 @@ snapshots:
 
   '@octokit/openapi-types@22.1.0': {}
 
-  '@octokit/openapi-webhooks-types@8.1.1': {}
+  '@octokit/openapi-webhooks-types@8.2.1': {}
 
-  '@octokit/plugin-throttling@9.2.0(@octokit/core@6.1.2)':
+  '@octokit/plugin-throttling@9.2.1(@octokit/core@6.1.2)':
     dependencies:
       '@octokit/core': 6.1.2
       '@octokit/types': 13.4.1
@@ -2908,9 +2908,9 @@ snapshots:
 
   '@octokit/webhooks-methods@5.0.0': {}
 
-  '@octokit/webhooks@13.2.4':
+  '@octokit/webhooks@13.2.6':
     dependencies:
-      '@octokit/openapi-webhooks-types': 8.1.1
+      '@octokit/openapi-webhooks-types': 8.2.1
       '@octokit/request-error': 6.0.2
       '@octokit/webhooks-methods': 5.0.0
       aggregate-error: 5.0.0
@@ -5026,4 +5026,4 @@ snapshots:
 
   yocto-queue@1.0.0: {}
 
-  zod@3.22.5: {}
+  zod@3.23.4: {}
