@@ -15,7 +15,7 @@
 	"dependencies": {
 		"@ijsblokje/octokit": "workspace:^",
 		"@ijsblokje/utils": "workspace:^",
-		"@octokit/types": "13.4.1",
+		"@octokit/types": "13.5.0",
 		"semver": "7.6.0"
 	},
 	"devDependencies": {
