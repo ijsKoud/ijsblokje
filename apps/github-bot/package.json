@@ -19,7 +19,7 @@
 		"@ijsblokje/utils": "workspace:^",
 		"dotenv": "16.4.5",
 		"lodash": "4.17.21",
-		"tslib": "2.6.2"
+		"tslib": "2.6.3"
 	},
 	"devDependencies": {
 		"@types/lodash": "4.17.4",
