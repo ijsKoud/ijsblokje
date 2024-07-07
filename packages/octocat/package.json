@@ -20,9 +20,9 @@
 		"@octokit/request": "9.1.1",
 		"@sapphire/duration": "^1.1.2",
 		"@snowcrystals/icicle": "2.0.4",
-		"glob": "^10.4.2",
+		"glob": "^10.4.3",
 		"lodash": "^4.17.21",
-		"redis": "^4.6.14",
+		"redis": "^4.6.15",
 		"semver": "7.6.2",
 		"smol-toml": "^1.2.2",
 		"zod": "^3.23.8"
