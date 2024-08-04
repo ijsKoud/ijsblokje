@@ -23,7 +23,7 @@
 		"eslint": "^8.57.0",
 		"prettier": "^3.3.3",
 		"typescript": "5.5.4",
-		"vitest": "1.6.0"
+		"vitest": "2.0.5"
 	},
 	"engines": {
 		"node": ">= v18.16.0"
