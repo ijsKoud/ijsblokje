@@ -21,7 +21,7 @@
 		"tslib": "2.6.3"
 	},
 	"devDependencies": {
-		"@types/node": "^20.14.14",
+		"@types/node": "^20.14.15",
 		"@types/semver": "7.5.8",
 		"eslint": "^8.57.0",
 		"prettier": "^3.3.3",
