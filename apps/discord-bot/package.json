@@ -15,7 +15,7 @@
 		"@ijsblokje/server": "workspace:^",
 		"@ijsblokje/utils": "workspace:^",
 		"@snowcrystals/iglo": "^1.2.8",
-		"discord.js": "14.15.3",
+		"discord.js": "14.16.1",
 		"dotenv": "16.4.5",
 		"semver": "7.6.3",
 		"tslib": "2.7.0"
