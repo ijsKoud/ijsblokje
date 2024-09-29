@@ -29,9 +29,9 @@
 	},
 	"devDependencies": {
 		"@octokit/openapi-types": "^22.2.0",
-		"@octokit/types": "^13.5.0",
-		"@types/lodash": "^4.17.7",
-		"@types/node": "^20.16.5",
+		"@octokit/types": "^13.6.0",
+		"@types/lodash": "^4.17.9",
+		"@types/node": "^20.16.10",
 		"@types/semver": "7.5.8",
 		"eslint": "^8.57.1",
 		"prettier": "^3.3.3",

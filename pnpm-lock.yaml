@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -73,8 +73,8 @@ importers:
         version: 2.7.0
     devDependencies:
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -116,11 +116,11 @@ importers:
         version: 2.7.0
     devDependencies:
       '@types/lodash':
-        specifier: 4.17.7
-        version: 4.17.7
+        specifier: 4.17.9
+        version: 4.17.9
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -180,14 +180,14 @@ importers:
         specifier: ^22.2.0
         version: 22.2.0
       '@octokit/types':
-        specifier: ^13.5.0
-        version: 13.5.0
+        specifier: ^13.6.0
+        version: 13.6.0
       '@types/lodash':
-        specifier: ^4.17.7
-        version: 4.17.7
+        specifier: ^4.17.9
+        version: 4.17.9
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -220,8 +220,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -233,7 +233,7 @@ importers:
         version: 5.6.2
       vitest:
         specifier: 1.6.0
-        version: 1.6.0(@types/node@20.16.5)
+        version: 1.6.0(@types/node@20.16.10)
 
   packages/release:
     dependencies:
@@ -251,8 +251,8 @@ importers:
         version: 7.6.3
     devDependencies:
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -267,7 +267,7 @@ importers:
         version: 5.6.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.5)
+        version: 1.6.0(@types/node@20.16.10)
 
   packages/server:
     dependencies:
@@ -300,8 +300,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       '@types/ws':
         specifier: 8.5.12
         version: 8.5.12
@@ -316,7 +316,7 @@ importers:
         version: 5.6.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.5)
+        version: 1.6.0(@types/node@20.16.10)
 
   packages/utils:
     dependencies:
@@ -334,8 +334,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
+        specifier: ^20.16.10
+        version: 20.16.10
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -347,7 +347,7 @@ importers:
         version: 5.6.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.5)
+        version: 1.6.0(@types/node@20.16.10)
 
 packages:
 
@@ -648,6 +648,9 @@ packages:
   '@octokit/types@13.5.0':
     resolution: {integrity: sha512-HdqWTf5Z3qwDVlzCrP8UJquMwunpDiMPt5er+QjGzL4hqr/vBVY/MauQgS1xWxCDT1oMx1EULyqxncdCY/NVSQ==}
 
+  '@octokit/types@13.6.0':
+    resolution: {integrity: sha512-CrooV/vKCXqwLa+osmHLIMUb87brpgUqlqkPGc6iE2wCkUvTrHiXFMhAKoDDaAAYJrtKtrFTgSQTg5nObBEaew==}
+
   '@octokit/webhooks-methods@5.0.0':
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
     engines: {node: '>= 18'}
@@ -842,8 +845,8 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/lodash@4.17.7':
-    resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
+  '@types/lodash@4.17.9':
+    resolution: {integrity: sha512-w9iWudx1XWOHW5lQRS9iKpK/XuRhnN+0T7HvdCCd802FYkT1AMTnxndJHGrNJwRoRHkslGr4S29tjm1cT7x/7w==}
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -852,8 +855,8 @@ packages:
     resolution: {integrity: sha512-5eEkJZ/BLvTE3vXGKkWlyTSUVZuzj23Wj8PoyOq2lt5I3CYbiLBOPb3XmCW6QcuOibIUE6emHXHt9E/F/rCa6w==}
     deprecated: This is a stub types definition. mime provides its own type definitions, so you do not need this installed.
 
-  '@types/node@20.16.5':
-    resolution: {integrity: sha512-VwYCweNo3ERajwy0IUlqqcyZ8/A7Zwa9ZP3MnENWcB11AejO+tLy3pu850goUW2FC/IJMdZUfKpX/yxL1gymCA==}
+  '@types/node@20.16.10':
+    resolution: {integrity: sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==}
 
   '@types/qs@6.9.14':
     resolution: {integrity: sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==}
@@ -2716,7 +2719,7 @@ snapshots:
       '@octokit/auth-oauth-user': 5.1.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       lru-cache: 10.2.0
       universal-github-app-jwt: 2.2.0
       universal-user-agent: 7.0.2
@@ -2726,14 +2729,14 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/auth-oauth-user': 5.1.1
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-device@7.1.1':
     dependencies:
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-user@5.1.1':
@@ -2741,7 +2744,7 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       universal-user-agent: 7.0.2
 
   '@octokit/auth-token@5.0.1': {}
@@ -2752,7 +2755,7 @@ snapshots:
       '@octokit/graphql': 8.0.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.0.2
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       before-after-hook: 3.0.2
       universal-user-agent: 7.0.2
 
@@ -2774,7 +2777,7 @@ snapshots:
       '@octokit/oauth-authorization-url': 7.1.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
 
   '@octokit/openapi-types@20.0.0': {}
 
@@ -2785,7 +2788,7 @@ snapshots:
   '@octokit/plugin-throttling@9.3.1(@octokit/core@6.1.2)':
     dependencies:
       '@octokit/core': 6.1.2
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       bottleneck: 2.19.5
 
   '@octokit/request-error@6.0.2':
@@ -2794,13 +2797,13 @@ snapshots:
 
   '@octokit/request-error@6.1.1':
     dependencies:
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
 
   '@octokit/request@9.1.3':
     dependencies:
       '@octokit/endpoint': 10.0.0
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.5.0
+      '@octokit/types': 13.6.0
       universal-user-agent: 7.0.2
 
   '@octokit/types@12.6.0':
@@ -2808,6 +2811,10 @@ snapshots:
       '@octokit/openapi-types': 20.0.0
 
   '@octokit/types@13.5.0':
+    dependencies:
+      '@octokit/openapi-types': 22.2.0
+
+  '@octokit/types@13.6.0':
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
@@ -2965,11 +2972,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
 
   '@types/estree@1.0.5': {}
 
@@ -2977,7 +2984,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.17.43':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
       '@types/qs': 6.9.14
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -2995,7 +3002,7 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/lodash@4.17.7': {}
+  '@types/lodash@4.17.9': {}
 
   '@types/mime@1.3.5': {}
 
@@ -3003,7 +3010,7 @@ snapshots:
     dependencies:
       mime: 4.0.1
 
-  '@types/node@20.16.5':
+  '@types/node@20.16.10':
     dependencies:
       undici-types: 6.19.6
 
@@ -3016,17 +3023,17 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
 
   '@types/serve-static@1.15.5':
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 4.0.0
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
 
   '@types/ws@8.5.12':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
 
   '@typescript-eslint/eslint-plugin@7.7.0(@typescript-eslint/parser@7.7.0(eslint@8.57.1)(typescript@5.6.2))(eslint@8.57.1)(typescript@5.6.2)':
     dependencies:
@@ -4744,13 +4751,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@1.6.0(@types/node@20.16.5):
+  vite-node@1.6.0(@types/node@20.16.10):
     dependencies:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.7(@types/node@20.16.5)
+      vite: 5.2.7(@types/node@20.16.10)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4761,16 +4768,16 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.2.7(@types/node@20.16.5):
+  vite@5.2.7(@types/node@20.16.10):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
     optionalDependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
       fsevents: 2.3.3
 
-  vitest@1.6.0(@types/node@20.16.5):
+  vitest@1.6.0(@types/node@20.16.10):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -4789,11 +4796,11 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.6.0
       tinypool: 0.8.3
-      vite: 5.2.7(@types/node@20.16.5)
-      vite-node: 1.6.0(@types/node@20.16.5)
+      vite: 5.2.7(@types/node@20.16.10)
+      vite-node: 1.6.0(@types/node@20.16.10)
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@types/node': 20.16.5
+      '@types/node': 20.16.10
     transitivePeerDependencies:
       - less
       - lightningcss
