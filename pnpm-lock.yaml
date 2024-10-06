@@ -60,8 +60,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8
       discord.js:
-        specifier: 14.16.2
-        version: 14.16.2
+        specifier: 14.16.3
+        version: 14.16.3
       dotenv:
         specifier: 16.4.5
         version: 16.4.5
@@ -213,8 +213,8 @@ importers:
         specifier: 6.1.2
         version: 6.1.2
       '@octokit/plugin-throttling':
-        specifier: ^9.3.1
-        version: 9.3.1(@octokit/core@6.1.2)
+        specifier: ^9.3.2
+        version: 9.3.2(@octokit/core@6.1.2)
     devDependencies:
       '@snowcrystals/icicle':
         specifier: ^2.0.4
@@ -244,8 +244,8 @@ importers:
         specifier: workspace:^
         version: link:../utils
       '@octokit/types':
-        specifier: 13.6.0
-        version: 13.6.0
+        specifier: 13.6.1
+        version: 13.6.1
       semver:
         specifier: 7.6.3
         version: 7.6.3
@@ -624,8 +624,8 @@ packages:
   '@octokit/openapi-webhooks-types@8.3.0':
     resolution: {integrity: sha512-vKLsoR4xQxg4Z+6rU/F65ItTUz/EXbD+j/d4mlq2GW8TsA4Tc8Kdma2JTAAJ5hrKWUQzkR/Esn2fjsqiVRYaQg==}
 
-  '@octokit/plugin-throttling@9.3.1':
-    resolution: {integrity: sha512-Qd91H4liUBhwLB2h6jZ99bsxoQdhgPk6TdwnClPyTBSDAdviGPceViEgUwj+pcQDmB/rfAXAXK7MTochpHM3yQ==}
+  '@octokit/plugin-throttling@9.3.2':
+    resolution: {integrity: sha512-FqpvcTpIWFpMMwIeSoypoJXysSAQ3R+ALJhXXSG1HTP3YZOIeLmcNcimKaXxTcws+Sh6yoRl13SJ5r8sXc1Fhw==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': ^6.0.0
@@ -647,6 +647,9 @@ packages:
 
   '@octokit/types@13.6.0':
     resolution: {integrity: sha512-CrooV/vKCXqwLa+osmHLIMUb87brpgUqlqkPGc6iE2wCkUvTrHiXFMhAKoDDaAAYJrtKtrFTgSQTg5nObBEaew==}
+
+  '@octokit/types@13.6.1':
+    resolution: {integrity: sha512-PHZE9Z+kWXb23Ndik8MKPirBPziOc0D2/3KH1P+6jK5nGWe96kadZuE4jev2/Jq7FvIfTlT2Ltg8Fv2x1v0a5g==}
 
   '@octokit/webhooks-methods@5.0.0':
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
@@ -1222,14 +1225,17 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
+  discord-api-types@0.37.100:
+    resolution: {integrity: sha512-a8zvUI0GYYwDtScfRd/TtaNBDTXwP5DiDVX7K5OmE+DRT57gBqKnwtOC5Ol8z0mRW8KQfETIgiB8U0YZ9NXiCA==}
+
   discord-api-types@0.37.83:
     resolution: {integrity: sha512-urGGYeWtWNYMKnYlZnOnDHm8fVRffQs3U0SpE8RHeiuLKb/u92APS8HoQnPTFbnXmY1vVnXjXO4dOxcAn3J+DA==}
 
   discord-api-types@0.37.97:
     resolution: {integrity: sha512-No1BXPcVkyVD4ZVmbNgDKaBoqgeQ+FJpzZ8wqHkfmBnTZig1FcH3iPPersiK1TUIAzgClh2IvOuVUYfcWLQAOA==}
 
-  discord.js@14.16.2:
-    resolution: {integrity: sha512-VGNi9WE2dZIxYM8/r/iatQQ+3LT8STW4hhczJOwm+DBeHq66vsKDCk8trChNCB01sMO9crslYuEMeZl2d7r3xw==}
+  discord.js@14.16.3:
+    resolution: {integrity: sha512-EPCWE9OkA9DnFFNrO7Kl1WHHDYFXu3CNVFJg63bfU7hVtjZGyhShwZtSBImINQRWxWP2tgo2XI+QhdXx28r0aA==}
     engines: {node: '>=18'}
 
   doctrine@2.1.0:
@@ -1380,6 +1386,7 @@ packages:
   eslint@8.57.1:
     resolution: {integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -2726,14 +2733,14 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/auth-oauth-user': 5.1.1
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-device@7.1.1':
     dependencies:
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-user@5.1.1':
@@ -2741,7 +2748,7 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
       universal-user-agent: 7.0.2
 
   '@octokit/auth-token@5.0.1': {}
@@ -2774,7 +2781,7 @@ snapshots:
       '@octokit/oauth-authorization-url': 7.1.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
 
   '@octokit/openapi-types@20.0.0': {}
 
@@ -2782,10 +2789,10 @@ snapshots:
 
   '@octokit/openapi-webhooks-types@8.3.0': {}
 
-  '@octokit/plugin-throttling@9.3.1(@octokit/core@6.1.2)':
+  '@octokit/plugin-throttling@9.3.2(@octokit/core@6.1.2)':
     dependencies:
       '@octokit/core': 6.1.2
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
       bottleneck: 2.19.5
 
   '@octokit/request-error@6.0.2':
@@ -2794,7 +2801,7 @@ snapshots:
 
   '@octokit/request-error@6.1.1':
     dependencies:
-      '@octokit/types': 13.6.0
+      '@octokit/types': 13.6.1
 
   '@octokit/request@9.1.3':
     dependencies:
@@ -2808,6 +2815,10 @@ snapshots:
       '@octokit/openapi-types': 20.0.0
 
   '@octokit/types@13.6.0':
+    dependencies:
+      '@octokit/openapi-types': 22.2.0
+
+  '@octokit/types@13.6.1':
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
@@ -2954,7 +2965,7 @@ snapshots:
   '@snowcrystals/iglo@1.2.8':
     dependencies:
       '@snowcrystals/icicle': 2.0.4
-      discord.js: 14.16.2
+      discord.js: 14.16.3
       lodash: 4.17.21
     transitivePeerDependencies:
       - bufferutil
@@ -3417,11 +3428,13 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
+  discord-api-types@0.37.100: {}
+
   discord-api-types@0.37.83: {}
 
   discord-api-types@0.37.97: {}
 
-  discord.js@14.16.2:
+  discord.js@14.16.3:
     dependencies:
       '@discordjs/builders': 1.9.0
       '@discordjs/collection': 1.5.3
@@ -3430,7 +3443,7 @@ snapshots:
       '@discordjs/util': 1.1.1
       '@discordjs/ws': 1.1.1
       '@sapphire/snowflake': 3.5.3
-      discord-api-types: 0.37.97
+      discord-api-types: 0.37.100
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.7.0
