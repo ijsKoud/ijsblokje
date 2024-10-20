@@ -22,8 +22,8 @@
 		"tslib": "2.7.0"
 	},
 	"devDependencies": {
-		"@types/lodash": "4.17.10",
-		"@types/node": "^20.16.11",
+		"@types/lodash": "4.17.12",
+		"@types/node": "^20.16.13",
 		"eslint": "^8.57.1",
 		"prettier": "^3.3.3",
 		"typescript": "5.6.3"
