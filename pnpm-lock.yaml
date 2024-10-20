@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -39,8 +39,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       turbo:
         specifier: ^1.13.4
         version: 1.13.4
@@ -73,8 +73,8 @@ importers:
         version: 2.7.0
     devDependencies:
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -116,11 +116,11 @@ importers:
         version: 2.7.0
     devDependencies:
       '@types/lodash':
-        specifier: 4.17.10
-        version: 4.17.10
+        specifier: 4.17.12
+        version: 4.17.12
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -183,11 +183,11 @@ importers:
         specifier: ^13.6.1
         version: 13.6.1
       '@types/lodash':
-        specifier: ^4.17.10
-        version: 4.17.10
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -198,8 +198,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       tslib:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.8.0
+        version: 2.8.0
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -220,8 +220,8 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -233,7 +233,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: 1.6.0
-        version: 1.6.0(@types/node@20.16.11)
+        version: 1.6.0(@types/node@20.16.13)
 
   packages/release:
     dependencies:
@@ -251,8 +251,8 @@ importers:
         version: 7.6.3
     devDependencies:
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -267,7 +267,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.11)
+        version: 1.6.0(@types/node@20.16.13)
 
   packages/server:
     dependencies:
@@ -300,8 +300,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       '@types/ws':
         specifier: 8.5.12
         version: 8.5.12
@@ -316,7 +316,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.11)
+        version: 1.6.0(@types/node@20.16.13)
 
   packages/utils:
     dependencies:
@@ -334,8 +334,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/node':
-        specifier: ^20.16.11
-        version: 20.16.11
+        specifier: ^20.16.13
+        version: 20.16.13
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -347,7 +347,7 @@ importers:
         version: 5.6.3
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.16.11)
+        version: 1.6.0(@types/node@20.16.13)
 
 packages:
 
@@ -842,8 +842,8 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/lodash@4.17.10':
-    resolution: {integrity: sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==}
+  '@types/lodash@4.17.12':
+    resolution: {integrity: sha512-sviUmCE8AYdaF/KIHLDJBQgeYzPBI0vf/17NaYehBJfYD1j6/L95Slh07NlyK2iNyBNaEkb3En2jRt+a8y3xZQ==}
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -852,8 +852,8 @@ packages:
     resolution: {integrity: sha512-5eEkJZ/BLvTE3vXGKkWlyTSUVZuzj23Wj8PoyOq2lt5I3CYbiLBOPb3XmCW6QcuOibIUE6emHXHt9E/F/rCa6w==}
     deprecated: This is a stub types definition. mime provides its own type definitions, so you do not need this installed.
 
-  '@types/node@20.16.11':
-    resolution: {integrity: sha512-y+cTCACu92FyA5fgQSAI8A1H429g7aSK2HsO7K4XYUWc4dY5IUz55JSDIYT6/VsOLfGy8vmvQYC2hfb0iF16Uw==}
+  '@types/node@20.16.13':
+    resolution: {integrity: sha512-GjQ7im10B0labo8ZGXDGROUl9k0BNyDgzfGpb4g/cl+4yYDWVKcozANF4FGr4/p0O/rAkQClM6Wiwkije++1Tg==}
 
   '@types/qs@6.9.14':
     resolution: {integrity: sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==}
@@ -2306,6 +2306,9 @@ packages:
   tslib@2.7.0:
     resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
 
+  tslib@2.8.0:
+    resolution: {integrity: sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==}
+
   turbo-darwin-64@1.13.4:
     resolution: {integrity: sha512-A0eKd73R7CGnRinTiS7txkMElg+R5rKFp9HV7baDiEL4xTG1FIg/56Vm7A5RVgg8UNgG2qNnrfatJtb+dRmNdw==}
     cpu: [x64]
@@ -2544,7 +2547,7 @@ snapshots:
       discord-api-types: 0.37.97
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.4
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   '@discordjs/collection@1.5.3': {}
 
@@ -2563,7 +2566,7 @@ snapshots:
       '@vladfrangu/async_event_emitter': 2.4.6
       discord-api-types: 0.37.97
       magic-bytes.js: 1.10.0
-      tslib: 2.7.0
+      tslib: 2.8.0
       undici: 6.19.8
 
   '@discordjs/util@1.1.1': {}
@@ -2577,7 +2580,7 @@ snapshots:
       '@types/ws': 8.5.12
       '@vladfrangu/async_event_emitter': 2.4.6
       discord-api-types: 0.37.83
-      tslib: 2.7.0
+      tslib: 2.8.0
       ws: 8.18.0
     transitivePeerDependencies:
       - bufferutil
@@ -2927,7 +2930,7 @@ snapshots:
 
   '@sapphire/ts-config@5.0.1':
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
       typescript: 5.6.3
 
   '@sinclair/typebox@0.27.8': {}
@@ -2969,11 +2972,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
 
   '@types/estree@1.0.5': {}
 
@@ -2981,7 +2984,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.17.43':
     dependencies:
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
       '@types/qs': 6.9.14
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -2999,7 +3002,7 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/lodash@4.17.10': {}
+  '@types/lodash@4.17.12': {}
 
   '@types/mime@1.3.5': {}
 
@@ -3007,7 +3010,7 @@ snapshots:
     dependencies:
       mime: 4.0.1
 
-  '@types/node@20.16.11':
+  '@types/node@20.16.13':
     dependencies:
       undici-types: 6.19.6
 
@@ -3020,17 +3023,17 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
 
   '@types/serve-static@1.15.5':
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 4.0.0
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
 
   '@types/ws@8.5.12':
     dependencies:
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
 
   '@typescript-eslint/eslint-plugin@7.7.0(@typescript-eslint/parser@7.7.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)':
     dependencies:
@@ -4618,7 +4621,7 @@ snapshots:
   synckit@0.8.8:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   text-table@0.2.0: {}
 
@@ -4648,6 +4651,8 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.7.0: {}
+
+  tslib@2.8.0: {}
 
   turbo-darwin-64@1.13.4:
     optional: true
@@ -4750,13 +4755,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@1.6.0(@types/node@20.16.11):
+  vite-node@1.6.0(@types/node@20.16.13):
     dependencies:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.7(@types/node@20.16.11)
+      vite: 5.2.7(@types/node@20.16.13)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4767,16 +4772,16 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.2.7(@types/node@20.16.11):
+  vite@5.2.7(@types/node@20.16.13):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
     optionalDependencies:
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
       fsevents: 2.3.3
 
-  vitest@1.6.0(@types/node@20.16.11):
+  vitest@1.6.0(@types/node@20.16.13):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -4795,11 +4800,11 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.6.0
       tinypool: 0.8.3
-      vite: 5.2.7(@types/node@20.16.11)
-      vite-node: 1.6.0(@types/node@20.16.11)
+      vite: 5.2.7(@types/node@20.16.13)
+      vite-node: 1.6.0(@types/node@20.16.13)
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@types/node': 20.16.11
+      '@types/node': 20.16.13
     transitivePeerDependencies:
       - less
       - lightningcss
