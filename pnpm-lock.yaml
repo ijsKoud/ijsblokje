@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -36,8 +36,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -73,8 +73,8 @@ importers:
         version: 2.8.1
     devDependencies:
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -82,8 +82,8 @@ importers:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -119,14 +119,14 @@ importers:
         specifier: 4.17.13
         version: 4.17.13
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -180,14 +180,14 @@ importers:
         specifier: ^22.2.0
         version: 22.2.0
       '@octokit/types':
-        specifier: ^13.6.1
-        version: 13.6.1
+        specifier: ^13.6.2
+        version: 13.6.2
       '@types/lodash':
         specifier: ^4.17.13
         version: 4.17.13
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -195,8 +195,8 @@ importers:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -220,20 +220,20 @@ importers:
         specifier: ^2.0.4
         version: 2.0.4
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
       vitest:
         specifier: 1.6.0
-        version: 1.6.0(@types/node@20.17.7)
+        version: 1.6.0(@types/node@20.17.9)
 
   packages/release:
     dependencies:
@@ -251,8 +251,8 @@ importers:
         version: 7.6.3
     devDependencies:
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
@@ -260,14 +260,14 @@ importers:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.17.7)
+        version: 1.6.0(@types/node@20.17.9)
 
   packages/server:
     dependencies:
@@ -300,8 +300,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       '@types/ws':
         specifier: 8.5.13
         version: 8.5.13
@@ -309,14 +309,14 @@ importers:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.17.7)
+        version: 1.6.0(@types/node@20.17.9)
 
   packages/utils:
     dependencies:
@@ -334,20 +334,20 @@ importers:
         version: 3.23.8
     devDependencies:
       '@types/node':
-        specifier: ^20.17.7
-        version: 20.17.7
+        specifier: ^20.17.9
+        version: 20.17.9
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
       typescript:
         specifier: 5.7.2
         version: 5.7.2
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.17.7)
+        version: 1.6.0(@types/node@20.17.9)
 
 packages:
 
@@ -648,6 +648,9 @@ packages:
   '@octokit/types@13.6.1':
     resolution: {integrity: sha512-PHZE9Z+kWXb23Ndik8MKPirBPziOc0D2/3KH1P+6jK5nGWe96kadZuE4jev2/Jq7FvIfTlT2Ltg8Fv2x1v0a5g==}
 
+  '@octokit/types@13.6.2':
+    resolution: {integrity: sha512-WpbZfZUcZU77DrSW4wbsSgTPfKcp286q3ItaIgvSbBpZJlu6mnYXAkjZz6LVZPXkEvLIM8McanyZejKTYUHipA==}
+
   '@octokit/webhooks-methods@5.0.0':
     resolution: {integrity: sha512-bMypz/oiU4DqaujqZH7IOwMyrHfr2MBZbXqrttyR/kawne7t8CIv1k+xALazo6VCuE7DJZbgBG1RFdk5OH8lnw==}
     engines: {node: '>= 18'}
@@ -852,8 +855,8 @@ packages:
     resolution: {integrity: sha512-5eEkJZ/BLvTE3vXGKkWlyTSUVZuzj23Wj8PoyOq2lt5I3CYbiLBOPb3XmCW6QcuOibIUE6emHXHt9E/F/rCa6w==}
     deprecated: This is a stub types definition. mime provides its own type definitions, so you do not need this installed.
 
-  '@types/node@20.17.7':
-    resolution: {integrity: sha512-sZXXnpBFMKbao30dUAvzKbdwA2JM1fwUtVEq/kxKuPI5mMwZiRElCpTXb0Biq/LMEVpXDZL5G5V0RPnxKeyaYg==}
+  '@types/node@20.17.9':
+    resolution: {integrity: sha512-0JOXkRyLanfGPE2QRCwgxhzlBAvaRdCNMcvbd7jFfpmD4eEXll7LRwy5ymJmyeZqk7Nh7eD2LeUyQ68BbndmXw==}
 
   '@types/qs@6.9.14':
     resolution: {integrity: sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==}
@@ -2042,8 +2045,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.4.1:
+    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2724,7 +2727,7 @@ snapshots:
       '@octokit/auth-oauth-user': 5.1.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       toad-cache: 3.7.0
       universal-github-app-jwt: 2.2.0
       universal-user-agent: 7.0.2
@@ -2734,14 +2737,14 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/auth-oauth-user': 5.1.1
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-device@7.1.1':
     dependencies:
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       universal-user-agent: 7.0.2
 
   '@octokit/auth-oauth-user@5.1.1':
@@ -2749,7 +2752,7 @@ snapshots:
       '@octokit/auth-oauth-device': 7.1.1
       '@octokit/oauth-methods': 5.1.2
       '@octokit/request': 9.1.3
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       universal-user-agent: 7.0.2
 
   '@octokit/auth-token@5.0.1': {}
@@ -2760,7 +2763,7 @@ snapshots:
       '@octokit/graphql': 8.0.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.0.2
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       before-after-hook: 3.0.2
       universal-user-agent: 7.0.2
 
@@ -2782,7 +2785,7 @@ snapshots:
       '@octokit/oauth-authorization-url': 7.1.1
       '@octokit/request': 9.1.3
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
 
   '@octokit/openapi-types@20.0.0': {}
 
@@ -2793,7 +2796,7 @@ snapshots:
   '@octokit/plugin-throttling@9.3.2(@octokit/core@6.1.2)':
     dependencies:
       '@octokit/core': 6.1.2
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       bottleneck: 2.19.5
 
   '@octokit/request-error@6.0.2':
@@ -2802,13 +2805,13 @@ snapshots:
 
   '@octokit/request-error@6.1.1':
     dependencies:
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
 
   '@octokit/request@9.1.3':
     dependencies:
       '@octokit/endpoint': 10.0.0
       '@octokit/request-error': 6.1.1
-      '@octokit/types': 13.6.1
+      '@octokit/types': 13.6.2
       universal-user-agent: 7.0.2
 
   '@octokit/types@12.6.0':
@@ -2816,6 +2819,10 @@ snapshots:
       '@octokit/openapi-types': 20.0.0
 
   '@octokit/types@13.6.1':
+    dependencies:
+      '@octokit/openapi-types': 22.2.0
+
+  '@octokit/types@13.6.2':
     dependencies:
       '@octokit/openapi-types': 22.2.0
 
@@ -2913,8 +2920,8 @@ snapshots:
       '@typescript-eslint/parser': 7.7.0(eslint@8.57.1)(typescript@5.7.2)
       eslint: 8.57.1
       eslint-config-prettier: 9.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
-      prettier: 3.3.3
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)
+      prettier: 3.4.1
       typescript: 5.7.2
     transitivePeerDependencies:
       - '@types/eslint'
@@ -2944,9 +2951,9 @@ snapshots:
       eslint: 8.57.1
       eslint-config-prettier: 9.1.0(eslint@8.57.1)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.7.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)
-      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3)
+      eslint-plugin-prettier: 5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1)
       eslint-plugin-simple-import-sort: 12.1.0(eslint@8.57.1)
-      prettier: 3.3.3
+      prettier: 3.4.1
     transitivePeerDependencies:
       - '@types/eslint'
       - eslint-import-resolver-typescript
@@ -2973,11 +2980,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
 
   '@types/estree@1.0.5': {}
 
@@ -2985,7 +2992,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.17.43':
     dependencies:
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
       '@types/qs': 6.9.14
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -3011,7 +3018,7 @@ snapshots:
     dependencies:
       mime: 4.0.1
 
-  '@types/node@20.17.7':
+  '@types/node@20.17.9':
     dependencies:
       undici-types: 6.19.6
 
@@ -3024,17 +3031,17 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
 
   '@types/serve-static@1.15.5':
     dependencies:
       '@types/http-errors': 2.0.4
       '@types/mime': 4.0.0
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
 
   '@types/ws@8.5.13':
     dependencies:
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
 
   '@typescript-eslint/eslint-plugin@7.7.0(@typescript-eslint/parser@7.7.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)':
     dependencies:
@@ -3629,10 +3636,10 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.3.3):
+  eslint-plugin-prettier@5.1.3(eslint-config-prettier@9.1.0(eslint@8.57.1))(eslint@8.57.1)(prettier@3.4.1):
     dependencies:
       eslint: 8.57.1
-      prettier: 3.3.3
+      prettier: 3.4.1
       prettier-linter-helpers: 1.0.0
       synckit: 0.8.8
     optionalDependencies:
@@ -4357,7 +4364,7 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier@3.3.3: {}
+  prettier@3.4.1: {}
 
   pretty-format@29.7.0:
     dependencies:
@@ -4756,13 +4763,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@1.6.0(@types/node@20.17.7):
+  vite-node@1.6.0(@types/node@20.17.9):
     dependencies:
       cac: 6.7.14
       debug: 4.3.6
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.7(@types/node@20.17.7)
+      vite: 5.2.7(@types/node@20.17.9)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4773,16 +4780,16 @@ snapshots:
       - supports-color
       - terser
 
-  vite@5.2.7(@types/node@20.17.7):
+  vite@5.2.7(@types/node@20.17.9):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.13.2
     optionalDependencies:
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
       fsevents: 2.3.3
 
-  vitest@1.6.0(@types/node@20.17.7):
+  vitest@1.6.0(@types/node@20.17.9):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -4801,11 +4808,11 @@ snapshots:
       strip-literal: 2.1.0
       tinybench: 2.6.0
       tinypool: 0.8.3
-      vite: 5.2.7(@types/node@20.17.7)
-      vite-node: 1.6.0(@types/node@20.17.7)
+      vite: 5.2.7(@types/node@20.17.9)
+      vite-node: 1.6.0(@types/node@20.17.9)
       why-is-node-running: 2.2.2
     optionalDependencies:
-      '@types/node': 20.17.7
+      '@types/node': 20.17.9
     transitivePeerDependencies:
       - less
       - lightningcss
