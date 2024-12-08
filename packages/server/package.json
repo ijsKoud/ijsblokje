@@ -27,7 +27,7 @@
 		"@types/node": "^20.17.9",
 		"@types/ws": "8.5.13",
 		"eslint": "^8.57.1",
-		"prettier": "^3.4.1",
+		"prettier": "^3.4.2",
 		"typescript": "5.7.2",
 		"vitest": "^1.6.0"
 	},
