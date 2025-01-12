@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@snowcrystals/icicle": "^2.0.4",
-		"@types/node": "^20.17.12",
+		"@types/node": "^22.10.5",
 		"eslint": "^8.57.1",
 		"prettier": "^3.4.2",
 		"typescript": "5.7.3",
