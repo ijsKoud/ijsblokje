@@ -28,7 +28,7 @@
 		"zod": "^3.24.1"
 	},
 	"devDependencies": {
-		"@octokit/openapi-types": "^22.2.0",
+		"@octokit/openapi-types": "^23.0.1",
 		"@octokit/types": "^13.7.0",
 		"@types/lodash": "^4.17.14",
 		"@types/node": "^20.17.12",
